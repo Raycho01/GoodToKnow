@@ -20,6 +20,8 @@
 		AE3A91342B5EB2B4002B1EC9 /* HotNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91332B5EB2B4002B1EC9 /* HotNewsViewModel.swift */; };
 		AE3A91372B5EB86A002B1EC9 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91362B5EB86A002B1EC9 /* UIViewExtension.swift */; };
 		AE3A91392B5FBCAD002B1EC9 /* HotNewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91382B5FBCAD002B1EC9 /* HotNewsHeaderView.swift */; };
+		AE3A913B2B5FE242002B1EC9 /* HotNewsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A913A2B5FE242002B1EC9 /* HotNewsAPIService.swift */; };
+		AE3A913D2B5FE89B002B1EC9 /* HotNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A913C2B5FE89A002B1EC9 /* HotNewsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		AE3A91332B5EB2B4002B1EC9 /* HotNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsViewModel.swift; sourceTree = "<group>"; };
 		AE3A91362B5EB86A002B1EC9 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		AE3A91382B5FBCAD002B1EC9 /* HotNewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsHeaderView.swift; sourceTree = "<group>"; };
+		AE3A913A2B5FE242002B1EC9 /* HotNewsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsAPIService.swift; sourceTree = "<group>"; };
+		AE3A913C2B5FE89A002B1EC9 /* HotNewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 				AE3A91382B5FBCAD002B1EC9 /* HotNewsHeaderView.swift */,
 				AE3A91042B5E9CB6002B1EC9 /* HotNewsViewController.swift */,
 				AE3A91332B5EB2B4002B1EC9 /* HotNewsViewModel.swift */,
+				AE3A913A2B5FE242002B1EC9 /* HotNewsAPIService.swift */,
+				AE3A913C2B5FE89A002B1EC9 /* HotNewsTableViewCell.swift */,
 			);
 			path = HotNews;
 			sourceTree = "<group>";
@@ -286,11 +292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE3A913D2B5FE89B002B1EC9 /* HotNewsTableViewCell.swift in Sources */,
 				AE3A91372B5EB86A002B1EC9 /* UIViewExtension.swift in Sources */,
 				AE3A91052B5E9CB6002B1EC9 /* HotNewsViewController.swift in Sources */,
 				AE3A91342B5EB2B4002B1EC9 /* HotNewsViewModel.swift in Sources */,
 				AE3A91012B5E9CB6002B1EC9 /* AppDelegate.swift in Sources */,
 				AE3A91322B5EB175002B1EC9 /* NewsArticle.swift in Sources */,
+				AE3A913B2B5FE242002B1EC9 /* HotNewsAPIService.swift in Sources */,
 				AE3A91392B5FBCAD002B1EC9 /* HotNewsHeaderView.swift in Sources */,
 				AE3A91032B5E9CB6002B1EC9 /* SceneDelegate.swift in Sources */,
 			);
