@@ -19,6 +19,11 @@ final class HotNewsViewModel {
     private let pageSize = 20
     private let firstPage = 1
     private var cursor: PaginationCursor?
+    private var country: String = "bg" {
+        didSet {
+            fetchHotNewsInitially()
+        }
+    }
     
     private(set) var isCurrentlyFetching: Bool = false
     
@@ -30,8 +35,7 @@ final class HotNewsViewModel {
     }
     
     private func fetchHotNewsInitially() {
-
-        apiService.fetchTopHeadlines(page: firstPage) { [weak self] result in
+        apiService.fetchTopHeadlines(page: firstPage, country: country) { [weak self] result in
             self?.isCurrentlyFetching = false
             guard let self = self else { return }
             
@@ -47,11 +51,10 @@ final class HotNewsViewModel {
     }
     
     func fetchMoreHotNews() {
-        
         guard let cursor = cursor, !cursor.isEndReached else { return }
         isCurrentlyFetching = true
         
-        apiService.fetchTopHeadlines(page: cursor.currentPage) { [weak self] result in
+        apiService.fetchTopHeadlines(page: cursor.currentPage, country: country) { [weak self] result in
             self?.isCurrentlyFetching = false
             guard let self = self else { return }
             
@@ -66,10 +69,12 @@ final class HotNewsViewModel {
     }
     
     private func setupCursor() {
-        if cursor == nil {
-            let totalPages = MathHelper.ceilingDivision((newsResponse?.totalResults ?? firstPage), by: pageSize)
-            cursor = PaginationCursor(totalPages: totalPages, pageSize: pageSize)
-        }
+        let totalPages = MathHelper.ceilingDivision((newsResponse?.totalResults ?? firstPage), by: pageSize)
+        cursor = PaginationCursor(totalPages: totalPages, pageSize: pageSize)
+    }
+    
+    func changeCountry(to country: String) {
+        self.country = country
     }
         
 }

@@ -10,9 +10,7 @@ import UIKit
 
 extension UIImage {
     
-    static let flagPlaceholder = UIImage(named: "flag_placeholder")
-    
-    func getFlagOf(country: String) -> UIImage {
-        return UIImage(named: country) ?? UIImage.flagPlaceholder!
+    static func getFlagOf(country: String) -> UIImage {
+        return UIImage(named: country) ?? UIImage.flagPlaceholder
     }
 }
