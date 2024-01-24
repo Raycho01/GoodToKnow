@@ -10,7 +10,7 @@ import Foundation
 struct NewsResponse: Codable {
     let status: String
     let totalResults: Int?
-    let articles: [NewsArticle]
+    var articles: [NewsArticle]
 }
 
 struct NewsArticle: Codable {

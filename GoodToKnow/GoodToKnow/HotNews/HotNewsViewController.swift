@@ -86,3 +86,15 @@ extension HotNewsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
+
+extension HotNewsViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (newsTableView.contentSize.height - 100 - scrollView.frame.size.height) { // Reached the bottom of the table view
+            
+            guard !viewModel.isCurrentlyFetching else { return }
+            viewModel.fetchMoreHotNews()
+        }
+    }
+}
+
