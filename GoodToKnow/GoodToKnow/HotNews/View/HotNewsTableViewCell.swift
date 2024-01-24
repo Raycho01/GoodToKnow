@@ -26,6 +26,7 @@ final class HotNewsTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = .MainColors.textPrimary
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -34,7 +35,7 @@ final class HotNewsTableViewCell: UITableViewCell {
     private let authorLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.italicSystemFont(ofSize: 14)
-        label.textColor = .darkGray
+        label.textColor = .MainColors.textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -42,7 +43,7 @@ final class HotNewsTableViewCell: UITableViewCell {
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .gray
+        label.textColor = .MainColors.textPrimary
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
