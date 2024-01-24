@@ -24,6 +24,7 @@
 		AE3A913D2B5FE89B002B1EC9 /* HotNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A913C2B5FE89A002B1EC9 /* HotNewsTableViewCell.swift */; };
 		AE3A913F2B5FFD41002B1EC9 /* PaginationCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A913E2B5FFD41002B1EC9 /* PaginationCursor.swift */; };
 		AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91402B610C99002B1EC9 /* MathHelper.swift */; };
+		AE3A91482B6113BE002B1EC9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		AE3A913C2B5FE89A002B1EC9 /* HotNewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsTableViewCell.swift; sourceTree = "<group>"; };
 		AE3A913E2B5FFD41002B1EC9 /* PaginationCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationCursor.swift; sourceTree = "<group>"; };
 		AE3A91402B610C99002B1EC9 /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
+		AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 		AE3A90FF2B5E9CB6002B1EC9 /* GoodToKnow */ = {
 			isa = PBXGroup;
 			children = (
+				AE3A91462B611127002B1EC9 /* Helpers */,
 				AE3A91352B5EB84E002B1EC9 /* Extensions */,
 				AE3A91302B5EB0A0002B1EC9 /* HotNews */,
 				AE3A91002B5E9CB6002B1EC9 /* AppDelegate.swift */,
@@ -147,14 +150,10 @@
 		AE3A91302B5EB0A0002B1EC9 /* HotNews */ = {
 			isa = PBXGroup;
 			children = (
-				AE3A91312B5EB175002B1EC9 /* NewsArticle.swift */,
-				AE3A91382B5FBCAD002B1EC9 /* HotNewsHeaderView.swift */,
-				AE3A91042B5E9CB6002B1EC9 /* HotNewsViewController.swift */,
-				AE3A91332B5EB2B4002B1EC9 /* HotNewsViewModel.swift */,
-				AE3A913A2B5FE242002B1EC9 /* HotNewsAPIService.swift */,
-				AE3A913C2B5FE89A002B1EC9 /* HotNewsTableViewCell.swift */,
-				AE3A913E2B5FFD41002B1EC9 /* PaginationCursor.swift */,
-				AE3A91402B610C99002B1EC9 /* MathHelper.swift */,
+				AE3A91422B6110A5002B1EC9 /* Model */,
+				AE3A91432B6110B5002B1EC9 /* View */,
+				AE3A91442B6110D5002B1EC9 /* ViewModel */,
+				AE3A91452B6110E9002B1EC9 /* Service */,
 			);
 			path = HotNews;
 			sourceTree = "<group>";
@@ -163,8 +162,52 @@
 			isa = PBXGroup;
 			children = (
 				AE3A91362B5EB86A002B1EC9 /* UIViewExtension.swift */,
+				AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AE3A91422B6110A5002B1EC9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE3A91312B5EB175002B1EC9 /* NewsArticle.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AE3A91432B6110B5002B1EC9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AE3A91382B5FBCAD002B1EC9 /* HotNewsHeaderView.swift */,
+				AE3A91042B5E9CB6002B1EC9 /* HotNewsViewController.swift */,
+				AE3A913C2B5FE89A002B1EC9 /* HotNewsTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AE3A91442B6110D5002B1EC9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AE3A91332B5EB2B4002B1EC9 /* HotNewsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AE3A91452B6110E9002B1EC9 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				AE3A913A2B5FE242002B1EC9 /* HotNewsAPIService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		AE3A91462B611127002B1EC9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AE3A913E2B5FFD41002B1EC9 /* PaginationCursor.swift */,
+				AE3A91402B610C99002B1EC9 /* MathHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +352,7 @@
 				AE3A91392B5FBCAD002B1EC9 /* HotNewsHeaderView.swift in Sources */,
 				AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */,
 				AE3A91032B5E9CB6002B1EC9 /* SceneDelegate.swift in Sources */,
+				AE3A91482B6113BE002B1EC9 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
