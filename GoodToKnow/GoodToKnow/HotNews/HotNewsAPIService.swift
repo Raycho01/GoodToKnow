@@ -13,8 +13,8 @@ final class HotNewsAPIService {
     private let baseURL = "https://newsapi.org/v2/top-headlines?country=us"
     typealias NewsCompletion = (Result<NewsResponse, Error>) -> Void
     
-    func fetchTopHeadlines(completion: @escaping NewsCompletion) {
-        guard let url = URL(string: "\(baseURL)&apiKey=\(apiKey)") else {
+    func fetchTopHeadlines(page: Int, completion: @escaping NewsCompletion) {
+        guard let url = URL(string: "\(baseURL)&apiKey=\(apiKey)&page=\(page)") else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
         }
