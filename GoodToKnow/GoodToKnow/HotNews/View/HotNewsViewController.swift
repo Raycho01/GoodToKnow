@@ -59,7 +59,9 @@ class HotNewsViewController: UIViewController {
     }
     
     private func createTableHeader() -> HotNewsHeaderView {
-        HotNewsHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 4))
+        let header = HotNewsHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 4))
+        header.delegate = self
+        return header
     }
     
     private func setupConstraints() {
@@ -100,3 +102,9 @@ extension HotNewsViewController {
     }
 }
 
+extension HotNewsViewController: HotNewsHeaderDelegate {
+    
+    func didChangeCountry(to country: String) {
+        viewModel.changeCountry(to: country)
+    }
+}
