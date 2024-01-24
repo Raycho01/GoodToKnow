@@ -76,7 +76,7 @@ final class HotNewsTableViewCell: UITableViewCell {
             newsImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             newsImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             newsImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            newsImageView.heightAnchor.constraint(equalTo: newsImageView.widthAnchor, multiplier: 16.0 / 12.0),
+            newsImageView.heightAnchor.constraint(equalTo: newsImageView.widthAnchor, multiplier: 16.0 / 16.0),
             newsImageView.widthAnchor.constraint(equalToConstant: 80),
             
             titleLabel.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 10),
@@ -90,7 +90,7 @@ final class HotNewsTableViewCell: UITableViewCell {
             dateLabel.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 10),
             dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             dateLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 4),
-            dateLabel.bottomAnchor.constraint(greaterThanOrEqualTo: bottomAnchor, constant: -10)
+            dateLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10)
         ])
     }
 

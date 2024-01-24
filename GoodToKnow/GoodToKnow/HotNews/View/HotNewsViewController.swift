@@ -26,6 +26,8 @@ class HotNewsViewController: UIViewController {
     
     private let viewModel: HotNewsViewModel
     
+    // MARK: Configuration
+    
     init(viewModel: HotNewsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -43,8 +45,6 @@ class HotNewsViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         setupConstraints()
     }
-    
-    // MARK: Configuration
     
     private func setupViewModel() {
         viewModel.newsResponseDidUpdate = { [weak self] in
@@ -86,6 +86,8 @@ extension HotNewsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - ScrollView delegate
 
 extension HotNewsViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -24,7 +24,7 @@ final class HotNewsHeaderView: UIView {
         super.init(frame: frame)
         self.setDimensions(width: frame.width, height: frame.height)
         setupUI()
-        setupSubviews()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -37,7 +37,7 @@ final class HotNewsHeaderView: UIView {
         layer.cornerRadius = 40
     }
     
-    private func setupSubviews() {
+    private func setupConstraints() {
         addSubview(headerTitleLabel)
         headerTitleLabel.fillSuperview()
     }

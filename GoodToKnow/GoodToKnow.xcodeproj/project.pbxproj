@@ -25,6 +25,7 @@
 		AE3A913F2B5FFD41002B1EC9 /* PaginationCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A913E2B5FFD41002B1EC9 /* PaginationCursor.swift */; };
 		AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91402B610C99002B1EC9 /* MathHelper.swift */; };
 		AE3A91482B6113BE002B1EC9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */; };
+		AE3A914C2B613BB3002B1EC9 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A914B2B613BB3002B1EC9 /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		AE3A913E2B5FFD41002B1EC9 /* PaginationCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationCursor.swift; sourceTree = "<group>"; };
 		AE3A91402B610C99002B1EC9 /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		AE3A914B2B613BB3002B1EC9 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			children = (
 				AE3A91362B5EB86A002B1EC9 /* UIViewExtension.swift */,
 				AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */,
+				AE3A914B2B613BB3002B1EC9 /* UIImageExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				AE3A91322B5EB175002B1EC9 /* NewsArticle.swift in Sources */,
 				AE3A913B2B5FE242002B1EC9 /* HotNewsAPIService.swift in Sources */,
 				AE3A91392B5FBCAD002B1EC9 /* HotNewsHeaderView.swift in Sources */,
+				AE3A914C2B613BB3002B1EC9 /* UIImageExtension.swift in Sources */,
 				AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */,
 				AE3A91032B5E9CB6002B1EC9 /* SceneDelegate.swift in Sources */,
 				AE3A91482B6113BE002B1EC9 /* UIColorExtension.swift in Sources */,
