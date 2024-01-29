@@ -18,7 +18,7 @@ class HotNewsViewController: UIViewController {
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.tableHeaderView = createTableHeader()
         tableView.register(HotNewsTableViewCell.self, forCellReuseIdentifier: "HotNewsTableViewCell")
-        tableView.backgroundColor = UIColor.MainColors.backgroundPrimary
+        tableView.backgroundColor = UIColor.MainColors.primaryBackground
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
         return tableView

@@ -11,8 +11,19 @@ import UIKit
 extension UIColor {
     
     struct MainColors {
-        static let backgroundPrimary = UIColor(red: 48.0/255.0, green: 51.0/255.0, blue: 54.0/255.0, alpha: 1.0)
-        static let backgroundSecondary = UIColor(red: 28.0/255.0, green: 28.0/255.0, blue: 30.0/255.0, alpha: 1.0)
-        static let textPrimary = UIColor(red: 229.0/255.0, green: 229.0/255.0, blue: 234.0/255.0, alpha: 1.0)
+        
+        // MARK: - Background
+        static let primaryBackground = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
+        static let headerBackground = UIColor.systemRed
+        static let tabBarBackground = UIColor.systemGray2
+        
+        // MARK: - Text
+        static let primaryText = UIColor.black
+        static let secondaryText = UIColor.darkGray
+        
+        // MARK: - Other
+        static let accentColor = UIColor(red: 0.07, green: 0.42, blue: 0.87, alpha: 1.0)
+        static let separatorColor = UIColor.lightGray
+        static let errorColor = UIColor.red
     }
 }
