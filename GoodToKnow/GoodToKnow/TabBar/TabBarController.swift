@@ -37,9 +37,9 @@ final class TabBarController: UITabBarController {
     private func setupUI() {
         
         tabBar.tintColor = UIColor.MainColors.accentColor
+        tabBar.backgroundColor = UIColor.MainColors.tabBarBackground
         tabBar.barTintColor = UIColor.MainColors.tabBarBackground
         tabBar.unselectedItemTintColor = .white
-        
     }
     
     private func setup(vc: UIViewController, title: String, systemImage: String? = nil) {

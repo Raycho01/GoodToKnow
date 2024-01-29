@@ -14,7 +14,7 @@ final class HotNewsHeaderView: UIView {
         let label = UILabel()
         label.text = "Hot News"
         label.textColor = UIColor.MainColors.primaryText
-        label.font = .boldSystemFont(ofSize: 32)
+        label.font = .getCopperplateFont(size: 32)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -32,13 +32,13 @@ final class HotNewsHeaderView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = UIColor.MainColors.accentColor
+        backgroundColor = UIColor.MainColors.tabBarBackground
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 40
     }
     
     private func setupConstraints() {
         addSubview(headerTitleLabel)
-        headerTitleLabel.centerInSuperview()
+        headerTitleLabel.fillSuperview(padding: UIEdgeInsets(top: frame.height / 2, left: 0, bottom: 0, right: 0))
     }
 }

@@ -58,7 +58,7 @@ extension UIView {
     
     // MARK: - Set Anchors with Optional Values
 
-        func anchorToSuperview(top: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0,
+        func anchor(top: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0,
                                bottom: NSLayoutYAxisAnchor? = nil, bottomConstant: CGFloat = 0,
                                leading: NSLayoutXAxisAnchor? = nil, leadingConstant: CGFloat = 0,
                                trailing: NSLayoutXAxisAnchor? = nil, trailingConstant: CGFloat = 0) {
