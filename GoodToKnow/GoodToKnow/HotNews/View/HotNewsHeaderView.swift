@@ -13,7 +13,7 @@ final class HotNewsHeaderView: UIView {
     private lazy var headerTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Hot News"
-        label.textColor = UIColor.MainColors.textPrimary
+        label.textColor = UIColor.MainColors.primaryText
         label.font = .boldSystemFont(ofSize: 32)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +32,7 @@ final class HotNewsHeaderView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = UIColor.MainColors.backgroundSecondary
+        backgroundColor = UIColor.MainColors.accentColor
         translatesAutoresizingMaskIntoConstraints = false
         layer.cornerRadius = 40
     }
