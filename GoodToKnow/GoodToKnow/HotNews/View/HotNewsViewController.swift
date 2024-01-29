@@ -60,7 +60,6 @@ class HotNewsViewController: UIViewController {
     
     private func createTableHeader() -> HotNewsHeaderView {
         let header = HotNewsHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 4))
-        header.delegate = self
         return header
     }
     
@@ -99,12 +98,5 @@ extension HotNewsViewController {
             guard !viewModel.isCurrentlyFetching else { return }
             viewModel.fetchMoreHotNews()
         }
-    }
-}
-
-extension HotNewsViewController: HotNewsHeaderDelegate {
-    
-    func didChangeCountry(to country: String) {
-        viewModel.changeCountry(to: country)
     }
 }

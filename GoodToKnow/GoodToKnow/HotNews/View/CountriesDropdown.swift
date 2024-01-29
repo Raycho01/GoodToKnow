@@ -88,7 +88,7 @@ class CountriesDropdown: UIView {
             let countryButton = UIButton()
             countryButton.translatesAutoresizingMaskIntoConstraints = false
             countryButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-            countryButton.setImage(UIImage.getFlagOf(country: country), for: .normal)
+//            countryButton.setImage(UIImage.getFlagOf(country: country), for: .normal)
             countryButton.addTarget(self, action: #selector(countrySelected(_:)), for: .touchUpInside)
             stackView.addArrangedSubview(countryButton)
             
@@ -112,6 +112,6 @@ class CountriesDropdown: UIView {
     }
     
     private func setFlagImage(for countryCode: String) {
-        flagButton.setImage(UIImage.getFlagOf(country: countryCode), for: .normal)
+//        flagButton.setImage(UIImage.getFlagOf(country: countryCode), for: .normal)
     }
 }
