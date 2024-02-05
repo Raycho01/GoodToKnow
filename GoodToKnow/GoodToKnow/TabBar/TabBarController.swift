@@ -16,6 +16,11 @@ final class TabBarController: UITabBarController {
         setupViewControllers()
         setupUI()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        roundTopCorners()
+    }
 
     private func setupViewControllers() {
         
@@ -48,5 +53,9 @@ final class TabBarController: UITabBarController {
         if let image = systemImage {
             vc.tabBarItem.image = UIImage(systemName: image)
         }
+    }
+    
+    private func roundTopCorners() {
+        tabBar.roundCorners([.topLeft, .topRight])
     }
 }

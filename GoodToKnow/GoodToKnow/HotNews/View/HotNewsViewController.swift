@@ -9,6 +9,11 @@ import UIKit
 
 class HotNewsViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    private let viewModel: HotNewsViewModel
+    private let insetValue: CGFloat = 15
+    
     // MARK: - UI Elements
     
     private lazy var headerView: HotNewsHeaderView = {
@@ -22,13 +27,11 @@ class HotNewsViewController: UIViewController {
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.register(HotNewsTableViewCell.self, forCellReuseIdentifier: "HotNewsTableViewCell")
         tableView.backgroundColor = UIColor.MainColors.primaryBackground
-        tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: insetValue, left: 0, bottom: insetValue, right: 0)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
         return tableView
     }()
-    
-    private let viewModel: HotNewsViewModel
     
     // MARK: Configuration
     
@@ -71,15 +74,16 @@ class HotNewsViewController: UIViewController {
                           leading: view.leadingAnchor,
                           trailing: view.trailingAnchor)
         newsTableView.anchor(top: headerView.bottomAnchor,
-                             topConstant: -15,
-                             bottom: view.bottomAnchor,
+                             topConstant: -insetValue,
+                             bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                             bottomConstant: -insetValue,
                              leading: view.leadingAnchor,
                              trailing: view.trailingAnchor)
     }
     
     private func setupUI() {
         view.backgroundColor = UIColor.MainColors.primaryBackground
-        newsTableView.contentOffset = CGPoint(x: 0, y: -15)
+        newsTableView.contentOffset = CGPoint(x: 0, y: -insetValue)
     }
 
 }

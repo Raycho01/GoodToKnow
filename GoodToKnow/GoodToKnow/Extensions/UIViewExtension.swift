@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
 
-    // MARK: - Fill Superview
+    // MARK: - Constraints
 
     func fillSuperview(padding: UIEdgeInsets = .zero) {
         guard let superview = superview else { return }
@@ -24,8 +24,6 @@ extension UIView {
         ])
     }
 
-    // MARK: - Center in Superview
-
     func centerInSuperview() {
         guard let superview = superview else { return }
 
@@ -36,8 +34,6 @@ extension UIView {
         ])
     }
 
-    // MARK: - Set Dimensions
-
     func setDimensions(width: CGFloat, height: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -46,8 +42,6 @@ extension UIView {
         ])
     }
 
-    // MARK: - Set Aspect Ratio
-
     func setAspectRatio(width: CGFloat, height: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -55,8 +49,6 @@ extension UIView {
             heightAnchor.constraint(equalTo: widthAnchor, multiplier: height/width)
         ])
     }
-    
-    // MARK: - Set Anchors with Optional Values
 
         func anchor(top: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0,
                                bottom: NSLayoutYAxisAnchor? = nil, bottomConstant: CGFloat = 0,
@@ -76,5 +68,18 @@ extension UIView {
             if let trailing = trailing {
                 trailingAnchor.constraint(equalTo: trailing, constant: -trailingConstant).isActive = true
             }
+    }
+    
+    // MARK: - Round corners
+    
+    func roundCorners(_ corners: UIRectCorner = [.allCorners], radius: CGFloat = 20) {
+        let maskPath = UIBezierPath(roundedRect: bounds,
+                                    byRoundingCorners: corners,
+                                    cornerRadii: CGSize(width: radius, height: radius))
+        
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = bounds
+        maskLayer.path = maskPath.cgPath
+        layer.mask = maskLayer
     }
 }
