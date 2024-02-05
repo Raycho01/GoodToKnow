@@ -34,7 +34,7 @@ final class HotNewsHeaderView: UIView {
     private func setupUI() {
         backgroundColor = UIColor.MainColors.tabBarBackground
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = 40
+        self.roundCorners()
     }
     
     private func setupConstraints() {
