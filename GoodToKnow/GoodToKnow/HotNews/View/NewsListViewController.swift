@@ -7,26 +7,21 @@
 
 import UIKit
 
-protocol NewsListViewModelProtocol {
-    
-    var newsResponse: NewsResponse? { get }
-    var isCurrentlyFetching: Bool { get }
-    var newsResponseDidUpdate : (() -> ()) { get set }
-    
-    func fetchMoreHotNews()
-}
-
 class NewsListViewController: UIViewController {
     
     // MARK: - Properties
     
     private var viewModel: NewsListViewModelProtocol
+    private let headerViewModel: NewsListHeaderViewModelProtocol
     private let insetValue: CGFloat = 15
     
     // MARK: - UI Elements
     
     private lazy var headerView: NewsListHeaderView = {
-        NewsListHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8))
+        let headerView = NewsListHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8),
+                           viewModel: headerViewModel)
+        headerView.delegate = self
+        return headerView
     }()
     
     private lazy var newsTableView: UITableView = {
@@ -44,8 +39,9 @@ class NewsListViewController: UIViewController {
     
     // MARK: Configuration
     
-    init(viewModel: NewsListViewModelProtocol) {
+    init(viewModel: NewsListViewModelProtocol, headerViewModel: NewsListHeaderViewModelProtocol) {
         self.viewModel = viewModel
+        self.headerViewModel = headerViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -114,7 +110,7 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK: - ScrollView delegate
+// MARK: - Delegates
 
 extension NewsListViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -124,5 +120,11 @@ extension NewsListViewController {
             guard !viewModel.isCurrentlyFetching else { return }
             viewModel.fetchMoreHotNews()
         }
+    }
+}
+
+extension NewsListViewController: NewsListHeaderDelegate {
+    func didSearch(for keyword: String) {
+        viewModel.searchFilters.keyword = keyword
     }
 }
