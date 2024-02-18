@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class HotNewsViewModel {
+final class HotNewsViewModel: NewsListViewModelProtocol {
     
     private let apiService: HotNewsAPIService!
     private(set) var newsResponse: NewsResponse? {

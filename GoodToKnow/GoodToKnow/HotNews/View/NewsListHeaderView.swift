@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class HotNewsHeaderView: UIView {
+final class NewsListHeaderView: UIView {
     
     private lazy var headerTitleLabel: UILabel = {
         let label = UILabel()

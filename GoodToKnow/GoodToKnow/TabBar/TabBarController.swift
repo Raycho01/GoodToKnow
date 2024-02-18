@@ -27,7 +27,7 @@ final class TabBarController: UITabBarController {
         let homeVC = UIViewController()
         setup(vc: homeVC, title: "Home", systemImage: "house")
         
-        let hotNewsVC = HotNewsViewController(viewModel: HotNewsViewModel())
+        let hotNewsVC = NewsListViewController(viewModel: HotNewsViewModel())
         setup(vc: hotNewsVC, title: "Hot News", systemImage: "flame")
         
         let settingsVC = UIViewController()

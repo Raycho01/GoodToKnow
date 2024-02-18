@@ -10,7 +10,7 @@ import UIKit
 
 import UIKit
 
-final class HotNewsTableViewCell: UITableViewCell {
+final class NewsListTableViewCell: UITableViewCell {
 
     static let identifier = "HotNewsTableViewCell"
 
@@ -98,7 +98,7 @@ final class HotNewsTableViewCell: UITableViewCell {
         loadImage(from: article.urlToImage ?? "")
         titleLabel.text = article.title
         authorLabel.text = article.author
-        dateLabel.text = article.publishedAt?.description
+        dateLabel.text = article.publishedAt?.formatted()
     }
     
     private func loadImage(from urlString: String) {
