@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		AE3A91012B5E9CB6002B1EC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91002B5E9CB6002B1EC9 /* AppDelegate.swift */; };
 		AE3A91032B5E9CB6002B1EC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91022B5E9CB6002B1EC9 /* SceneDelegate.swift */; };
-		AE3A91052B5E9CB6002B1EC9 /* HotNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91042B5E9CB6002B1EC9 /* HotNewsViewController.swift */; };
+		AE3A91052B5E9CB6002B1EC9 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91042B5E9CB6002B1EC9 /* NewsListViewController.swift */; };
 		AE3A910A2B5E9CB7002B1EC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE3A91092B5E9CB7002B1EC9 /* Assets.xcassets */; };
 		AE3A910D2B5E9CB7002B1EC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE3A910B2B5E9CB7002B1EC9 /* LaunchScreen.storyboard */; };
 		AE3A91182B5E9CB7002B1EC9 /* GoodToKnowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91172B5E9CB7002B1EC9 /* GoodToKnowTests.swift */; };
@@ -18,9 +18,9 @@
 		AE3A91322B5EB175002B1EC9 /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91312B5EB175002B1EC9 /* NewsArticle.swift */; };
 		AE3A91342B5EB2B4002B1EC9 /* HotNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91332B5EB2B4002B1EC9 /* HotNewsViewModel.swift */; };
 		AE3A91372B5EB86A002B1EC9 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91362B5EB86A002B1EC9 /* UIViewExtension.swift */; };
-		AE3A91392B5FBCAD002B1EC9 /* HotNewsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91382B5FBCAD002B1EC9 /* HotNewsHeaderView.swift */; };
+		AE3A91392B5FBCAD002B1EC9 /* NewsListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91382B5FBCAD002B1EC9 /* NewsListHeaderView.swift */; };
 		AE3A913B2B5FE242002B1EC9 /* HotNewsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A913A2B5FE242002B1EC9 /* HotNewsAPIService.swift */; };
-		AE3A913D2B5FE89B002B1EC9 /* HotNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A913C2B5FE89A002B1EC9 /* HotNewsTableViewCell.swift */; };
+		AE3A913D2B5FE89B002B1EC9 /* NewsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A913C2B5FE89A002B1EC9 /* NewsListTableViewCell.swift */; };
 		AE3A913F2B5FFD41002B1EC9 /* PaginationCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A913E2B5FFD41002B1EC9 /* PaginationCursor.swift */; };
 		AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91402B610C99002B1EC9 /* MathHelper.swift */; };
 		AE3A91482B6113BE002B1EC9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */; };
@@ -50,7 +50,7 @@
 		AE3A90FD2B5E9CB6002B1EC9 /* GoodToKnow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodToKnow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE3A91002B5E9CB6002B1EC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE3A91022B5E9CB6002B1EC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AE3A91042B5E9CB6002B1EC9 /* HotNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsViewController.swift; sourceTree = "<group>"; };
+		AE3A91042B5E9CB6002B1EC9 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		AE3A91092B5E9CB7002B1EC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE3A910C2B5E9CB7002B1EC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE3A910E2B5E9CB7002B1EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,9 +62,9 @@
 		AE3A91312B5EB175002B1EC9 /* NewsArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle.swift; sourceTree = "<group>"; };
 		AE3A91332B5EB2B4002B1EC9 /* HotNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsViewModel.swift; sourceTree = "<group>"; };
 		AE3A91362B5EB86A002B1EC9 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		AE3A91382B5FBCAD002B1EC9 /* HotNewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsHeaderView.swift; sourceTree = "<group>"; };
+		AE3A91382B5FBCAD002B1EC9 /* NewsListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListHeaderView.swift; sourceTree = "<group>"; };
 		AE3A913A2B5FE242002B1EC9 /* HotNewsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsAPIService.swift; sourceTree = "<group>"; };
-		AE3A913C2B5FE89A002B1EC9 /* HotNewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsTableViewCell.swift; sourceTree = "<group>"; };
+		AE3A913C2B5FE89A002B1EC9 /* NewsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListTableViewCell.swift; sourceTree = "<group>"; };
 		AE3A913E2B5FFD41002B1EC9 /* PaginationCursor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationCursor.swift; sourceTree = "<group>"; };
 		AE3A91402B610C99002B1EC9 /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -183,9 +183,9 @@
 		AE3A91432B6110B5002B1EC9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AE3A91382B5FBCAD002B1EC9 /* HotNewsHeaderView.swift */,
-				AE3A91042B5E9CB6002B1EC9 /* HotNewsViewController.swift */,
-				AE3A913C2B5FE89A002B1EC9 /* HotNewsTableViewCell.swift */,
+				AE3A91382B5FBCAD002B1EC9 /* NewsListHeaderView.swift */,
+				AE3A91042B5E9CB6002B1EC9 /* NewsListViewController.swift */,
+				AE3A913C2B5FE89A002B1EC9 /* NewsListTableViewCell.swift */,
 				AE3A914D2B613EBA002B1EC9 /* CountriesDropdown.swift */,
 			);
 			path = View;
@@ -354,17 +354,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE3A913D2B5FE89B002B1EC9 /* HotNewsTableViewCell.swift in Sources */,
+				AE3A913D2B5FE89B002B1EC9 /* NewsListTableViewCell.swift in Sources */,
 				AECABEAF2B67E6270087D19B /* UIFontExtension.swift in Sources */,
 				AE3A91372B5EB86A002B1EC9 /* UIViewExtension.swift in Sources */,
 				AECABEAD2B67C18B0087D19B /* TabBarController.swift in Sources */,
-				AE3A91052B5E9CB6002B1EC9 /* HotNewsViewController.swift in Sources */,
+				AE3A91052B5E9CB6002B1EC9 /* NewsListViewController.swift in Sources */,
 				AE3A913F2B5FFD41002B1EC9 /* PaginationCursor.swift in Sources */,
 				AE3A91342B5EB2B4002B1EC9 /* HotNewsViewModel.swift in Sources */,
 				AE3A91012B5E9CB6002B1EC9 /* AppDelegate.swift in Sources */,
 				AE3A91322B5EB175002B1EC9 /* NewsArticle.swift in Sources */,
 				AE3A913B2B5FE242002B1EC9 /* HotNewsAPIService.swift in Sources */,
-				AE3A91392B5FBCAD002B1EC9 /* HotNewsHeaderView.swift in Sources */,
+				AE3A91392B5FBCAD002B1EC9 /* NewsListHeaderView.swift in Sources */,
 				AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */,
 				AE3A91032B5E9CB6002B1EC9 /* SceneDelegate.swift in Sources */,
 				AE3A91482B6113BE002B1EC9 /* UIColorExtension.swift in Sources */,

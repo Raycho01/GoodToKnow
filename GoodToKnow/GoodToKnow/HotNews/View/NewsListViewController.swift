@@ -7,17 +7,26 @@
 
 import UIKit
 
-class HotNewsViewController: UIViewController {
+protocol NewsListViewModelProtocol {
+    
+    var newsResponse: NewsResponse? { get }
+    var isCurrentlyFetching: Bool { get }
+    var newsResponseDidUpdate : (() -> ()) { get set }
+    
+    func fetchMoreHotNews()
+}
+
+class NewsListViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let viewModel: HotNewsViewModel
+    private var viewModel: NewsListViewModelProtocol
     private let insetValue: CGFloat = 15
     
     // MARK: - UI Elements
     
-    private lazy var headerView: HotNewsHeaderView = {
-        HotNewsHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8))
+    private lazy var headerView: NewsListHeaderView = {
+        NewsListHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8))
     }()
     
     private lazy var newsTableView: UITableView = {
@@ -25,7 +34,7 @@ class HotNewsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInsetAdjustmentBehavior = .never
-        tableView.register(HotNewsTableViewCell.self, forCellReuseIdentifier: "HotNewsTableViewCell")
+        tableView.register(NewsListTableViewCell.self, forCellReuseIdentifier: "HotNewsTableViewCell")
         tableView.backgroundColor = UIColor.MainColors.primaryBackground
         tableView.contentInset = UIEdgeInsets(top: insetValue, left: 0, bottom: insetValue, right: 0)
         tableView.rowHeight = UITableView.automaticDimension
@@ -35,7 +44,7 @@ class HotNewsViewController: UIViewController {
     
     // MARK: Configuration
     
-    init(viewModel: HotNewsViewModel) {
+    init(viewModel: NewsListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -46,7 +55,7 @@ class HotNewsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViewModel()
+        bindViewModel()
         setupUI()
     }
     
@@ -54,7 +63,7 @@ class HotNewsViewController: UIViewController {
         setupConstraints()
     }
     
-    private func setupViewModel() {
+    private func bindViewModel() {
         viewModel.newsResponseDidUpdate = { [weak self] in
             self?.updateData()
         }
@@ -90,13 +99,13 @@ class HotNewsViewController: UIViewController {
 
 // MARK: - UITableView delegate and data source
 
-extension HotNewsViewController: UITableViewDelegate, UITableViewDataSource {
+extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.newsResponse?.articles.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: HotNewsTableViewCell.identifier, for: indexPath) as! HotNewsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsListTableViewCell.identifier, for: indexPath) as! NewsListTableViewCell
         guard let article = viewModel.newsResponse?.articles[indexPath.row] else {
             return UITableViewCell()
         }
@@ -107,7 +116,7 @@ extension HotNewsViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - ScrollView delegate
 
-extension HotNewsViewController {
+extension NewsListViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         if position > (newsTableView.contentSize.height - 100 - scrollView.frame.size.height) { // Reached the bottom of the table view
