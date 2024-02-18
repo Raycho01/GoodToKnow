@@ -7,6 +7,16 @@
 
 import Foundation
 
+protocol NewsListViewModelProtocol {
+    
+    var newsResponse: NewsResponse? { get }
+    var searchFilters: NewsSearchFilters { get set }
+    var isCurrentlyFetching: Bool { get }
+    var newsResponseDidUpdate : (() -> ()) { get set }
+    
+    func fetchMoreHotNews()
+}
+
 final class HotNewsViewModel: NewsListViewModelProtocol {
     
     private let apiService: HotNewsAPIService!
@@ -15,15 +25,16 @@ final class HotNewsViewModel: NewsListViewModelProtocol {
             newsResponseDidUpdate()
         }
     }
+    var searchFilters = NewsSearchFilters() {
+        didSet {
+            cursor?.resetCursor()
+            fetchHotNewsInitially()
+        }
+    }
     
     private let pageSize = 20
     private let firstPage = 1
     private var cursor: PaginationCursor?
-    private var country: String = "bg" {
-        didSet {
-            fetchHotNewsInitially()
-        }
-    }
     
     private(set) var isCurrentlyFetching: Bool = false
     
@@ -35,7 +46,7 @@ final class HotNewsViewModel: NewsListViewModelProtocol {
     }
     
     private func fetchHotNewsInitially() {
-        apiService.fetchTopHeadlines(page: firstPage, country: country) { [weak self] result in
+        apiService.fetchTopHeadlines(page: firstPage, filters: searchFilters) { [weak self] result in
             self?.isCurrentlyFetching = false
             guard let self = self else { return }
             
@@ -54,7 +65,7 @@ final class HotNewsViewModel: NewsListViewModelProtocol {
         guard let cursor = cursor, !cursor.isEndReached else { return }
         isCurrentlyFetching = true
         
-        apiService.fetchTopHeadlines(page: cursor.currentPage, country: country) { [weak self] result in
+        apiService.fetchTopHeadlines(page: cursor.currentPage, filters: searchFilters) { [weak self] result in
             self?.isCurrentlyFetching = false
             guard let self = self else { return }
             
@@ -71,10 +82,6 @@ final class HotNewsViewModel: NewsListViewModelProtocol {
     private func setupCursor() {
         let totalPages = MathHelper.ceilingDivision((newsResponse?.totalResults ?? firstPage), by: pageSize)
         cursor = PaginationCursor(totalPages: totalPages, pageSize: pageSize)
-    }
-    
-    func changeCountry(to country: String) {
-        self.country = country
     }
         
 }
