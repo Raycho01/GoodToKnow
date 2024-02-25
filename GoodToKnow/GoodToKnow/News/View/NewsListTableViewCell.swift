@@ -12,7 +12,7 @@ import UIKit
 
 final class NewsListTableViewCell: UITableViewCell {
 
-    static let identifier = "HotNewsTableViewCell"
+    static let identifier = "NewsListTableViewCell"
 
     private let newsImageView: UIImageView = {
         let imageView = UIImageView()

@@ -104,6 +104,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE24991E2B8B50F400B87E61 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				AE3A91422B6110A5002B1EC9 /* Model */,
+				AE3A91432B6110B5002B1EC9 /* View */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		AE3A90F42B5E9CB6002B1EC9 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +136,7 @@
 		AE3A90FF2B5E9CB6002B1EC9 /* GoodToKnow */ = {
 			isa = PBXGroup;
 			children = (
+				AE24991E2B8B50F400B87E61 /* News */,
 				AE3A91462B611127002B1EC9 /* Helpers */,
 				AE3A91352B5EB84E002B1EC9 /* Extensions */,
 				AE3A91302B5EB0A0002B1EC9 /* HotNews */,
@@ -160,8 +170,6 @@
 		AE3A91302B5EB0A0002B1EC9 /* HotNews */ = {
 			isa = PBXGroup;
 			children = (
-				AE3A91422B6110A5002B1EC9 /* Model */,
-				AE3A91432B6110B5002B1EC9 /* View */,
 				AE3A91442B6110D5002B1EC9 /* ViewModel */,
 				AE3A91452B6110E9002B1EC9 /* Service */,
 			);

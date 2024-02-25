@@ -19,7 +19,7 @@ protocol NewsListViewModelProtocol {
 
 final class HotNewsViewModel: NewsListViewModelProtocol {
     
-    private let apiService: HotNewsAPIService!
+    private let apiService: HotNewsAPIServiceProtocol!
     private(set) var newsResponse: NewsResponse? {
         didSet {
             newsResponseDidUpdate()
