@@ -19,9 +19,28 @@ protocol NewsListHeaderDelegate: AnyObject {
 
 final class NewsListHeaderView: UIView {
     
+    enum State {
+        case normal, searching
+    }
+    
     private let viewModel: NewsListHeaderViewModelProtocol
+    private var state: NewsListHeaderView.State = .normal {
+        didSet {
+            stateDidChange(to: state)
+        }
+    }
     weak var delegate: NewsListHeaderDelegate?
-    private var isSearchTextFieldAdded = false
+    
+    private var isSearchTextFieldHidden = true {
+        didSet {
+            searchTextField.isHidden = isSearchTextFieldHidden
+            if isSearchTextFieldHidden {
+                mainStackView.removeArrangedSubview(searchTextField)
+            } else {
+                mainStackView.insertArrangedSubview(searchTextField, at: 0)
+            }
+        }
+    }
     private var timer: Timer?
     private var lastSearchedKeyword = ""
     
@@ -94,41 +113,65 @@ final class NewsListHeaderView: UIView {
     }
     
     @objc private func didTapSearch() {
-        if !isSearchTextFieldAdded {
-            addSearchTextField()
-        } else {
-            callDelegate()
+        switch state {
+        case .normal:
+            state = .searching
+        case .searching:
+            search()
         }
     }
     
-    private func addSearchTextField() {
-        refreshSearchTextField()
-        searchTextField.isHidden = false
-        mainStackView.insertArrangedSubview(searchTextField, at: 1)
-        searchTextField.becomeFirstResponder()
-        isSearchTextFieldAdded = true
-    }
-    
-    private func callDelegate() {
+    private func search() {
         guard let searchKeyword = searchTextField.text, searchKeyword != lastSearchedKeyword else { return }
         lastSearchedKeyword = searchKeyword
         delegate?.didSearch(for: searchKeyword)
     }
     
     @objc private func timerFired() {
-        callDelegate()
-    }
-    
-    private func removeSearchTextFieldIfEmpty() {
-        guard searchTextField.text == "" else { return }
-        
-        searchTextField.isHidden = true
-        mainStackView.removeArrangedSubview(searchTextField)
-        isSearchTextFieldAdded = false
+        search()
     }
     
     private func refreshSearchTextField() {
         searchTextField.text = searchTextField.text
+    }
+    
+    private func stateDidChange(to state: NewsListHeaderView.State) {
+        switch state {
+        case .normal:
+            setupNormalState()
+        case .searching:
+            setupSearchingState()
+        }
+    }
+    
+    private func setupNormalState() {
+        hideSearchTextField(true)
+        hideHeaderTitleLabel(false)
+    }
+    
+    private func setupSearchingState() {
+        hideHeaderTitleLabel(true)
+        hideSearchTextField(false)
+    }
+    
+    private func hideSearchTextField(_ isHidden: Bool) {
+        searchTextField.isHidden = isHidden
+        if isHidden {
+            mainStackView.removeArrangedSubview(searchTextField)
+        } else {
+            mainStackView.insertArrangedSubview(searchTextField, at: 0)
+            refreshSearchTextField()
+            searchTextField.becomeFirstResponder()
+        }
+    }
+    
+    private func hideHeaderTitleLabel(_ isHidden: Bool) {
+        headerTitleLabel.isHidden = isHidden
+        if isHidden {
+            mainStackView.removeArrangedSubview(headerTitleLabel)
+        } else {
+            mainStackView.insertArrangedSubview(headerTitleLabel, at: 0)
+        }
     }
     
 }
@@ -139,13 +182,15 @@ extension NewsListHeaderView: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             timer?.invalidate()
-            timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
             return true
         }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        removeSearchTextFieldIfEmpty()
-        callDelegate()
+        if searchTextField.text == "" {
+            state = .normal
+        }
+        search()
         textField.resignFirstResponder()
         return true
     }
