@@ -108,6 +108,12 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(with: article)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let article = viewModel.newsResponse?.articles[indexPath.row] else { return }
+        let viewController = NewsDetailsViewController(newsArticle: article)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 // MARK: - Delegates

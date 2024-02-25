@@ -28,7 +28,8 @@ final class TabBarController: UITabBarController {
         setup(vc: homeVC, title: "Home", systemImage: "house")
         
         let hotNewsVC = NewsListViewController(viewModel: HotNewsViewModel(), headerViewModel: HotNewsHeaderViewModel())
-        setup(vc: hotNewsVC, title: "Hot News", systemImage: "flame")
+        let hotNewsNav = UINavigationController(rootViewController: hotNewsVC)
+        setup(vc: hotNewsNav, title: "Hot News", systemImage: "flame")
         
         let settingsVC = UIViewController()
         setup(vc: settingsVC, title: "Settings", systemImage: "gearshape")
@@ -36,7 +37,7 @@ final class TabBarController: UITabBarController {
         let allNewsVC = UIViewController()
         setup(vc: allNewsVC, title: "All news", systemImage: "book.pages")
         
-        viewControllers = [homeVC, hotNewsVC, allNewsVC, settingsVC]
+        viewControllers = [homeVC, hotNewsNav, allNewsVC, settingsVC]
     }
     
     private func setupUI() {
