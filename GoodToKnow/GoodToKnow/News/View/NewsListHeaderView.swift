@@ -31,16 +31,6 @@ final class NewsListHeaderView: UIView {
     }
     weak var delegate: NewsListHeaderDelegate?
     
-    private var isSearchTextFieldHidden = true {
-        didSet {
-            searchTextField.isHidden = isSearchTextFieldHidden
-            if isSearchTextFieldHidden {
-                mainStackView.removeArrangedSubview(searchTextField)
-            } else {
-                mainStackView.insertArrangedSubview(searchTextField, at: 0)
-            }
-        }
-    }
     private var timer: Timer?
     private var lastSearchedKeyword = ""
     
@@ -66,13 +56,23 @@ final class NewsListHeaderView: UIView {
     
     private lazy var searchButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage.searchIcon, for: .normal)
+        button.setImage(UIImage.search, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(didTapSearch), for: .touchUpInside)
         button.tintColor = UIColor.MainColors.primaryText
         button.setDimensions(width: 30, height: 30)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+    
+    private lazy var redDotImageView: UIImageView = {
+        let redDotImage = UIImage(systemName: "circle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 8))
+        let redDotImageView = UIImageView(image: redDotImage)
+        redDotImageView.tintColor = .red
+        redDotImageView.contentMode = .scaleAspectFit
+        redDotImageView.isHidden = true
+        redDotImageView.translatesAutoresizingMaskIntoConstraints = false
+        return redDotImageView
     }()
     
     private lazy var mainStackView: UIStackView = {
@@ -110,6 +110,10 @@ final class NewsListHeaderView: UIView {
         if viewModel.shouldShowSearch {
             mainStackView.addArrangedSubview(searchButton)
         }
+        
+        searchButton.addSubview(redDotImageView)
+        redDotImageView.anchor(top: searchButton.topAnchor,
+                               trailing: searchButton.trailingAnchor)
     }
     
     @objc private func didTapSearch() {
@@ -118,12 +122,14 @@ final class NewsListHeaderView: UIView {
             state = .searching
         case .searching:
             search()
+            state = .normal
         }
     }
     
     private func search() {
         guard let searchKeyword = searchTextField.text, searchKeyword != lastSearchedKeyword else { return }
         lastSearchedKeyword = searchKeyword
+        showRedDotIfSearching()
         delegate?.didSearch(for: searchKeyword)
     }
     
@@ -158,6 +164,7 @@ final class NewsListHeaderView: UIView {
         searchTextField.isHidden = isHidden
         if isHidden {
             mainStackView.removeArrangedSubview(searchTextField)
+            searchTextField.resignFirstResponder()
         } else {
             mainStackView.insertArrangedSubview(searchTextField, at: 0)
             refreshSearchTextField()
@@ -174,6 +181,10 @@ final class NewsListHeaderView: UIView {
         }
     }
     
+    private func showRedDotIfSearching() {
+        redDotImageView.isHidden = lastSearchedKeyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+    
 }
 
 // MARK: UITextFieldDelegate
@@ -182,7 +193,7 @@ extension NewsListHeaderView: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             timer?.invalidate()
-            timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
             return true
         }
     

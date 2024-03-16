@@ -9,5 +9,5 @@ import UIKit
 
 extension UIImage {
 
-    static let searchIcon = UIImage(named: "search")
+    static let search = UIImage(named: "search_icon")
 }
