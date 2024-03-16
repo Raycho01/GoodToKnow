@@ -79,12 +79,34 @@ final class NewsDetailsViewController: UIViewController {
         return label
     }()
     
+    private lazy var sourceLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.alpha = 0.4
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+    
+    private lazy var internetButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "safari"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(didTapInternetButton), for: .touchUpInside)
+        button.tintColor = UIColor.MainColors.primaryText
+        button.setDimensions(width: 40, height: 40)
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     // MARK: Lifecycle
@@ -126,28 +148,47 @@ final class NewsDetailsViewController: UIViewController {
         contentView.setDimensions(width: scrollView.frame.width, height: scrollView.frame.height)
 
         contentView.addSubview(imageView)
+        contentView.addSubview(titleLabel)
         contentView.addSubview(vStackView)
+        contentView.addSubview(internetButton)
         
         imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        imageView.anchor(top: contentView.topAnchor,
-                         topConstant: 20,
-                         bottom: vStackView.topAnchor,
-                         bottomConstant: 20)
+        imageView.anchor(top: view.topAnchor,
+                         bottom: vStackView.topAnchor, bottomConstant: 20)
         
-        vStackView.anchor(bottom: contentView.bottomAnchor,
-                          leading: contentView.leadingAnchor,
-                          leadingConstant: 20,
-                          trailing: contentView.trailingAnchor,
-                          trailingConstant: 20)
         
-        vStackView.addArrangedSubview(titleLabel)
+        titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        titleLabel.anchor(top: contentView.topAnchor, topConstant: 20,
+                          bottom: vStackView.topAnchor, bottomConstant: 20,
+                          leading: contentView.leadingAnchor, leadingConstant: 20,
+                          trailing: contentView.trailingAnchor, trailingConstant: 20)
+        
+        
+        vStackView.anchor(leading: contentView.leadingAnchor, leadingConstant: 20,
+                          trailing: contentView.trailingAnchor, trailingConstant: 20)
         vStackView.addArrangedSubview(descriptionLabel)
         vStackView.addArrangedSubview(contentLabel)
         vStackView.addArrangedSubview(authorLabel)
+        vStackView.addArrangedSubview(sourceLabel)
+        
+        
+        internetButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        internetButton.anchor(top: vStackView.bottomAnchor, topConstant: 40,
+                              bottom: contentView.bottomAnchor)
+    
+        makeTabBarTransparent()
+    }
+    
+    private func makeTabBarTransparent() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = .clear
     }
     
     private func populateData() {
         authorLabel.text = "Author: \(newsArticle.author ?? "Unknown")"
+        sourceLabel.text = "Source: \(newsArticle.source.name ?? "Unknown")"
         titleLabel.text = newsArticle.title
         descriptionLabel.text = newsArticle.description
         contentLabel.text = newsArticle.content
@@ -164,5 +205,10 @@ final class NewsDetailsViewController: UIViewController {
                 self.imageView.image = image
             }
         }
+    }
+    
+    @objc private func didTapInternetButton() {
+        let webViewController = WebViewController(urlString: newsArticle.url ?? "")
+        navigationController?.present(webViewController, animated: true)
     }
 }

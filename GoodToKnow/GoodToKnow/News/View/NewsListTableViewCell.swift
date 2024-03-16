@@ -59,6 +59,7 @@ final class NewsListTableViewCell: UITableViewCell {
     }
 
     private func setupUI() {
+        selectionStyle = .none
         backgroundColor = .clear
         setupSubviews()
         setupConstraints()

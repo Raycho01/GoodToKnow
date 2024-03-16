@@ -16,7 +16,6 @@ final class HotNewsAPIService: HotNewsAPIServiceProtocol {
     
     private let apiKey = "b14913d1d32642cf83d5ddae86ffbf7c"
     private let baseURL = "https://newsapi.org/v2/top-headlines?"
-//    typealias NewsCompletion = (Result<NewsResponse, Error>) -> Void
     
     func fetchTopHeadlines(page: Int, filters: NewsSearchFilters, completion: @escaping NewsCompletion) {
         guard let url = URL(string: "\(baseURL)q=\(filters.keyword)&apiKey=\(apiKey)&page=\(page)&country=\(filters.country)") else {
@@ -38,7 +37,9 @@ final class HotNewsAPIService: HotNewsAPIServiceProtocol {
             do {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
-                let newsResponse = try decoder.decode(NewsResponse.self, from: data)
+                var newsResponse = try decoder.decode(NewsResponse.self, from: data)
+                // needed workaround, because of the API
+                newsResponse.articles = newsResponse.articles.filter({ $0.title != "[Removed]" })
                 completion(.success(newsResponse))
             } catch {
                 completion(.failure(error))
