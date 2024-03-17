@@ -28,6 +28,11 @@
 		AE3A91482B6113BE002B1EC9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */; };
 		AE3A914E2B613EBA002B1EC9 /* CountriesDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A914D2B613EBA002B1EC9 /* CountriesDropdown.swift */; };
 		AE6A251C2BA62DE100156EE5 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A251B2BA62DE100156EE5 /* WebViewController.swift */; };
+		AE6A25202BA6DFB800156EE5 /* AllNewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A251F2BA6DFB800156EE5 /* AllNewsViewModel.swift */; };
+		AE6A25222BA6E2E000156EE5 /* AllNewsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25212BA6E2E000156EE5 /* AllNewsAPIService.swift */; };
+		AE6A25242BA6E4EA00156EE5 /* AllNewsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25232BA6E4EA00156EE5 /* AllNewsHeaderViewModel.swift */; };
+		AE6A25262BA6F1D000156EE5 /* NewsOriginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25252BA6F1D000156EE5 /* NewsOriginView.swift */; };
+		AE6A25282BA6F84900156EE5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25272BA6F84900156EE5 /* DateExtension.swift */; };
 		AEAA3CDB2B820FCC00EB3CE8 /* HotNewsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDA2B820FCC00EB3CE8 /* HotNewsHeaderViewModel.swift */; };
 		AEAA3CDD2B82160B00EB3CE8 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */; };
 		AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */; };
@@ -78,6 +83,11 @@
 		AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		AE3A914D2B613EBA002B1EC9 /* CountriesDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDropdown.swift; sourceTree = "<group>"; };
 		AE6A251B2BA62DE100156EE5 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		AE6A251F2BA6DFB800156EE5 /* AllNewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNewsViewModel.swift; sourceTree = "<group>"; };
+		AE6A25212BA6E2E000156EE5 /* AllNewsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNewsAPIService.swift; sourceTree = "<group>"; };
+		AE6A25232BA6E4EA00156EE5 /* AllNewsHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNewsHeaderViewModel.swift; sourceTree = "<group>"; };
+		AE6A25252BA6F1D000156EE5 /* NewsOriginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsOriginView.swift; sourceTree = "<group>"; };
+		AE6A25272BA6F84900156EE5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		AEAA3CDA2B820FCC00EB3CE8 /* HotNewsHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsHeaderViewModel.swift; sourceTree = "<group>"; };
 		AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchFilters.swift; sourceTree = "<group>"; };
@@ -131,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				AE2499212B8B7F5E00B87E61 /* NewsDetailsViewController.swift */,
+				AE6A25252BA6F1D000156EE5 /* NewsOriginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -162,6 +173,7 @@
 				AE24991E2B8B50F400B87E61 /* News */,
 				AE3A91462B611127002B1EC9 /* Helpers */,
 				AE3A91352B5EB84E002B1EC9 /* Extensions */,
+				AE6A251D2BA6DFA500156EE5 /* AllNews */,
 				AE3A91302B5EB0A0002B1EC9 /* HotNews */,
 				AE3A91002B5E9CB6002B1EC9 /* AppDelegate.swift */,
 				AE3A91022B5E9CB6002B1EC9 /* SceneDelegate.swift */,
@@ -207,6 +219,7 @@
 				AECABEAE2B67E6270087D19B /* UIFontExtension.swift */,
 				AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */,
 				AE2499232B8B84FA00B87E61 /* URLExtension.swift */,
+				AE6A25272BA6F84900156EE5 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -244,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				AE3A913A2B5FE242002B1EC9 /* HotNewsAPIService.swift */,
+				AE6A25212BA6E2E000156EE5 /* AllNewsAPIService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -256,6 +270,23 @@
 				AE6A251B2BA62DE100156EE5 /* WebViewController.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AE6A251D2BA6DFA500156EE5 /* AllNews */ = {
+			isa = PBXGroup;
+			children = (
+				AE6A251E2BA6DFAF00156EE5 /* ViewModel */,
+			);
+			path = AllNews;
+			sourceTree = "<group>";
+		};
+		AE6A251E2BA6DFAF00156EE5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AE6A25232BA6E4EA00156EE5 /* AllNewsHeaderViewModel.swift */,
+				AE6A251F2BA6DFB800156EE5 /* AllNewsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AECABEAB2B67C1260087D19B /* TabBar */ = {
@@ -397,9 +428,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE2499222B8B7F5E00B87E61 /* NewsDetailsViewController.swift in Sources */,
+				AE6A25222BA6E2E000156EE5 /* AllNewsAPIService.swift in Sources */,
 				AE3A913D2B5FE89B002B1EC9 /* NewsListTableViewCell.swift in Sources */,
 				AECABEAF2B67E6270087D19B /* UIFontExtension.swift in Sources */,
 				AEAA3CDD2B82160B00EB3CE8 /* UIImageExtension.swift in Sources */,
+				AE6A25282BA6F84900156EE5 /* DateExtension.swift in Sources */,
+				AE6A25262BA6F1D000156EE5 /* NewsOriginView.swift in Sources */,
 				AE6A251C2BA62DE100156EE5 /* WebViewController.swift in Sources */,
 				AE3A91372B5EB86A002B1EC9 /* UIViewExtension.swift in Sources */,
 				AE2499242B8B84FA00B87E61 /* URLExtension.swift in Sources */,
@@ -413,8 +447,10 @@
 				AE3A91322B5EB175002B1EC9 /* NewsArticle.swift in Sources */,
 				AE3A913B2B5FE242002B1EC9 /* HotNewsAPIService.swift in Sources */,
 				AE3A91392B5FBCAD002B1EC9 /* NewsListHeaderView.swift in Sources */,
+				AE6A25242BA6E4EA00156EE5 /* AllNewsHeaderViewModel.swift in Sources */,
 				AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */,
 				AE3A91032B5E9CB6002B1EC9 /* SceneDelegate.swift in Sources */,
+				AE6A25202BA6DFB800156EE5 /* AllNewsViewModel.swift in Sources */,
 				AE3A91482B6113BE002B1EC9 /* UIColorExtension.swift in Sources */,
 				AE3A914E2B613EBA002B1EC9 /* CountriesDropdown.swift in Sources */,
 			);

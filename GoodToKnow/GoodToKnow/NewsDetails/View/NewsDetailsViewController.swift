@@ -96,6 +96,14 @@ final class NewsDetailsViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var originView: NewsOriginView = {
+        let frame = CGRect(x: 0, y: 0, width: 350, height: 100)
+        return NewsOriginView(frame: frame,
+                              author: newsArticle.author,
+                              source: newsArticle.source.name,
+                              publishedAt: newsArticle.publishedAt?.dateAndTimeToString())
+    }()
+    
     private lazy var internetButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "safari"), for: .normal)
@@ -136,6 +144,11 @@ final class NewsDetailsViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        resizeOriginView()
+    }
+    
     // MARK: Configuration
     
     private func setupUI() {
@@ -168,8 +181,7 @@ final class NewsDetailsViewController: UIViewController {
                           trailing: contentView.trailingAnchor, trailingConstant: 20)
         vStackView.addArrangedSubview(descriptionLabel)
         vStackView.addArrangedSubview(contentLabel)
-        vStackView.addArrangedSubview(authorLabel)
-        vStackView.addArrangedSubview(sourceLabel)
+        vStackView.addArrangedSubview(originView)
         
         
         internetButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
@@ -193,6 +205,10 @@ final class NewsDetailsViewController: UIViewController {
         descriptionLabel.text = newsArticle.description
         contentLabel.text = newsArticle.content
         setupImageView(with: newsArticle.urlToImage ?? "")
+    }
+    
+    private func resizeOriginView() {
+        originView.frame = CGRect(x: 0, y: 0, width: vStackView.frame.width, height: 100)
     }
     
     private func setupImageView(with urlString: String) {

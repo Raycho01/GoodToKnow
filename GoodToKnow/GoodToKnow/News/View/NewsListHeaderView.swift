@@ -198,9 +198,7 @@ extension NewsListHeaderView: UITextFieldDelegate {
         }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if searchTextField.text == "" {
-            state = .normal
-        }
+        state = .normal
         search()
         textField.resignFirstResponder()
         return true
