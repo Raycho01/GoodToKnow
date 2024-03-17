@@ -24,8 +24,6 @@ struct PaginationCursor {
     mutating func incrementPage() {
         guard isEndReached == false else { return }
         
-        
-        
         if currentPage >= totalPages {
             isEndReached = true
         } else {

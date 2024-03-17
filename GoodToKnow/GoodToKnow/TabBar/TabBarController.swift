@@ -34,10 +34,11 @@ final class TabBarController: UITabBarController {
         let settingsVC = UIViewController()
         setup(vc: settingsVC, title: "Settings", systemImage: "gearshape")
         
-        let allNewsVC = UIViewController()
-        setup(vc: allNewsVC, title: "All news", systemImage: "book.pages")
+        let allNewsVC = NewsListViewController(viewModel: AllNewsViewModel(), headerViewModel: AllNewsHeaderViewModel())
+        let allNewsNav = UINavigationController(rootViewController: allNewsVC)
+        setup(vc: allNewsNav, title: "All news", systemImage: "book.pages")
         
-        viewControllers = [homeVC, hotNewsNav, allNewsVC, settingsVC]
+        viewControllers = [homeVC, hotNewsNav, allNewsNav, settingsVC]
     }
     
     private func setupUI() {

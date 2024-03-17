@@ -1,25 +1,13 @@
 //
-//  HotNewsViewModel.swift
+//  AllNewsViewModel.swift
 //  GoodToKnow
 //
-//  Created by Raycho Kostadinov on 22.01.24.
+//  Created by Raycho Kostadinov on 17.03.24.
 //
 
 import Foundation
 
-protocol NewsListViewModelProtocol {
-    
-    var newsResponse: NewsResponse? { get }
-    var searchFilters: NewsSearchFilters { get set }
-    var isCurrentlyFetching: Bool { get }
-    var newsResponseDidUpdate : (() -> ()) { get set }
-    
-    func fetchMoreNews()
-}
-
-final class HotNewsViewModel: NewsListViewModelProtocol {
-    
-    private let apiService: HotNewsAPIServiceProtocol!
+final class AllNewsViewModel: NewsListViewModelProtocol {
     private(set) var newsResponse: NewsResponse? {
         didSet {
             newsResponseDidUpdate()
@@ -28,26 +16,25 @@ final class HotNewsViewModel: NewsListViewModelProtocol {
     var searchFilters = NewsSearchFilters() {
         didSet {
             cursor?.resetCursor()
-            fetchHotNewsInitially()
+            fetchNewsInitially()
         }
     }
+    var isCurrentlyFetching: Bool = false
+    var newsResponseDidUpdate: (() -> ()) = {}
     
-    private(set) var isCurrentlyFetching: Bool = false
-    
-    var newsResponseDidUpdate : (() -> ()) = {}
-    
+    private let apiService: AllNewsAPIServiceProtocol
     private let pageSize = 20
     private let firstPage = 1
     private var cursor: PaginationCursor?
     
-    init(apiService: HotNewsAPIServiceProtocol = HotNewsAPIService()) {
+    init(apiService: AllNewsAPIServiceProtocol = AllNewsAPIService()) {
         self.apiService = apiService
-        fetchHotNewsInitially()
+        fetchNewsInitially()
     }
     
-    private func fetchHotNewsInitially() {
+    private func fetchNewsInitially() {
         isCurrentlyFetching = true
-        apiService.fetchTopHeadlines(page: firstPage, filters: searchFilters) { [weak self] result in
+        apiService.fetchEverything(page: firstPage, filters: searchFilters) { [weak self] result in
             self?.isCurrentlyFetching = false
             guard let self = self else { return }
             
@@ -66,7 +53,7 @@ final class HotNewsViewModel: NewsListViewModelProtocol {
         guard let cursor = cursor, !cursor.isEndReached else { return }
         isCurrentlyFetching = true
         
-        apiService.fetchTopHeadlines(page: cursor.currentPage, filters: searchFilters) { [weak self] result in
+        apiService.fetchEverything(page: cursor.currentPage, filters: searchFilters) { [weak self] result in
             self?.isCurrentlyFetching = false
             guard let self = self else { return }
             
@@ -84,5 +71,4 @@ final class HotNewsViewModel: NewsListViewModelProtocol {
         let totalPages = MathHelper.ceilingDivision((newsResponse?.totalResults ?? 0), by: pageSize)
         cursor = PaginationCursor(totalPages: totalPages, pageSize: pageSize)
     }
-        
 }

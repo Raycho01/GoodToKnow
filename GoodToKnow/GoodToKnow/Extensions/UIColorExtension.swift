@@ -16,6 +16,8 @@ extension UIColor {
         static let primaryBackground = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
         static let headerBackground = UIColor.systemGray2
         static let tabBarBackground = UIColor.systemGray2 // UIColor(red: 0.68, green: 0.68, blue: 0.7, alpha: 0.85)
+        static let lightBackground = UIColor(white: 0.95, alpha: 1.0)
+
         
         // MARK: - Text
         static let primaryText = UIColor.black
