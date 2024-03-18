@@ -33,6 +33,8 @@
 		AE6A25242BA6E4EA00156EE5 /* AllNewsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25232BA6E4EA00156EE5 /* AllNewsHeaderViewModel.swift */; };
 		AE6A25262BA6F1D000156EE5 /* NewsOriginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25252BA6F1D000156EE5 /* NewsOriginView.swift */; };
 		AE6A25282BA6F84900156EE5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25272BA6F84900156EE5 /* DateExtension.swift */; };
+		AE6A252F2BA8D99100156EE5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A252E2BA8D99100156EE5 /* HomeViewController.swift */; };
+		AE6A25312BA8DEED00156EE5 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25302BA8DEED00156EE5 /* HomeCell.swift */; };
 		AEAA3CDB2B820FCC00EB3CE8 /* HotNewsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDA2B820FCC00EB3CE8 /* HotNewsHeaderViewModel.swift */; };
 		AEAA3CDD2B82160B00EB3CE8 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */; };
 		AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */; };
@@ -88,6 +90,8 @@
 		AE6A25232BA6E4EA00156EE5 /* AllNewsHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNewsHeaderViewModel.swift; sourceTree = "<group>"; };
 		AE6A25252BA6F1D000156EE5 /* NewsOriginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsOriginView.swift; sourceTree = "<group>"; };
 		AE6A25272BA6F84900156EE5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		AE6A252E2BA8D99100156EE5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AE6A25302BA8DEED00156EE5 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		AEAA3CDA2B820FCC00EB3CE8 /* HotNewsHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNewsHeaderViewModel.swift; sourceTree = "<group>"; };
 		AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchFilters.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 		AE3A90FF2B5E9CB6002B1EC9 /* GoodToKnow */ = {
 			isa = PBXGroup;
 			children = (
+				AE6A252B2BA8D97600156EE5 /* Home */,
 				AE24991F2B8B7F2600B87E61 /* NewsDetails */,
 				AE24991E2B8B50F400B87E61 /* News */,
 				AE3A91462B611127002B1EC9 /* Helpers */,
@@ -287,6 +292,23 @@
 				AE6A251F2BA6DFB800156EE5 /* AllNewsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AE6A252B2BA8D97600156EE5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AE6A252C2BA8D97D00156EE5 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AE6A252C2BA8D97D00156EE5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AE6A252E2BA8D99100156EE5 /* HomeViewController.swift */,
+				AE6A25302BA8DEED00156EE5 /* HomeCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AECABEAB2B67C1260087D19B /* TabBar */ = {
@@ -441,6 +463,7 @@
 				AEAA3CDB2B820FCC00EB3CE8 /* HotNewsHeaderViewModel.swift in Sources */,
 				AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */,
 				AE3A91052B5E9CB6002B1EC9 /* NewsListViewController.swift in Sources */,
+				AE6A252F2BA8D99100156EE5 /* HomeViewController.swift in Sources */,
 				AE3A913F2B5FFD41002B1EC9 /* PaginationCursor.swift in Sources */,
 				AE3A91342B5EB2B4002B1EC9 /* HotNewsViewModel.swift in Sources */,
 				AE3A91012B5E9CB6002B1EC9 /* AppDelegate.swift in Sources */,
@@ -448,6 +471,7 @@
 				AE3A913B2B5FE242002B1EC9 /* HotNewsAPIService.swift in Sources */,
 				AE3A91392B5FBCAD002B1EC9 /* NewsListHeaderView.swift in Sources */,
 				AE6A25242BA6E4EA00156EE5 /* AllNewsHeaderViewModel.swift in Sources */,
+				AE6A25312BA8DEED00156EE5 /* HomeCell.swift in Sources */,
 				AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */,
 				AE3A91032B5E9CB6002B1EC9 /* SceneDelegate.swift in Sources */,
 				AE6A25202BA6DFB800156EE5 /* AllNewsViewModel.swift in Sources */,
