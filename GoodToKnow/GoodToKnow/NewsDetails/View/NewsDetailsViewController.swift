@@ -42,7 +42,7 @@ final class NewsDetailsViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .black.withAlphaComponent(0.5)
         label.font = .boldSystemFont(ofSize: 30)
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -52,7 +52,7 @@ final class NewsDetailsViewController: UIViewController {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 14)
         label.textColor = UIColor.MainColors.secondaryText
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -62,26 +62,8 @@ final class NewsDetailsViewController: UIViewController {
     
     private lazy var contentLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 14)
         label.textColor = UIColor.MainColors.secondaryText
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var authorLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var sourceLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18)
         label.textAlignment = .left
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -97,11 +79,12 @@ final class NewsDetailsViewController: UIViewController {
     }()
     
     private lazy var originView: NewsOriginView = {
-        let frame = CGRect(x: 0, y: 0, width: 350, height: 100)
+        let frame = CGRect(x: 0, y: 0, width: 350, height: 120)
+        let placeholder = "Unknown"
         return NewsOriginView(frame: frame,
-                              author: newsArticle.author,
-                              source: newsArticle.source.name,
-                              publishedAt: newsArticle.publishedAt?.dateAndTimeToString())
+                              author: newsArticle.author ?? placeholder,
+                              source: newsArticle.source.name ?? placeholder,
+                              publishedAt: newsArticle.publishedAt?.dateAndTimeToString() ?? placeholder)
     }()
     
     private lazy var internetButton: UIButton = {
@@ -199,8 +182,6 @@ final class NewsDetailsViewController: UIViewController {
     }
     
     private func populateData() {
-        authorLabel.text = "Author: \(newsArticle.author ?? "Unknown")"
-        sourceLabel.text = "Source: \(newsArticle.source.name ?? "Unknown")"
         titleLabel.text = newsArticle.title
         descriptionLabel.text = newsArticle.description
         contentLabel.text = newsArticle.content
@@ -208,7 +189,7 @@ final class NewsDetailsViewController: UIViewController {
     }
     
     private func resizeOriginView() {
-        originView.frame = CGRect(x: 0, y: 0, width: vStackView.frame.width, height: 100)
+        originView.frame = CGRect(x: 0, y: 0, width: vStackView.frame.width, height: 120)
     }
     
     private func setupImageView(with urlString: String) {
