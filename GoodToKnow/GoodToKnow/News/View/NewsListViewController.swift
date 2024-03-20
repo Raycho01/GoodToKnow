@@ -12,7 +12,7 @@ class NewsListViewController: UIViewController {
     // MARK: - Properties
     
     private var viewModel: NewsListViewModelProtocol
-    private let headerViewModel: NewsListHeaderViewModelProtocol
+    private let headerViewModel: NewsListHeaderViewModel
     private let insetValue: CGFloat = 15
     
     // MARK: - UI Elements
@@ -39,7 +39,7 @@ class NewsListViewController: UIViewController {
     
     // MARK: Configuration
     
-    init(viewModel: NewsListViewModelProtocol, headerViewModel: NewsListHeaderViewModelProtocol) {
+    init(viewModel: NewsListViewModelProtocol, headerViewModel: NewsListHeaderViewModel) {
         self.viewModel = viewModel
         self.headerViewModel = headerViewModel
         super.init(nibName: nil, bundle: nil)
