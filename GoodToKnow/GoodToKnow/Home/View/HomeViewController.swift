@@ -6,8 +6,23 @@
 //
 
 import UIKit
+import Combine
+
+protocol HomeCarouselViewModelProtocol {
+    func bind() -> AnyPublisher<[HomeCarouselModel], Never>
+}
 
 final class HomeViewController: UIViewController {
+    
+    private let carouselViewModel: HomeCarouselViewModelProtocol
+    
+    private lazy var headerView: NewsListHeaderView = {
+        let headerView = NewsListHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8),
+                           viewModel: NewsListHeaderViewModel(title: "Browse News", shouldShowSearch: false))
+        headerView.delegate = self
+        return headerView
+    }()
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         return scrollView
@@ -20,83 +35,58 @@ final class HomeViewController: UIViewController {
         return view
     }()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = .boldSystemFont(ofSize: 20)
-        label.textAlignment = .center
-        label.text = "Browse news by categories"
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private lazy var countryCarouselView: HomeCarouselView = {
+        HomeCarouselView(viewModel: carouselViewModel, type: .country, frame: CGRect(x: 0, y: 0,
+                                                                                     width: view.frame.width,
+                                                                                     height: 200))
     }()
     
-    private lazy var countriesLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black.withAlphaComponent(0.5)
-        label.font = .systemFont(ofSize: 16)
-        label.textAlignment = .left
-        label.text = "Countries"
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    init(carouselViewModel: HomeCarouselViewModelProtocol = HomeCarouselViewModel()) {
+        self.carouselViewModel = carouselViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
     
-    private lazy var countriesCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 200, height: 150) // Adjust the size as needed
-        layout.minimumInteritemSpacing = 10 // Adjust spacing between cells
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10) // Adjust section insets
-
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(HomeCell.self, forCellWithReuseIdentifier: "HomeCell")
-
-        return collectionView
-    }()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupNavigationBar()
     }
     
     private func setupUI() {
+        view.backgroundColor = .white
+        view.addSubview(headerView)
+        headerView.anchor(top: view.topAnchor,
+                          leading: view.leadingAnchor,
+                          trailing: view.trailingAnchor)
+        
         view.addSubview(scrollView)
-        scrollView.fillSuperview()
+        scrollView.anchor(top: headerView.bottomAnchor,
+                          bottom: view.bottomAnchor,
+                          leading: view.leadingAnchor,
+                          trailing: view.trailingAnchor)
+        
         
         scrollView.addSubview(contentView)
         contentView.fillSuperview()
         contentView.setDimensions(width: scrollView.frame.width, height: scrollView.frame.height)
         contentView.centerInSuperview()
         
-        contentView.addSubview(titleLabel)
-        titleLabel.anchor(top: contentView.topAnchor, topConstant: 20)
-        titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        
-        contentView.addSubview(countriesLabel)
-        countriesLabel.anchor(top: titleLabel.bottomAnchor, topConstant: 20,
-                              leading: contentView.leadingAnchor, leadingConstant: 20,
-                              trailing: contentView.trailingAnchor, trailingConstant: 10)
-        
-        contentView.addSubview(countriesCollectionView)
-        countriesCollectionView.anchor(top: countriesLabel.bottomAnchor, topConstant: 5,
+        contentView.addSubview(countryCarouselView)
+        countryCarouselView.anchor(top: contentView.topAnchor, topConstant: 10,
                                        leading: contentView.leadingAnchor, leadingConstant: 10,
                                        trailing: contentView.trailingAnchor, trailingConstant: 10)
-        countriesCollectionView.heightAnchor.constraint(equalToConstant: 140).isActive = true
+        countryCarouselView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }
 
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as? HomeCell else {
-            return UICollectionViewCell()
-        }
-        return cell
-    }
+extension HomeViewController: NewsListHeaderDelegate {
+    func didSearch(for keyword: String) {}
 }

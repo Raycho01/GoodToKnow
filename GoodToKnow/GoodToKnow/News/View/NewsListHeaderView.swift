@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-protocol NewsListHeaderViewModelProtocol {
-    var title: String { get }
-    var shouldShowSearch: Bool { get }
+struct NewsListHeaderViewModel {
+    var title: String
+    var shouldShowSearch: Bool
 }
 
 protocol NewsListHeaderDelegate: AnyObject {
@@ -23,7 +23,7 @@ final class NewsListHeaderView: UIView {
         case normal, searching
     }
     
-    private let viewModel: NewsListHeaderViewModelProtocol
+    private let viewModel: NewsListHeaderViewModel
     private var state: NewsListHeaderView.State = .normal {
         didSet {
             stateDidChange(to: state)
@@ -85,7 +85,7 @@ final class NewsListHeaderView: UIView {
         return stackView
     }()
 
-    init(frame: CGRect, viewModel: NewsListHeaderViewModelProtocol) {
+    init(frame: CGRect, viewModel: NewsListHeaderViewModel) {
         self.viewModel = viewModel
         super.init(frame: frame)
         self.setDimensions(width: frame.width, height: frame.height)

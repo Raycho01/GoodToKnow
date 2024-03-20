@@ -82,4 +82,12 @@ extension UIView {
         maskLayer.path = maskPath.cgPath
         layer.mask = maskLayer
     }
+    
+    func setShadow(with radius: CGFloat = 4) {
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset =  CGSize.zero
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowRadius = radius
+    }
 }
