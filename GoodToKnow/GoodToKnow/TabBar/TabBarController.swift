@@ -8,7 +8,14 @@
 import Foundation
 import UIKit
 
+protocol TabBarIndexProtocol {
+    var tabBarIndex: Int { get }
+}
+
 final class TabBarController: UITabBarController {
+    
+    let hotNewsViewModel = HotNewsViewModel(tabBarIndex: 1)
+    let allNewsViewModel = AllNewsViewModel(tabBarIndex: 2)
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +36,16 @@ final class TabBarController: UITabBarController {
         let homeNav = UINavigationController(rootViewController: homeVC)
         setup(vc: homeNav, title: "Home", systemImage: "house")
         
-        let hotNewsHeaderModel = NewsListHeaderViewModel(title: "Hot News", shouldShowSearch: false)
-        let hotNewsVC = NewsListViewController(viewModel: HotNewsViewModel(), headerViewModel: hotNewsHeaderModel)
+        let hotNewsVC = NewsListViewController(viewModel: hotNewsViewModel)
         let hotNewsNav = UINavigationController(rootViewController: hotNewsVC)
-        setup(vc: hotNewsNav, title: hotNewsHeaderModel.title, systemImage: "flame")
+        setup(vc: hotNewsNav, title: hotNewsViewModel.headerModel.title, systemImage: "flame")
         
         let settingsVC = UIViewController()
         setup(vc: settingsVC, title: "Settings", systemImage: "gearshape")
         
-        let allNewsHeaderModel = NewsListHeaderViewModel(title: "All News", shouldShowSearch: true)
-        let allNewsVC = NewsListViewController(viewModel: AllNewsViewModel(), headerViewModel: allNewsHeaderModel)
+        let allNewsVC = NewsListViewController(viewModel: allNewsViewModel)
         let allNewsNav = UINavigationController(rootViewController: allNewsVC)
-        setup(vc: allNewsNav, title: allNewsHeaderModel.title, systemImage: "book.pages")
+        setup(vc: allNewsNav, title: allNewsViewModel.headerModel.title, systemImage: "book.pages")
         
         viewControllers = [homeNav, hotNewsNav, allNewsNav, settingsVC]
     }

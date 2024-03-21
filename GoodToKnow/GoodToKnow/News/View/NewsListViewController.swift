@@ -12,14 +12,13 @@ class NewsListViewController: UIViewController {
     // MARK: - Properties
     
     private var viewModel: NewsListViewModelProtocol
-    private let headerViewModel: NewsListHeaderViewModel
     private let insetValue: CGFloat = 15
     
     // MARK: - UI Elements
     
     private lazy var headerView: NewsListHeaderView = {
         let headerView = NewsListHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8),
-                           viewModel: headerViewModel)
+                                            viewModel: viewModel.headerModel)
         headerView.delegate = self
         return headerView
     }()
@@ -39,9 +38,8 @@ class NewsListViewController: UIViewController {
     
     // MARK: Configuration
     
-    init(viewModel: NewsListViewModelProtocol, headerViewModel: NewsListHeaderViewModel) {
+    init(viewModel: NewsListViewModelProtocol) {
         self.viewModel = viewModel
-        self.headerViewModel = headerViewModel
         super.init(nibName: nil, bundle: nil)
     }
     

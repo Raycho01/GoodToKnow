@@ -28,7 +28,7 @@ final class HomeCarouselView: UIView {
     private var cancellables: [AnyCancellable] = []
     
     private let viewModel: HomeCarouselViewModelProtocol
-    private weak var delegate: HomeCarouselViewDelegate?
+    weak var delegate: HomeCarouselViewDelegate?
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()

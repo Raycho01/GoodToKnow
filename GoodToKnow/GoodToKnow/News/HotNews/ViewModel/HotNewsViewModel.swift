@@ -11,13 +11,14 @@ protocol NewsListViewModelProtocol {
     
     var newsResponse: NewsResponse? { get }
     var searchFilters: NewsSearchFilters { get set }
+    var headerModel: NewsListHeaderViewModel { get set }
     var isCurrentlyFetching: Bool { get }
     var newsResponseDidUpdate : (() -> ()) { get set }
     
     func fetchMoreNews()
 }
 
-final class HotNewsViewModel: NewsListViewModelProtocol {
+final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     
     private let apiService: HotNewsAPIServiceProtocol!
     private(set) var newsResponse: NewsResponse? {
@@ -31,17 +32,20 @@ final class HotNewsViewModel: NewsListViewModelProtocol {
             fetchHotNewsInitially()
         }
     }
+    var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "Hot News", shouldShowSearch: false)
     
     private(set) var isCurrentlyFetching: Bool = false
-    
     var newsResponseDidUpdate : (() -> ()) = {}
+    var tabBarIndex: Int
     
     private let pageSize = 20
     private let firstPage = 1
     private var cursor: PaginationCursor?
     
-    init(apiService: HotNewsAPIServiceProtocol = HotNewsAPIService()) {
+    init(apiService: HotNewsAPIServiceProtocol = HotNewsAPIService(),
+         tabBarIndex: Int) {
         self.apiService = apiService
+        self.tabBarIndex = tabBarIndex
         fetchHotNewsInitially()
     }
     

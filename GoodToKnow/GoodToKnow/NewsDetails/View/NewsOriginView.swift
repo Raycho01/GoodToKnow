@@ -37,7 +37,7 @@ final class NewsOriginView: UIView {
     
     private func setupUI() {
         backgroundColor = .white
-        layer.cornerRadius = 20
+        layer.cornerRadius = self.frame.height / 8
         setShadow()
         addSubview(vStackView)
         vStackView.fillSuperview(padding: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))

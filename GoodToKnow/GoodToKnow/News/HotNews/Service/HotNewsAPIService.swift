@@ -33,6 +33,11 @@ final class HotNewsAPIService: HotNewsAPIServiceProtocol {
                 completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
                 return
             }
+            
+            // Print the fetched JSON data
+            if let json = String(data: data, encoding: .utf8) {
+                print("Fetched JSON data:", json)
+            }
 
             do {
                 let decoder = JSONDecoder()
