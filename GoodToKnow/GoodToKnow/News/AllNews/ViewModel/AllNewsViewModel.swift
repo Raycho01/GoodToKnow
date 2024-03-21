@@ -7,28 +7,34 @@
 
 import Foundation
 
-final class AllNewsViewModel: NewsListViewModelProtocol {
+final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     private(set) var newsResponse: NewsResponse? {
         didSet {
             newsResponseDidUpdate()
         }
     }
-    var searchFilters = NewsSearchFilters() {
+    var searchFilters: NewsSearchFilters {
         didSet {
             cursor?.resetCursor()
             fetchNewsInitially()
         }
     }
-    var isCurrentlyFetching: Bool = false
+    var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "All News", shouldShowSearch: true)
+    private(set) var isCurrentlyFetching: Bool = false
     var newsResponseDidUpdate: (() -> ()) = {}
+    var tabBarIndex: Int
     
     private let apiService: AllNewsAPIServiceProtocol
     private let pageSize = 20
     private let firstPage = 1
     private var cursor: PaginationCursor?
     
-    init(apiService: AllNewsAPIServiceProtocol = AllNewsAPIService()) {
+    init(apiService: AllNewsAPIServiceProtocol = AllNewsAPIService(),
+         searchFilters: NewsSearchFilters = NewsSearchFilters(),
+         tabBarIndex: Int) {
         self.apiService = apiService
+        self.searchFilters = searchFilters
+        self.tabBarIndex = tabBarIndex
         fetchNewsInitially()
     }
     

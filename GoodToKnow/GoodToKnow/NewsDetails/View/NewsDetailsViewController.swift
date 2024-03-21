@@ -33,7 +33,7 @@ final class NewsDetailsViewController: UIViewController {
     private lazy var vStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .fill
+        stackView.distribution = .fillProportionally
         stackView.spacing = 20
         stackView.backgroundColor = .clear
         stackView.translatesAutoresizingMaskIntoConstraints = false

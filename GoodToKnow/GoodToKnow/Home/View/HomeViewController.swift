@@ -37,9 +37,11 @@ final class HomeViewController: UIViewController {
     }()
     
     private lazy var countryCarouselView: HomeCarouselView = {
-        HomeCarouselView(viewModel: carouselViewModel, type: .country, frame: CGRect(x: 0, y: 0,
+        let carouselView = HomeCarouselView(viewModel: carouselViewModel, type: .country, frame: CGRect(x: 0, y: 0,
                                                                                      width: view.frame.width,
                                                                                      height: 200))
+        carouselView.delegate = self
+        return carouselView
     }()
     
     init(carouselViewModel: HomeCarouselViewModelProtocol = HomeCarouselViewModel(), headerViewModel: NewsListHeaderViewModel) {
@@ -91,4 +93,26 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: NewsListHeaderDelegate {
     func didSearch(for keyword: String) {}
+}
+
+extension HomeViewController: HomeCarouselViewDelegate {
+    func didTapOnCell(with value: String, type: HomeCarouselView.HomeCarouselType) {
+        
+        var filters = NewsSearchFilters()
+        
+        switch type {
+        case .country:
+            filters.country = value
+        default:
+            break
+        }
+        
+        navigateToHotNews(with: filters)
+    }
+
+    private func navigateToHotNews(with filters: NewsSearchFilters) {
+        guard let tabController = tabBarController as? TabBarController else { return }
+        tabController.hotNewsViewModel.searchFilters = filters
+        tabController.selectedIndex = tabController.hotNewsViewModel.tabBarIndex
+    }
 }
