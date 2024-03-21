@@ -9,12 +9,13 @@ import Foundation
 
 protocol NewsListViewModelProtocol {
     
-    var newsResponse: NewsResponse? { get }
     var searchFilters: NewsSearchFilters { get set }
     var headerModel: NewsListHeaderViewModel { get set }
     var isCurrentlyFetching: Bool { get }
-    var newsResponseDidUpdate : (() -> ()) { get set }
+    var newsResponseDidUpdate : ((NewsResponse?) -> Void) { get set }
+    var onError: ((Error) -> Void) { get set }
     
+    func fetchNewsInitially()
     func fetchMoreNews()
 }
 
@@ -23,19 +24,20 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     private let apiService: HotNewsAPIServiceProtocol!
     private(set) var newsResponse: NewsResponse? {
         didSet {
-            newsResponseDidUpdate()
+            newsResponseDidUpdate(newsResponse)
         }
     }
     var searchFilters = NewsSearchFilters() {
         didSet {
             cursor?.resetCursor()
-            fetchHotNewsInitially()
+            fetchNewsInitially()
         }
     }
     var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "Hot News", shouldShowSearch: false)
     
     private(set) var isCurrentlyFetching: Bool = false
-    var newsResponseDidUpdate : (() -> ()) = {}
+    var newsResponseDidUpdate: ((NewsResponse?) -> Void) = { _ in }
+    var onError: ((Error) -> Void) = { _ in }
     var tabBarIndex: Int
     
     private let pageSize = 20
@@ -46,10 +48,10 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
          tabBarIndex: Int) {
         self.apiService = apiService
         self.tabBarIndex = tabBarIndex
-        fetchHotNewsInitially()
+        fetchNewsInitially()
     }
     
-    private func fetchHotNewsInitially() {
+    func fetchNewsInitially() {
         isCurrentlyFetching = true
         apiService.fetchTopHeadlines(page: firstPage, filters: searchFilters) { [weak self] result in
             self?.isCurrentlyFetching = false
@@ -57,7 +59,7 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
             
             switch result {
             case .failure(let error):
-                print(error)
+                self.onError(error)
             case .success(let newsResponse):
                 self.newsResponse = newsResponse
                 setupCursor()
@@ -76,7 +78,7 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
             
             switch result {
             case .failure(let error):
-                print(error)
+                self.onError(error)
             case .success(let newsResponse):
                 self.newsResponse?.articles.append(contentsOf: newsResponse.articles)
                 self.cursor?.incrementPage()

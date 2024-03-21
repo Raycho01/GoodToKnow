@@ -42,6 +42,9 @@
 		AE758CF62BAB359C005926A6 /* BundleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CF52BAB359C005926A6 /* BundleManager.swift */; };
 		AE758CF82BAB41D1005926A6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CF72BAB41D1005926A6 /* ImageCache.swift */; };
 		AE758CFA2BAB4223005926A6 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CF92BAB4223005926A6 /* UIImageViewExtension.swift */; };
+		AE758CFC2BACBB02005926A6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CFB2BACBB02005926A6 /* UIViewControllerExtension.swift */; };
+		AE758CFE2BACC357005926A6 /* AlertPopupAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CFD2BACC357005926A6 /* AlertPopupAction.swift */; };
+		AE758D002BACC37C005926A6 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CFF2BACC37C005926A6 /* UIAlertControllerExtension.swift */; };
 		AEAA3CDD2B82160B00EB3CE8 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */; };
 		AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */; };
 		AECABEAD2B67C18B0087D19B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECABEAC2B67C18B0087D19B /* TabBarController.swift */; };
@@ -105,6 +108,9 @@
 		AE758CF52BAB359C005926A6 /* BundleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleManager.swift; sourceTree = "<group>"; };
 		AE758CF72BAB41D1005926A6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		AE758CF92BAB4223005926A6 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		AE758CFB2BACBB02005926A6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		AE758CFD2BACC357005926A6 /* AlertPopupAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopupAction.swift; sourceTree = "<group>"; };
+		AE758CFF2BACC37C005926A6 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchFilters.swift; sourceTree = "<group>"; };
 		AECABEAC2B67C18B0087D19B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -239,6 +245,8 @@
 				AE758CF92BAB4223005926A6 /* UIImageViewExtension.swift */,
 				AE2499232B8B84FA00B87E61 /* URLExtension.swift */,
 				AE6A25272BA6F84900156EE5 /* DateExtension.swift */,
+				AE758CFB2BACBB02005926A6 /* UIViewControllerExtension.swift */,
+				AE758CFF2BACC37C005926A6 /* UIAlertControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -287,6 +295,7 @@
 				AE6A251B2BA62DE100156EE5 /* WebViewController.swift */,
 				AE758CF52BAB359C005926A6 /* BundleManager.swift */,
 				AE758CF72BAB41D1005926A6 /* ImageCache.swift */,
+				AE758CFD2BACC357005926A6 /* AlertPopupAction.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -512,6 +521,7 @@
 				AE6A25222BA6E2E000156EE5 /* AllNewsAPIService.swift in Sources */,
 				AE758CF82BAB41D1005926A6 /* ImageCache.swift in Sources */,
 				AE3A913D2B5FE89B002B1EC9 /* NewsListTableViewCell.swift in Sources */,
+				AE758CFC2BACBB02005926A6 /* UIViewControllerExtension.swift in Sources */,
 				AECABEAF2B67E6270087D19B /* UIFontExtension.swift in Sources */,
 				AEAA3CDD2B82160B00EB3CE8 /* UIImageExtension.swift in Sources */,
 				AE6A25282BA6F84900156EE5 /* DateExtension.swift in Sources */,
@@ -529,6 +539,7 @@
 				AE6A252F2BA8D99100156EE5 /* HomeViewController.swift in Sources */,
 				AE3A913F2B5FFD41002B1EC9 /* PaginationCursor.swift in Sources */,
 				AE3A91342B5EB2B4002B1EC9 /* HotNewsViewModel.swift in Sources */,
+				AE758CFE2BACC357005926A6 /* AlertPopupAction.swift in Sources */,
 				AE3A91012B5E9CB6002B1EC9 /* AppDelegate.swift in Sources */,
 				AE758CF62BAB359C005926A6 /* BundleManager.swift in Sources */,
 				AE3A91322B5EB175002B1EC9 /* NewsArticle.swift in Sources */,
@@ -538,6 +549,7 @@
 				AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */,
 				AE3A91032B5E9CB6002B1EC9 /* SceneDelegate.swift in Sources */,
 				AE6A25202BA6DFB800156EE5 /* AllNewsViewModel.swift in Sources */,
+				AE758D002BACC37C005926A6 /* UIAlertControllerExtension.swift in Sources */,
 				AE3A91482B6113BE002B1EC9 /* UIColorExtension.swift in Sources */,
 				AE3A914E2B613EBA002B1EC9 /* CountriesDropdown.swift in Sources */,
 				AE758CEF2BAB1FFE005926A6 /* HomeMockedService.swift in Sources */,

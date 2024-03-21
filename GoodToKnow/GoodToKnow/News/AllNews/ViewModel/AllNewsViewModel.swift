@@ -10,7 +10,7 @@ import Foundation
 final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     private(set) var newsResponse: NewsResponse? {
         didSet {
-            newsResponseDidUpdate()
+            newsResponseDidUpdate(newsResponse)
         }
     }
     var searchFilters: NewsSearchFilters {
@@ -21,7 +21,8 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     }
     var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "All News", shouldShowSearch: true)
     private(set) var isCurrentlyFetching: Bool = false
-    var newsResponseDidUpdate: (() -> ()) = {}
+    var newsResponseDidUpdate: ((NewsResponse?) -> Void) = { _ in }
+    var onError: ((Error) -> Void) = { _ in }
     var tabBarIndex: Int
     
     private let apiService: AllNewsAPIServiceProtocol
@@ -38,7 +39,7 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         fetchNewsInitially()
     }
     
-    private func fetchNewsInitially() {
+    func fetchNewsInitially() {
         isCurrentlyFetching = true
         apiService.fetchEverything(page: firstPage, filters: searchFilters) { [weak self] result in
             self?.isCurrentlyFetching = false
@@ -46,7 +47,7 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
             
             switch result {
             case .failure(let error):
-                print(error)
+                self.onError(error)
             case .success(let newsResponse):
                 self.newsResponse = newsResponse
                 setupCursor()
@@ -65,7 +66,7 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
             
             switch result {
             case .failure(let error):
-                print(error)
+                self.onError(error)
             case .success(let newsResponse):
                 self.newsResponse?.articles.append(contentsOf: newsResponse.articles)
                 self.cursor?.incrementPage()
