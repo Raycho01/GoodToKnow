@@ -49,6 +49,7 @@ final class HomeCarouselView: UIView {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(HomeCarouselCell.self, forCellWithReuseIdentifier: HomeCarouselCell.identifier)
@@ -73,10 +74,13 @@ final class HomeCarouselView: UIView {
         addSubview(collectionView)
         
         titleLabel.anchor(top: topAnchor,
-                          leading: leadingAnchor,
+                          leading: leadingAnchor, leadingConstant: 10,
                           trailing: trailingAnchor)
         
-        collectionView.anchor(top: titleLabel.bottomAnchor, topConstant: 10, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor)
+        collectionView.anchor(top: titleLabel.bottomAnchor, topConstant: 10,
+                              bottom: bottomAnchor,
+                              leading: leadingAnchor,
+                              trailing: trailingAnchor)
     }
     
     private func bindToViewModel() {

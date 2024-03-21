@@ -54,20 +54,20 @@ extension UIView {
                                bottom: NSLayoutYAxisAnchor? = nil, bottomConstant: CGFloat = 0,
                                leading: NSLayoutXAxisAnchor? = nil, leadingConstant: CGFloat = 0,
                                trailing: NSLayoutXAxisAnchor? = nil, trailingConstant: CGFloat = 0) {
-            translatesAutoresizingMaskIntoConstraints = false
-            
-            if let top = top {
-                topAnchor.constraint(equalTo: top, constant: topConstant).isActive = true
-            }
-            if let bottom = bottom {
-                bottomAnchor.constraint(equalTo: bottom, constant: -bottomConstant).isActive = true
-            }
-            if let leading = leading {
-                leadingAnchor.constraint(equalTo: leading, constant: leadingConstant).isActive = true
-            }
-            if let trailing = trailing {
-                trailingAnchor.constraint(equalTo: trailing, constant: -trailingConstant).isActive = true
-            }
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        if let top = top {
+            topAnchor.constraint(equalTo: top, constant: topConstant).isActive = true
+        }
+        if let bottom = bottom {
+            bottomAnchor.constraint(equalTo: bottom, constant: -bottomConstant).isActive = true
+        }
+        if let leading = leading {
+            leadingAnchor.constraint(equalTo: leading, constant: leadingConstant).isActive = true
+        }
+        if let trailing = trailing {
+            trailingAnchor.constraint(equalTo: trailing, constant: -trailingConstant).isActive = true
+        }
     }
     
     // MARK: - Round corners
@@ -81,6 +81,23 @@ extension UIView {
         maskLayer.frame = bounds
         maskLayer.path = maskPath.cgPath
         layer.mask = maskLayer
+    }
+    
+    func roundCornersWithBorder(corners: UIRectCorner = .allCorners, radius: CGFloat = 20) {
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = bounds
+        maskLayer.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: radius, height: radius)).cgPath
+        
+        layer.mask = maskLayer
+        
+        // Add border
+        let borderLayer = CAShapeLayer()
+        borderLayer.path = maskLayer.path // Reuse the Bezier path
+        borderLayer.fillColor = UIColor.clear.cgColor
+        borderLayer.strokeColor = UIColor(red:3/255, green:33/255, blue:70/255, alpha: 0.15).cgColor
+        borderLayer.lineWidth = 2
+        borderLayer.frame = bounds
+        layer.addSublayer(borderLayer)
     }
     
     func setShadow(with radius: CGFloat = 4) {

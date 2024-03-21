@@ -76,9 +76,9 @@ final class HomeViewController: UIViewController {
         contentView.centerInSuperview()
         
         contentView.addSubview(countryCarouselView)
-        countryCarouselView.anchor(top: contentView.topAnchor, topConstant: 10,
-                                       leading: contentView.leadingAnchor, leadingConstant: 10,
-                                       trailing: contentView.trailingAnchor, trailingConstant: 10)
+        countryCarouselView.anchor(top: contentView.topAnchor, topConstant: 40,
+                                       leading: contentView.leadingAnchor,
+                                       trailing: contentView.trailingAnchor)
         countryCarouselView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
