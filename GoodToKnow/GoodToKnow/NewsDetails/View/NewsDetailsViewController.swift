@@ -42,8 +42,8 @@ final class NewsDetailsViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black.withAlphaComponent(0.5)
-        label.font = .boldSystemFont(ofSize: 30)
+        label.textColor = .black.withAlphaComponent(0.8)
+        label.font = .boldSystemFont(ofSize: 26)
         label.textAlignment = .center
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +72,7 @@ final class NewsDetailsViewController: UIViewController {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.alpha = 0.4
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -93,7 +93,7 @@ final class NewsDetailsViewController: UIViewController {
         button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(didTapInternetButton), for: .touchUpInside)
         button.tintColor = UIColor.MainColors.primaryText
-        button.setDimensions(width: 40, height: 40)
+        button.setDimensions(width: 30, height: 30)
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -141,16 +141,17 @@ final class NewsDetailsViewController: UIViewController {
         scrollView.addSubview(contentView)
         contentView.fillSuperview()
         contentView.centerInSuperview()
-        contentView.setDimensions(width: scrollView.frame.width, height: scrollView.frame.height)
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1).isActive = true
 
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(vStackView)
-        contentView.addSubview(internetButton)
         
         imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         imageView.anchor(top: view.topAnchor,
-                         bottom: vStackView.topAnchor, bottomConstant: 20)
+                         bottom: vStackView.topAnchor, bottomConstant: 20,
+                         leading: contentView.leadingAnchor,
+                         trailing: contentView.trailingAnchor)
         
         
         titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
@@ -159,26 +160,23 @@ final class NewsDetailsViewController: UIViewController {
                           leading: contentView.leadingAnchor, leadingConstant: 20,
                           trailing: contentView.trailingAnchor, trailingConstant: 20)
         
-        
-        vStackView.anchor(leading: contentView.leadingAnchor, leadingConstant: 20,
+        vStackView.anchor(bottom: contentView.bottomAnchor, bottomConstant: 20,
+                          leading: contentView.leadingAnchor, leadingConstant: 20,
                           trailing: contentView.trailingAnchor, trailingConstant: 20)
         vStackView.addArrangedSubview(descriptionLabel)
         vStackView.addArrangedSubview(contentLabel)
         vStackView.addArrangedSubview(originView)
-        
-        
-        internetButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        internetButton.anchor(top: vStackView.bottomAnchor, topConstant: 40,
-                              bottom: contentView.bottomAnchor)
     
-        makeTabBarTransparent()
+        setupNavigationBar()
     }
     
-    private func makeTabBarTransparent() {
+    private func setupNavigationBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: internetButton)
     }
     
     private func populateData() {

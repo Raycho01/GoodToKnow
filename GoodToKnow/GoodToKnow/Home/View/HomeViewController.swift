@@ -15,10 +15,11 @@ protocol HomeCarouselViewModelProtocol {
 final class HomeViewController: UIViewController {
     
     private let carouselViewModel: HomeCarouselViewModelProtocol
+    private let headerViewModel: NewsListHeaderViewModel
     
     private lazy var headerView: NewsListHeaderView = {
         let headerView = NewsListHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8),
-                           viewModel: NewsListHeaderViewModel(title: "Browse News", shouldShowSearch: false))
+                           viewModel: headerViewModel)
         headerView.delegate = self
         return headerView
     }()
@@ -41,8 +42,9 @@ final class HomeViewController: UIViewController {
                                                                                      height: 200))
     }()
     
-    init(carouselViewModel: HomeCarouselViewModelProtocol = HomeCarouselViewModel()) {
+    init(carouselViewModel: HomeCarouselViewModelProtocol = HomeCarouselViewModel(), headerViewModel: NewsListHeaderViewModel) {
         self.carouselViewModel = carouselViewModel
+        self.headerViewModel = headerViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
