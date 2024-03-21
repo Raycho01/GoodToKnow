@@ -15,6 +15,10 @@ class HomeCarouselCell: UICollectionViewCell {
     private lazy var imageContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = self.frame.height / 8
+        view.layer.borderWidth = 1.5
+        view.layer.borderColor = UIColor.MainColors.lightBackground.cgColor
+        view.clipsToBounds = true
         return view
     }()
     
@@ -51,18 +55,19 @@ class HomeCarouselCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        layer.cornerRadius = cornerRadius
-        self.backgroundColor = UIColor.MainColors.lightBackground
-        self.setShadow()
+        self.backgroundColor = .clear
         
-        addSubview(imageView)
-        imageView.anchor(top: topAnchor,
-                         leading: leadingAnchor,
-                         trailing: trailingAnchor)
-        imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        addSubview(imageContainerView)
+        imageContainerView.anchor(top: topAnchor,
+                                  leading:leadingAnchor,
+                                  trailing: trailingAnchor)
+        
+        imageContainerView.addSubview(imageView)
+        imageView.fillSuperview(padding: UIEdgeInsets(top: -45, left: -10, bottom: -45, right: -10))
+        imageView.centerInSuperview()
         
         addSubview(titleLabel)
-        titleLabel.anchor(top: imageView.bottomAnchor, topConstant: -10,
+        titleLabel.anchor(top: imageContainerView.bottomAnchor, topConstant: 10,
                           bottom: bottomAnchor)
         titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
