@@ -24,7 +24,8 @@ final class TabBarController: UITabBarController {
 
     private func setupViewControllers() {
         
-        let homeVC = HomeViewController()
+        let homeHeaderModel = NewsListHeaderViewModel(title: "Home", shouldShowSearch: false)
+        let homeVC = HomeViewController(headerViewModel: homeHeaderModel)
         let homeNav = UINavigationController(rootViewController: homeVC)
         setup(vc: homeNav, title: "Home", systemImage: "house")
         

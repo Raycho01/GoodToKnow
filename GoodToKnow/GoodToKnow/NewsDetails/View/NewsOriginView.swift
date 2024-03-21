@@ -36,8 +36,9 @@ final class NewsOriginView: UIView {
     }
     
     private func setupUI() {
-        backgroundColor = UIColor.MainColors.lightBackground
-        roundCorners()
+        backgroundColor = .white
+        layer.cornerRadius = 20
+        setShadow()
         addSubview(vStackView)
         vStackView.fillSuperview(padding: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         
