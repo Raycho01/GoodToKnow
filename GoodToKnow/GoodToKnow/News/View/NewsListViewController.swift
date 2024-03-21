@@ -11,6 +11,14 @@ class NewsListViewController: UIViewController {
     
     // MARK: - Properties
     
+    private var newsArticles: [NewsArticle] = [] {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                self?.newsTableView.reloadData()
+            }
+        }
+    }
+    
     private var viewModel: NewsListViewModelProtocol
     private let insetValue: CGFloat = 15
     
@@ -55,6 +63,7 @@ class NewsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
+        viewModel.fetchNewsInitially()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,15 +75,18 @@ class NewsListViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel.newsResponseDidUpdate = { [weak self] in
-            self?.updateData()
+        viewModel.newsResponseDidUpdate = { [weak self] newsResponse in
+            guard let newsResponse = newsResponse else { return }
+            self?.updateData(with: newsResponse)
+        }
+        
+        viewModel.onError = { [weak self] error in
+            self?.showAlert(with: error)
         }
     }
     
-    private func updateData() {
-        DispatchQueue.main.async { [weak self] in
-            self?.newsTableView.reloadData()
-        }
+    private func updateData(with newsResponse: NewsResponse) {
+        newsArticles = newsResponse.articles
     }
     
     private func setupConstraints() {
@@ -96,27 +108,41 @@ class NewsListViewController: UIViewController {
         view.backgroundColor = UIColor.MainColors.primaryBackground
         newsTableView.contentOffset = CGPoint(x: 0, y: -insetValue)
     }
-
+    
+    private func showAlert(with error: Error) {
+        let retryAction = AlertPopupAction(title: "Retry", isPreferred: true, action: { [weak self] in
+            self?.viewModel.fetchNewsInitially()
+        })
+        let cancelAction = AlertPopupAction(title: "Cancel", isPreferred: false, action: { [weak self] in
+            self?.navigationController?.dismiss(animated: true)
+        })
+        let title = NSAttributedString(string: "Oops, something went wrong.")
+        let message = NSAttributedString(string: error.localizedDescription, attributes: [
+            .font: UIFont.systemFont(ofSize: 14, weight: .light)
+        ])
+        
+        showAlertPopup(title: title, message: message, preferredStyle: .alert, actions: [retryAction, cancelAction])
+    }
 }
 
 // MARK: - UITableView delegate and data source
 
 extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.newsResponse?.articles.count ?? 0
+        newsArticles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewsListTableViewCell.identifier, for: indexPath) as! NewsListTableViewCell
-        guard let article = viewModel.newsResponse?.articles[indexPath.row] else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsListTableViewCell.identifier, for: indexPath) as? NewsListTableViewCell else {
             return UITableViewCell()
         }
+        let article = newsArticles[indexPath.row]
         cell.configure(with: article)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let article = viewModel.newsResponse?.articles[indexPath.row] else { return }
+        let article = newsArticles[indexPath.row]
         let viewController = NewsDetailsViewController(newsArticle: article)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
