@@ -10,4 +10,5 @@ import UIKit
 extension UIImage {
 
     static let search = UIImage(named: "search_icon")
+    static let noResults = UIImage(systemName: "doc.questionmark")
 }

@@ -13,8 +13,9 @@ class NewsListViewController: UIViewController {
     
     private var newsArticles: [NewsArticle] = [] {
         didSet {
-            DispatchQueue.main.async { [weak self] in
-                self?.newsTableView.reloadData()
+            showEmptyState(newsArticles.count < 1)
+            DispatchQueue.main.async {
+                self.newsTableView.reloadData()
             }
         }
     }
@@ -96,10 +97,6 @@ class NewsListViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
     
-    override func viewDidLayoutSubviews() {
-        setupConstraints()
-    }
-    
     private func bindViewModel() {
         viewModel.newsResponseDidUpdate = { [weak self] newsResponse in
             guard let newsResponse = newsResponse else { return }
@@ -107,6 +104,7 @@ class NewsListViewController: UIViewController {
         }
         
         viewModel.onError = { [weak self] error in
+            self?.newsArticles = []
             self?.showAlert(with: error)
         }
         
@@ -115,7 +113,10 @@ class NewsListViewController: UIViewController {
         }
     }
     
-    private func setupConstraints() {
+    private func setupUI() {
+        view.backgroundColor = UIColor.MainColors.primaryBackground
+        newsTableView.contentOffset = CGPoint(x: 0, y: -insetValue)
+        
         view.addSubview(newsTableView)
         view.addSubview(headerView)
         
@@ -131,11 +132,6 @@ class NewsListViewController: UIViewController {
         
         view.addSubview(activityIndicatorView)
         activityIndicatorView.centerInSuperview()
-    }
-    
-    private func setupUI() {
-        view.backgroundColor = UIColor.MainColors.primaryBackground
-        newsTableView.contentOffset = CGPoint(x: 0, y: -insetValue)
     }
     
     private func showAlert(with error: Error) {

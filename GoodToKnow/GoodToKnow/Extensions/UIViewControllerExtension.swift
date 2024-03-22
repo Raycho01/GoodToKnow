@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     
-    public func showAlertPopup(title: NSAttributedString?, message: NSAttributedString?, preferredStyle: UIAlertController.Style = .alert, actions: [AlertPopupAction]) {
+    func showAlertPopup(title: NSAttributedString?, message: NSAttributedString?, preferredStyle: UIAlertController.Style = .alert, actions: [AlertPopupAction]) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: preferredStyle)
         
         if let attributedTitle = title {
@@ -24,6 +24,12 @@ extension UIViewController {
         
         DispatchQueue.main.async {
             self.present(alert, animated: true)
+        }
+    }
+    
+    func showEmptyState(_ show: Bool, with configuration: UIContentUnavailableConfiguration = GeneralEmptyConfiguration.shared) {
+        DispatchQueue.main.async {
+            self.contentUnavailableConfiguration = show ? configuration : nil
         }
     }
     
