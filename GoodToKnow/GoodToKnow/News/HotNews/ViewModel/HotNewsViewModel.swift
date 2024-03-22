@@ -11,7 +11,7 @@ protocol NewsListViewModelProtocol {
     
     var searchFilters: NewsSearchFilters { get set }
     var headerModel: NewsListHeaderViewModel { get set }
-    var isCurrentlyFetching: Bool { get }
+    var isCurrenltyLoading: ((Bool) -> Void) { get set }
     var newsResponseDidUpdate : ((NewsResponse?) -> Void) { get set }
     var onError: ((Error) -> Void) { get set }
     
@@ -35,9 +35,9 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     }
     var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "Hot News", shouldShowSearch: false)
     
-    private(set) var isCurrentlyFetching: Bool = false
     var newsResponseDidUpdate: ((NewsResponse?) -> Void) = { _ in }
     var onError: ((Error) -> Void) = { _ in }
+    var isCurrenltyLoading: ((Bool) -> Void) = { _ in }
     var tabBarIndex: Int
     
     private let pageSize = 20
@@ -52,9 +52,9 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     }
     
     func fetchNewsInitially() {
-        isCurrentlyFetching = true
+        isCurrenltyLoading(true)
         apiService.fetchTopHeadlines(page: firstPage, filters: searchFilters) { [weak self] result in
-            self?.isCurrentlyFetching = false
+            self?.isCurrenltyLoading(false)
             guard let self = self else { return }
             
             switch result {
@@ -70,10 +70,10 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     
     func fetchMoreNews() {
         guard let cursor = cursor, !cursor.isEndReached else { return }
-        isCurrentlyFetching = true
+        isCurrenltyLoading(true)
         
         apiService.fetchTopHeadlines(page: cursor.currentPage, filters: searchFilters) { [weak self] result in
-            self?.isCurrentlyFetching = false
+            self?.isCurrenltyLoading(false)
             guard let self = self else { return }
             
             switch result {

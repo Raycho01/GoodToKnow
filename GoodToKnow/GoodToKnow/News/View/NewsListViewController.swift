@@ -19,6 +19,20 @@ class NewsListViewController: UIViewController {
         }
     }
     
+    private var isCurrentlyLoading: Bool = false {
+        didSet {
+            DispatchQueue.main.async {
+                if self.isCurrentlyLoading, !self.refreshControl.isRefreshing {
+                    self.activityIndicatorView.startAnimating()
+                } else {
+                    self.activityIndicatorView.stopAnimating()
+                    self.refreshControl.endRefreshing()
+                }
+            }
+
+        }
+    }
+    
     private var viewModel: NewsListViewModelProtocol
     private let insetValue: CGFloat = 15
     
@@ -41,7 +55,20 @@ class NewsListViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: insetValue, left: 0, bottom: insetValue, right: 0)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
+        tableView.refreshControl = refreshControl
         return tableView
+    }()
+    
+    private lazy var activityIndicatorView: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(userDidRefresh), for: .valueChanged)
+        return refreshControl
     }()
     
     // MARK: Configuration
@@ -63,7 +90,6 @@ class NewsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
-        viewModel.fetchNewsInitially()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,16 +103,16 @@ class NewsListViewController: UIViewController {
     private func bindViewModel() {
         viewModel.newsResponseDidUpdate = { [weak self] newsResponse in
             guard let newsResponse = newsResponse else { return }
-            self?.updateData(with: newsResponse)
+            self?.newsArticles = newsResponse.articles
         }
         
         viewModel.onError = { [weak self] error in
             self?.showAlert(with: error)
         }
-    }
-    
-    private func updateData(with newsResponse: NewsResponse) {
-        newsArticles = newsResponse.articles
+        
+        viewModel.isCurrenltyLoading = { [weak self] isCurrenltyLoading in
+            self?.isCurrentlyLoading = isCurrenltyLoading
+        }
     }
     
     private func setupConstraints() {
@@ -102,6 +128,9 @@ class NewsListViewController: UIViewController {
                              bottomConstant: -insetValue,
                              leading: view.leadingAnchor,
                              trailing: view.trailingAnchor)
+        
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.centerInSuperview()
     }
     
     private func setupUI() {
@@ -155,7 +184,7 @@ extension NewsListViewController {
         let position = scrollView.contentOffset.y
         if position > (newsTableView.contentSize.height - 100 - scrollView.frame.size.height) { // Reached the bottom of the table view
             
-            guard !viewModel.isCurrentlyFetching else { return }
+            guard !isCurrentlyLoading else { return }
             viewModel.fetchMoreNews()
         }
     }
@@ -164,5 +193,13 @@ extension NewsListViewController {
 extension NewsListViewController: NewsListHeaderDelegate {
     func didSearch(for keyword: String) {
         viewModel.searchFilters.keyword = keyword
+    }
+}
+
+// MARK: - UIRefreshControl
+
+extension NewsListViewController {
+    @objc func userDidRefresh(refreshControl: UIRefreshControl) {
+        viewModel.fetchNewsInitially()
     }
 }
