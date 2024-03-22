@@ -127,7 +127,8 @@ final class NewsListHeaderView: UIView {
     }
     
     private func search() {
-        guard let searchKeyword = searchTextField.text, searchKeyword != lastSearchedKeyword else { return }
+        guard let searchKeyword = searchTextField.text,
+              searchKeyword.trimmingCharacters(in: .whitespacesAndNewlines) != lastSearchedKeyword.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         lastSearchedKeyword = searchKeyword
         showRedDotIfSearching()
         delegate?.didSearch(for: searchKeyword)

@@ -45,6 +45,7 @@
 		AE758CFC2BACBB02005926A6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CFB2BACBB02005926A6 /* UIViewControllerExtension.swift */; };
 		AE758CFE2BACC357005926A6 /* AlertPopupAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CFD2BACC357005926A6 /* AlertPopupAction.swift */; };
 		AE758D002BACC37C005926A6 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CFF2BACC37C005926A6 /* UIAlertControllerExtension.swift */; };
+		AE758D032BADC43C005926A6 /* GeneralEmptyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758D022BADC43C005926A6 /* GeneralEmptyConfiguration.swift */; };
 		AEAA3CDD2B82160B00EB3CE8 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */; };
 		AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */; };
 		AECABEAD2B67C18B0087D19B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECABEAC2B67C18B0087D19B /* TabBarController.swift */; };
@@ -111,6 +112,7 @@
 		AE758CFB2BACBB02005926A6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		AE758CFD2BACC357005926A6 /* AlertPopupAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopupAction.swift; sourceTree = "<group>"; };
 		AE758CFF2BACC37C005926A6 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		AE758D022BADC43C005926A6 /* GeneralEmptyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralEmptyConfiguration.swift; sourceTree = "<group>"; };
 		AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchFilters.swift; sourceTree = "<group>"; };
 		AECABEAC2B67C18B0087D19B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				AE758CF52BAB359C005926A6 /* BundleManager.swift */,
 				AE758CF72BAB41D1005926A6 /* ImageCache.swift */,
 				AE758CFD2BACC357005926A6 /* AlertPopupAction.swift */,
+				AE758D022BADC43C005926A6 /* GeneralEmptyConfiguration.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				AE758CE52BAB12EE005926A6 /* HomeCarouselView.swift in Sources */,
 				AE758CFA2BAB4223005926A6 /* UIImageViewExtension.swift in Sources */,
 				AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */,
+				AE758D032BADC43C005926A6 /* GeneralEmptyConfiguration.swift in Sources */,
 				AE758CE82BAB176A005926A6 /* HomeCarouselModel.swift in Sources */,
 				AE3A91052B5E9CB6002B1EC9 /* NewsListViewController.swift in Sources */,
 				AE6A252F2BA8D99100156EE5 /* HomeViewController.swift in Sources */,
