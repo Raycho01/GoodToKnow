@@ -20,9 +20,9 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         }
     }
     var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "All News", shouldShowSearch: true)
-    private(set) var isCurrentlyFetching: Bool = false
     var newsResponseDidUpdate: ((NewsResponse?) -> Void) = { _ in }
     var onError: ((Error) -> Void) = { _ in }
+    var isCurrenltyLoading: ((Bool) -> Void) = { _ in }
     var tabBarIndex: Int
     
     private let apiService: AllNewsAPIServiceProtocol
@@ -40,9 +40,9 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     }
     
     func fetchNewsInitially() {
-        isCurrentlyFetching = true
+        isCurrenltyLoading(true)
         apiService.fetchEverything(page: firstPage, filters: searchFilters) { [weak self] result in
-            self?.isCurrentlyFetching = false
+            self?.isCurrenltyLoading(false)
             guard let self = self else { return }
             
             switch result {
@@ -58,10 +58,10 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     
     func fetchMoreNews() {
         guard let cursor = cursor, !cursor.isEndReached else { return }
-        isCurrentlyFetching = true
+        isCurrenltyLoading(true)
         
         apiService.fetchEverything(page: cursor.currentPage, filters: searchFilters) { [weak self] result in
-            self?.isCurrentlyFetching = false
+            self?.isCurrenltyLoading(false)
             guard let self = self else { return }
             
             switch result {
