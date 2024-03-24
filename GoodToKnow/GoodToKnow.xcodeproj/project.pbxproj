@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03EF4A19C3668EC9EBD4D835 /* Pods_GoodToKnow_GoodToKnowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80435499F444737455A7EC17 /* Pods_GoodToKnow_GoodToKnowUITests.framework */; };
+		6DC698D59431015E7F066D87 /* Pods_GoodToKnow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54D28129DD9A472AE36A56B /* Pods_GoodToKnow.framework */; };
+		ACD4F8B281BA05355CB2FA66 /* Pods_GoodToKnowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2024E38F71F8FF582081D15 /* Pods_GoodToKnowTests.framework */; };
 		AE2499222B8B7F5E00B87E61 /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2499212B8B7F5E00B87E61 /* NewsDetailsViewController.swift */; };
 		AE2499242B8B84FA00B87E61 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2499232B8B84FA00B87E61 /* URLExtension.swift */; };
 		AE3A91012B5E9CB6002B1EC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91002B5E9CB6002B1EC9 /* AppDelegate.swift */; };
@@ -46,6 +49,8 @@
 		AE758CFE2BACC357005926A6 /* AlertPopupAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CFD2BACC357005926A6 /* AlertPopupAction.swift */; };
 		AE758D002BACC37C005926A6 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CFF2BACC37C005926A6 /* UIAlertControllerExtension.swift */; };
 		AE758D032BADC43C005926A6 /* GeneralEmptyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758D022BADC43C005926A6 /* GeneralEmptyConfiguration.swift */; };
+		AE758D052BB0951F005926A6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = AE758D042BB0951F005926A6 /* Podfile */; };
+		AE758D072BB097D5005926A6 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = AE758D062BB097D5005926A6 /* Cartfile */; };
 		AEAA3CDD2B82160B00EB3CE8 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */; };
 		AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */; };
 		AECABEAD2B67C18B0087D19B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECABEAC2B67C18B0087D19B /* TabBarController.swift */; };
@@ -70,6 +75,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		80435499F444737455A7EC17 /* Pods_GoodToKnow_GoodToKnowUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodToKnow_GoodToKnowUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BE0BD36BAC80CE8B6469007 /* Pods-GoodToKnowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodToKnowTests.debug.xcconfig"; path = "Target Support Files/Pods-GoodToKnowTests/Pods-GoodToKnowTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A9A341685C0188F526BDA5D6 /* Pods-GoodToKnow-GoodToKnowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodToKnow-GoodToKnowUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoodToKnow-GoodToKnowUITests/Pods-GoodToKnow-GoodToKnowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AE2499212B8B7F5E00B87E61 /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
 		AE2499232B8B84FA00B87E61 /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		AE3A90FD2B5E9CB6002B1EC9 /* GoodToKnow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodToKnow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,10 +121,18 @@
 		AE758CFD2BACC357005926A6 /* AlertPopupAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopupAction.swift; sourceTree = "<group>"; };
 		AE758CFF2BACC37C005926A6 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		AE758D022BADC43C005926A6 /* GeneralEmptyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralEmptyConfiguration.swift; sourceTree = "<group>"; };
+		AE758D042BB0951F005926A6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		AE758D062BB097D5005926A6 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchFilters.swift; sourceTree = "<group>"; };
 		AECABEAC2B67C18B0087D19B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		AECABEAE2B67E6270087D19B /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		C2024E38F71F8FF582081D15 /* Pods_GoodToKnowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodToKnowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C54D28129DD9A472AE36A56B /* Pods_GoodToKnow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodToKnow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C825128C0F96BF724C31198A /* Pods-GoodToKnow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodToKnow.debug.xcconfig"; path = "Target Support Files/Pods-GoodToKnow/Pods-GoodToKnow.debug.xcconfig"; sourceTree = "<group>"; };
+		CD5E0D31D7E50980CFAB50D5 /* Pods-GoodToKnowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodToKnowTests.release.xcconfig"; path = "Target Support Files/Pods-GoodToKnowTests/Pods-GoodToKnowTests.release.xcconfig"; sourceTree = "<group>"; };
+		F1807ECDDCE2312F59F3DF75 /* Pods-GoodToKnow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodToKnow.release.xcconfig"; path = "Target Support Files/Pods-GoodToKnow/Pods-GoodToKnow.release.xcconfig"; sourceTree = "<group>"; };
+		FE7B972DA7754B26D310C652 /* Pods-GoodToKnow-GoodToKnowUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodToKnow-GoodToKnowUITests.release.xcconfig"; path = "Target Support Files/Pods-GoodToKnow-GoodToKnowUITests/Pods-GoodToKnow-GoodToKnowUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DC698D59431015E7F066D87 /* Pods_GoodToKnow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACD4F8B281BA05355CB2FA66 /* Pods_GoodToKnowTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,12 +156,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03EF4A19C3668EC9EBD4D835 /* Pods_GoodToKnow_GoodToKnowUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11E40C1E8B56482F085CF87E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C825128C0F96BF724C31198A /* Pods-GoodToKnow.debug.xcconfig */,
+				F1807ECDDCE2312F59F3DF75 /* Pods-GoodToKnow.release.xcconfig */,
+				A9A341685C0188F526BDA5D6 /* Pods-GoodToKnow-GoodToKnowUITests.debug.xcconfig */,
+				FE7B972DA7754B26D310C652 /* Pods-GoodToKnow-GoodToKnowUITests.release.xcconfig */,
+				9BE0BD36BAC80CE8B6469007 /* Pods-GoodToKnowTests.debug.xcconfig */,
+				CD5E0D31D7E50980CFAB50D5 /* Pods-GoodToKnowTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AE24991E2B8B50F400B87E61 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +211,8 @@
 				AE3A91162B5E9CB7002B1EC9 /* GoodToKnowTests */,
 				AE3A91202B5E9CB7002B1EC9 /* GoodToKnowUITests */,
 				AE3A90FE2B5E9CB6002B1EC9 /* Products */,
+				11E40C1E8B56482F085CF87E /* Pods */,
+				BDF9F2DAB74F2C12FBEC7E4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -205,6 +239,8 @@
 				AE3A91022B5E9CB6002B1EC9 /* SceneDelegate.swift */,
 				AECABEAB2B67C1260087D19B /* TabBar */,
 				AE3A91092B5E9CB7002B1EC9 /* Assets.xcassets */,
+				AE758D042BB0951F005926A6 /* Podfile */,
+				AE758D062BB097D5005926A6 /* Cartfile */,
 				AE3A910B2B5E9CB7002B1EC9 /* LaunchScreen.storyboard */,
 				AE3A910E2B5E9CB7002B1EC9 /* Info.plist */,
 			);
@@ -389,6 +425,16 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		BDF9F2DAB74F2C12FBEC7E4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C54D28129DD9A472AE36A56B /* Pods_GoodToKnow.framework */,
+				80435499F444737455A7EC17 /* Pods_GoodToKnow_GoodToKnowUITests.framework */,
+				C2024E38F71F8FF582081D15 /* Pods_GoodToKnowTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -396,9 +442,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE3A91272B5E9CB7002B1EC9 /* Build configuration list for PBXNativeTarget "GoodToKnow" */;
 			buildPhases = (
+				87826CA7A00125C5ED9F74A1 /* [CP] Check Pods Manifest.lock */,
 				AE3A90F92B5E9CB6002B1EC9 /* Sources */,
 				AE3A90FA2B5E9CB6002B1EC9 /* Frameworks */,
 				AE3A90FB2B5E9CB6002B1EC9 /* Resources */,
+				440EAD50ADD5991AE926F36E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -413,6 +461,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE3A912A2B5E9CB7002B1EC9 /* Build configuration list for PBXNativeTarget "GoodToKnowTests" */;
 			buildPhases = (
+				7AD5816468249BCBFF247450 /* [CP] Check Pods Manifest.lock */,
 				AE3A910F2B5E9CB7002B1EC9 /* Sources */,
 				AE3A91102B5E9CB7002B1EC9 /* Frameworks */,
 				AE3A91112B5E9CB7002B1EC9 /* Resources */,
@@ -431,9 +480,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE3A912D2B5E9CB7002B1EC9 /* Build configuration list for PBXNativeTarget "GoodToKnowUITests" */;
 			buildPhases = (
+				35FF707E2A4364A2E8F51DED /* [CP] Check Pods Manifest.lock */,
 				AE3A91192B5E9CB7002B1EC9 /* Sources */,
 				AE3A911A2B5E9CB7002B1EC9 /* Frameworks */,
 				AE3A911B2B5E9CB7002B1EC9 /* Resources */,
+				A2B99EAED3C9821D8BBCDC16 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -493,8 +544,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE758D072BB097D5005926A6 /* Cartfile in Resources */,
 				AE758CF42BAB351E005926A6 /* mockedCountries.json in Resources */,
 				AE3A910D2B5E9CB7002B1EC9 /* LaunchScreen.storyboard in Resources */,
+				AE758D052BB0951F005926A6 /* Podfile in Resources */,
 				AE3A910A2B5E9CB7002B1EC9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +567,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35FF707E2A4364A2E8F51DED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodToKnow-GoodToKnowUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		440EAD50ADD5991AE926F36E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodToKnow/Pods-GoodToKnow-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodToKnow/Pods-GoodToKnow-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoodToKnow/Pods-GoodToKnow-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7AD5816468249BCBFF247450 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodToKnowTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87826CA7A00125C5ED9F74A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoodToKnow-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2B99EAED3C9821D8BBCDC16 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodToKnow-GoodToKnowUITests/Pods-GoodToKnow-GoodToKnowUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodToKnow-GoodToKnowUITests/Pods-GoodToKnow-GoodToKnowUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoodToKnow-GoodToKnowUITests/Pods-GoodToKnow-GoodToKnowUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AE3A90F92B5E9CB6002B1EC9 /* Sources */ = {
@@ -641,7 +797,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -704,7 +860,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -725,11 +881,13 @@
 		};
 		AE3A91282B5E9CB7002B1EC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C825128C0F96BF724C31198A /* Pods-GoodToKnow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoodToKnow/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -751,11 +909,13 @@
 		};
 		AE3A91292B5E9CB7002B1EC9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1807ECDDCE2312F59F3DF75 /* Pods-GoodToKnow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GoodToKnow/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -777,6 +937,7 @@
 		};
 		AE3A912B2B5E9CB7002B1EC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BE0BD36BAC80CE8B6469007 /* Pods-GoodToKnowTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -796,6 +957,7 @@
 		};
 		AE3A912C2B5E9CB7002B1EC9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD5E0D31D7E50980CFAB50D5 /* Pods-GoodToKnowTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -815,6 +977,7 @@
 		};
 		AE3A912E2B5E9CB7002B1EC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9A341685C0188F526BDA5D6 /* Pods-GoodToKnow-GoodToKnowUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -832,6 +995,7 @@
 		};
 		AE3A912F2B5E9CB7002B1EC9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE7B972DA7754B26D310C652 /* Pods-GoodToKnow-GoodToKnowUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

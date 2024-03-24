@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class NewsListViewController: UIViewController {
     
@@ -29,8 +30,8 @@ class NewsListViewController: UIViewController {
                     self.activityIndicatorView.stopAnimating()
                     self.refreshControl.endRefreshing()
                 }
+                self.newsTableView.reloadData()
             }
-
         }
     }
     
@@ -152,7 +153,7 @@ class NewsListViewController: UIViewController {
 
 // MARK: - UITableView delegate and data source
 
-extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
+extension NewsListViewController: SkeletonTableViewDataSource, SkeletonTableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         newsArticles.count
     }
@@ -162,7 +163,7 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let article = newsArticles[indexPath.row]
-        cell.configure(with: article)
+        cell.configure(with: article, showSkeleton: isCurrentlyLoading)
         return cell
     }
     
@@ -170,6 +171,10 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
         let article = newsArticles[indexPath.row]
         let viewController = NewsDetailsViewController(newsArticle: article)
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return NewsListTableViewCell.identifier
     }
 }
 
