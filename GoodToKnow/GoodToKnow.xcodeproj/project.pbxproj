@@ -51,7 +51,6 @@
 		AE758D032BADC43C005926A6 /* GeneralEmptyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758D022BADC43C005926A6 /* GeneralEmptyConfiguration.swift */; };
 		AE758D052BB0951F005926A6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = AE758D042BB0951F005926A6 /* Podfile */; };
 		AE758D072BB097D5005926A6 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = AE758D062BB097D5005926A6 /* Cartfile */; };
-		AEAA3CDD2B82160B00EB3CE8 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */; };
 		AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */; };
 		AECABEAD2B67C18B0087D19B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECABEAC2B67C18B0087D19B /* TabBarController.swift */; };
 		AECABEAF2B67E6270087D19B /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECABEAE2B67E6270087D19B /* UIFontExtension.swift */; };
@@ -123,7 +122,6 @@
 		AE758D022BADC43C005926A6 /* GeneralEmptyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralEmptyConfiguration.swift; sourceTree = "<group>"; };
 		AE758D042BB0951F005926A6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		AE758D062BB097D5005926A6 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
-		AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchFilters.swift; sourceTree = "<group>"; };
 		AECABEAC2B67C18B0087D19B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		AECABEAE2B67E6270087D19B /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 				AE3A91362B5EB86A002B1EC9 /* UIViewExtension.swift */,
 				AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */,
 				AECABEAE2B67E6270087D19B /* UIFontExtension.swift */,
-				AEAA3CDC2B82160B00EB3CE8 /* UIImageExtension.swift */,
 				AE758CF92BAB4223005926A6 /* UIImageViewExtension.swift */,
 				AE2499232B8B84FA00B87E61 /* URLExtension.swift */,
 				AE6A25272BA6F84900156EE5 /* DateExtension.swift */,
@@ -682,7 +679,6 @@
 				AE3A913D2B5FE89B002B1EC9 /* NewsListTableViewCell.swift in Sources */,
 				AE758CFC2BACBB02005926A6 /* UIViewControllerExtension.swift in Sources */,
 				AECABEAF2B67E6270087D19B /* UIFontExtension.swift in Sources */,
-				AEAA3CDD2B82160B00EB3CE8 /* UIImageExtension.swift in Sources */,
 				AE6A25282BA6F84900156EE5 /* DateExtension.swift in Sources */,
 				AE6A25262BA6F1D000156EE5 /* NewsOriginView.swift in Sources */,
 				AE6A251C2BA62DE100156EE5 /* WebViewController.swift in Sources */,

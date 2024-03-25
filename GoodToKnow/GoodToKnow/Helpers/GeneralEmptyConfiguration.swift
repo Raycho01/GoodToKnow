@@ -11,7 +11,7 @@ struct GeneralEmptyConfiguration {
     
     static let shared: UIContentUnavailableConfiguration = {
         var config = UIContentUnavailableConfiguration.empty()
-        config.image = UIImage.noResults
+        config.image = UIImage(systemName: "doc.questionmark")
         config.imageProperties.tintColor?.withAlphaComponent(0.5)
         config.text = "No results found"
         config.secondaryText = "Try searching something else"
