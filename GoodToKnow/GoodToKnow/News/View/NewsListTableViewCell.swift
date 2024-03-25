@@ -98,24 +98,12 @@ final class NewsListTableViewCell: UITableViewCell {
     }
 
     func configure(with article: NewsArticle, showSkeleton: Bool) {
-        loadImage(from: article.urlToImage ?? "")
+        newsImageView.setImage(with: article.urlToImage ?? "")
         titleLabel.text = article.title
         authorLabel.text = article.author
         dateLabel.text = article.publishedAt?.formatted()
         
         showSkeletonViewIfNeeded(show: showSkeleton)
-    }
-    
-    private func loadImage(from urlString: String) {
-        guard let url = URL(string: urlString) else {
-            return
-        }
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard let self = self, let data = data, error == nil else { return }
-            DispatchQueue.main.async {
-                self.newsImageView.image = UIImage(data: data)
-            }
-        }.resume()
     }
     
     private func showSkeletonViewIfNeeded(show: Bool) {

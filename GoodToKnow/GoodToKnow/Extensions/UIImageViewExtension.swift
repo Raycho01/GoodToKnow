@@ -10,6 +10,7 @@ import UIKit
 extension UIImageView {
     func setImage(with urlString: String) {
         guard let cachedImage = ImageCache.shared.image(forKey: urlString) else {
+            self.image = UIImage.imagePlaceholder
             guard let url = URL(string: urlString) else { return }
             
             url.fetchImage { [weak self] image in

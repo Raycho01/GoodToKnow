@@ -56,7 +56,7 @@ final class NewsListHeaderView: UIView {
     
     private lazy var searchButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage.search, for: .normal)
+        button.setImage(UIImage.searchIcon, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(didTapSearch), for: .touchUpInside)
         button.tintColor = UIColor.MainColors.primaryText
