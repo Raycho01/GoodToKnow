@@ -14,7 +14,7 @@ class NewsListViewController: UIViewController {
     
     private var newsArticles: [NewsArticle] = [] {
         didSet {
-            showEmptyState(newsArticles.count < 1)
+            showEmptyViewIfNeeded()
             DispatchQueue.main.async {
                 self.newsTableView.reloadData()
             }
@@ -24,7 +24,7 @@ class NewsListViewController: UIViewController {
     private var isCurrentlyLoading: Bool = false {
         didSet {
             DispatchQueue.main.async {
-                if self.isCurrentlyLoading, !self.refreshControl.isRefreshing {
+                if self.isCurrentlyLoading, !self.refreshControl.isRefreshing, !self.newsTableView.sk.isSkeletonActive {
                     self.activityIndicatorView.startAnimating()
                 } else {
                     self.activityIndicatorView.stopAnimating()
@@ -148,6 +148,12 @@ class NewsListViewController: UIViewController {
         ])
         
         showAlertPopup(title: title, message: message, preferredStyle: .alert, actions: [retryAction, cancelAction])
+    }
+    
+    private func showEmptyViewIfNeeded() {
+        showEmptyState(newsArticles.count < 1, with: UIAction(handler: { _ in
+            self.viewModel.fetchNewsInitially()
+        }))
     }
 }
 
