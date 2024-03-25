@@ -18,7 +18,10 @@ final class AllNewsAPIService: AllNewsAPIServiceProtocol {
     private let baseURL = "https://newsapi.org/v2/everything?"
     
     func fetchEverything(page: Int, filters: NewsSearchFilters, completion: @escaping NewsCompletion) {
-        guard let url = URL(string: "\(baseURL)q=\(filters.keyword)&apiKey=\(apiKey)&page=\(page)") else {
+        // needed workaround, because of the API
+        let keyword = filters.keyword.isEmpty ? "a" : filters.keyword
+        
+        guard let url = URL(string: "\(baseURL)q=\(keyword)&apiKey=\(apiKey)&page=\(page)") else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
         }
@@ -43,8 +46,10 @@ final class AllNewsAPIService: AllNewsAPIServiceProtocol {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
                 var newsResponse = try decoder.decode(NewsResponse.self, from: data)
+                
                 // needed workaround, because of the API
                 newsResponse.articles = newsResponse.articles.filter({ $0.title != "[Removed]" })
+                
                 completion(.success(newsResponse))
             } catch {
                 completion(.failure(error))

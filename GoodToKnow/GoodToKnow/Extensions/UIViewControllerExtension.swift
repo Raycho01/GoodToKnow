@@ -27,10 +27,20 @@ extension UIViewController {
         }
     }
     
-    func showEmptyState(_ show: Bool, with configuration: UIContentUnavailableConfiguration = GeneralEmptyConfiguration.shared) {
+    func showEmptyState(_ show: Bool, with action: UIAction) {
+        let config = createEmptyConfiguration(with: action)
         DispatchQueue.main.async {
-            self.contentUnavailableConfiguration = show ? configuration : nil
+            self.contentUnavailableConfiguration = show ? config : nil
         }
+    }
+    
+    private func createEmptyConfiguration(with action: UIAction) -> UIContentUnavailableConfiguration {
+        var config = GeneralEmptyConfiguration.shared
+        var buttonConfig =  UIButton.Configuration.filled()
+        buttonConfig.title = "Retry"
+        config.button = buttonConfig
+        config.buttonProperties.primaryAction = action
+        return config
     }
     
 }
