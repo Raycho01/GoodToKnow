@@ -17,10 +17,12 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         didSet {
             cursor?.resetCursor()
             fetchNewsInitially()
+            searchFiltersDidUpdate(searchFilters)
         }
     }
     var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "All News", shouldShowSearch: true)
     var newsResponseDidUpdate: ((NewsResponse?) -> Void) = { _ in }
+    var searchFiltersDidUpdate: ((NewsSearchFilters) -> Void) = { _ in }
     var onError: ((Error) -> Void) = { _ in }
     var isCurrenltyLoading: ((Bool) -> Void) = { _ in }
     var tabBarIndex: Int
@@ -37,6 +39,10 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         self.searchFilters = searchFilters
         self.tabBarIndex = tabBarIndex
         fetchNewsInitially()
+    }
+    
+    func changeFilters(_ filters: NewsSearchFilters) {
+        self.searchFilters = filters
     }
     
     func fetchNewsInitially() {
