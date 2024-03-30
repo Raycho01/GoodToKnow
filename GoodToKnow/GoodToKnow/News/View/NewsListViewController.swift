@@ -37,6 +37,8 @@ class NewsListViewController: UIViewController {
     
     private var viewModel: NewsListViewModelProtocol
     private let insetValue: CGFloat = 15
+    private var filterViewHeightConstraint: NSLayoutConstraint = .init()
+    private var filterViewHeight: CGFloat = 40
     
     // MARK: - UI Elements
     
@@ -45,6 +47,14 @@ class NewsListViewController: UIViewController {
                                             viewModel: viewModel.headerModel)
         headerView.delegate = self
         return headerView
+    }()
+    
+    private lazy var filterView: NewsFiltersView = {
+        let view = NewsFiltersView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: filterViewHeightConstraint.constant),
+                                                      filters: NewsSearchFilters())
+        view.delegate = self
+        view.isHidden = true
+        return view
     }()
     
     private lazy var newsTableView: UITableView = {
@@ -104,6 +114,11 @@ class NewsListViewController: UIViewController {
             self?.newsArticles = newsResponse.articles
         }
         
+        viewModel.searchFiltersDidUpdate = { [weak self] filters in
+            self?.updateFilterViewAppearance(with: filters)
+            self?.filterView.udpateFilters(filters)
+        }
+        
         viewModel.onError = { [weak self] error in
             self?.newsArticles = []
             self?.showAlert(with: error)
@@ -124,8 +139,16 @@ class NewsListViewController: UIViewController {
         headerView.anchor(top: view.topAnchor,
                           leading: view.leadingAnchor,
                           trailing: view.trailingAnchor)
-        newsTableView.anchor(top: headerView.bottomAnchor,
-                             topConstant: -insetValue,
+        
+        
+        view.addSubview(filterView)
+        filterView.anchor(top: headerView.bottomAnchor, topConstant: 5,
+                          leading: view.leadingAnchor,
+                          trailing: view.trailingAnchor)
+        filterViewHeightConstraint = NSLayoutConstraint(item: filterView, attribute: .height, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 0, constant: 0)
+        filterViewHeightConstraint.isActive = true
+        
+        newsTableView.anchor(top: filterView.bottomAnchor, topConstant: 5,
                              bottom: view.safeAreaLayoutGuide.bottomAnchor,
                              bottomConstant: -insetValue,
                              leading: view.leadingAnchor,
@@ -154,6 +177,16 @@ class NewsListViewController: UIViewController {
         showEmptyState(newsArticles.count < 1, with: UIAction(handler: { _ in
             self.viewModel.fetchNewsInitially()
         }))
+    }
+    
+    private func updateFilterViewAppearance(with filters: NewsSearchFilters) {
+        if filters.country == "us" && filters.keyword == "a" { // workaround, because of the API
+            filterView.isHidden = true
+            filterViewHeightConstraint.constant = 0
+        } else {
+            filterView.isHidden = false
+            filterViewHeightConstraint.constant = filterViewHeight
+        }
     }
 }
 
@@ -199,7 +232,13 @@ extension NewsListViewController {
 
 extension NewsListViewController: NewsListHeaderDelegate {
     func didSearch(for keyword: String) {
-        viewModel.searchFilters.keyword = keyword
+        viewModel.changeFilters(NewsSearchFilters(keyword: keyword))
+    }
+}
+
+extension NewsListViewController: NewsFiltersViewDelegate {
+    func didTapClearAll() {
+        viewModel.changeFilters(NewsSearchFilters(keyword: "a")) // workaround, because of the API
     }
 }
 

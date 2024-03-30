@@ -9,12 +9,13 @@ import Foundation
 
 protocol NewsListViewModelProtocol {
     
-    var searchFilters: NewsSearchFilters { get set }
     var headerModel: NewsListHeaderViewModel { get set }
     var isCurrenltyLoading: ((Bool) -> Void) { get set }
     var newsResponseDidUpdate : ((NewsResponse?) -> Void) { get set }
+    var searchFiltersDidUpdate : ((NewsSearchFilters) -> Void) { get set }
     var onError: ((Error) -> Void) { get set }
     
+    func changeFilters(_ filters: NewsSearchFilters)
     func fetchNewsInitially()
     func fetchMoreNews()
 }
@@ -31,11 +32,13 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         didSet {
             cursor?.resetCursor()
             fetchNewsInitially()
+            searchFiltersDidUpdate(searchFilters)
         }
     }
     var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "Hot News", shouldShowSearch: false)
     
     var newsResponseDidUpdate: ((NewsResponse?) -> Void) = { _ in }
+    var searchFiltersDidUpdate: ((NewsSearchFilters) -> Void) = { _ in }
     var onError: ((Error) -> Void) = { _ in }
     var isCurrenltyLoading: ((Bool) -> Void) = { _ in }
     var tabBarIndex: Int
@@ -49,6 +52,10 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         self.apiService = apiService
         self.tabBarIndex = tabBarIndex
         fetchNewsInitially()
+    }
+    
+    func changeFilters(_ filters: NewsSearchFilters) {
+        self.searchFilters = filters
     }
     
     func fetchNewsInitially() {

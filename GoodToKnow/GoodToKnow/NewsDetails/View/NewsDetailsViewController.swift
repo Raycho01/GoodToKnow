@@ -183,23 +183,11 @@ final class NewsDetailsViewController: UIViewController {
         titleLabel.text = newsArticle.title
         descriptionLabel.text = newsArticle.description
         contentLabel.text = newsArticle.content
-        setupImageView(with: newsArticle.urlToImage ?? "")
+        imageView.setImage(with: newsArticle.urlToImage ?? "")
     }
     
     private func resizeOriginView() {
         originView.frame = CGRect(x: 0, y: 0, width: vStackView.frame.width, height: 120)
-    }
-    
-    private func setupImageView(with urlString: String) {
-        guard let url = URL(string: urlString) else {
-            return
-        }
-        
-        url.fetchImage { image in
-            DispatchQueue.main.async {
-                self.imageView.image = image
-            }
-        }
     }
     
     @objc private func didTapInternetButton() {
