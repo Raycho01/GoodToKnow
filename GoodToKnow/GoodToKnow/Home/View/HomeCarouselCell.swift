@@ -17,7 +17,7 @@ class HomeCarouselCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = self.frame.height / 8
         view.layer.borderWidth = 1.5
-        view.layer.borderColor = UIColor.MainColors.lightBackground.cgColor
+        view.layer.borderColor = UIColor.MainColors.lightBackground?.cgColor
         view.clipsToBounds = true
         return view
     }()
@@ -32,7 +32,7 @@ class HomeCarouselCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black.withAlphaComponent(0.6)
+        label.textColor = UIColor.MainColors.secondaryText
         label.font = .boldSystemFont(ofSize: 14)
         label.textAlignment = .center
         label.numberOfLines = 0

@@ -40,26 +40,25 @@ final class TabBarController: UITabBarController {
         let hotNewsNav = UINavigationController(rootViewController: hotNewsVC)
         setup(vc: hotNewsNav, title: hotNewsViewModel.headerModel.title, systemImage: "flame")
         
-        let settingsVC = UIViewController()
-        setup(vc: settingsVC, title: "Settings", systemImage: "gearshape")
+        let settingsVC = SettingsViewController()
+        let settingsNav = UINavigationController(rootViewController: settingsVC)
+        setup(vc: settingsNav, title: "Settings", systemImage: "gearshape")
         
         let allNewsVC = NewsListViewController(viewModel: allNewsViewModel)
         let allNewsNav = UINavigationController(rootViewController: allNewsVC)
         setup(vc: allNewsNav, title: allNewsViewModel.headerModel.title, systemImage: "book.pages")
         
-        viewControllers = [homeNav, hotNewsNav, allNewsNav, settingsVC]
+        viewControllers = [homeNav, hotNewsNav, allNewsNav, settingsNav]
     }
     
     private func setupUI() {
-        
         tabBar.tintColor = UIColor.MainColors.accentColor
         tabBar.backgroundColor = UIColor.MainColors.tabBarBackground
-        tabBar.barTintColor = UIColor.MainColors.tabBarBackground
+        tabBar.barTintColor = UIColor.MainColors.primaryText
         tabBar.unselectedItemTintColor = .white
     }
     
     private func setup(vc: UIViewController, title: String, systemImage: String? = nil) {
-        
         vc.tabBarItem.title = title
         if let image = systemImage {
             vc.tabBarItem.image = UIImage(systemName: image)

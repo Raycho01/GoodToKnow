@@ -13,20 +13,19 @@ extension UIColor {
     struct MainColors {
         
         // MARK: - Background
-        static let primaryBackground = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
+        static let primaryBackground = UIColor(named: "primaryBackground")
         static let headerBackground = UIColor.systemGray2
         static let tabBarBackground = UIColor.systemGray2 // UIColor(red: 0.68, green: 0.68, blue: 0.7, alpha: 0.85)
-        static let lightBackground = UIColor(white: 0.95, alpha: 1.0)
-        static let veryLightBackground = UIColor(white: 0.97, alpha: 1.0)
+        static let lightBackground = UIColor(named: "veryLightBackground")
+        static let veryLightBackground = UIColor(named: "veryLightBackground")
 
         
         // MARK: - Text
-        static let primaryText = UIColor.black
+        static let primaryText = UIColor(named: "primaryText")
         static let secondaryText = UIColor.darkGray
         
         // MARK: - Other
         static let accentColor = UIColor(red: 0.07, green: 0.42, blue: 0.87, alpha: 1.0)
-        static let separatorColor = UIColor.lightGray
         static let errorColor = UIColor.red
     }
 }
