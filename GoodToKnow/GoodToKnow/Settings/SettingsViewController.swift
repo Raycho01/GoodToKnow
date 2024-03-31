@@ -10,6 +10,7 @@ import UIKit
 final class SettingsViewController: UIViewController {
     
     private let headerViewModel = NewsListHeaderViewModel(title: "Settings", shouldShowSearch: false)
+    private let userDefaultsManager = UserDefaultsManager.shared
     
     private lazy var headerView: NewsListHeaderView = {
         let headerView = NewsListHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8),
@@ -70,7 +71,7 @@ final class SettingsViewController: UIViewController {
     private lazy var switchButton: UISwitch = {
         let button = UISwitch()
         button.addTarget(self, action: #selector(didTapSwitchButton), for: .touchUpInside)
-        button.isOn = false
+        button.isOn = userDefaultsManager.retrieveInterfaceStyle() == .dark ? true : false
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -121,8 +122,10 @@ final class SettingsViewController: UIViewController {
     @objc private func didTapSwitchButton() {
         if switchButton.isOn {
             view.window?.overrideUserInterfaceStyle = .dark
+            userDefaultsManager.saveInterfaceStyle(.dark)
         } else {
             view.window?.overrideUserInterfaceStyle = .light
+            userDefaultsManager.saveInterfaceStyle(.light)
         }
     }
 }

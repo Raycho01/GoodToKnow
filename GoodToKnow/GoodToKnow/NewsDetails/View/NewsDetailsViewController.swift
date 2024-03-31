@@ -17,7 +17,7 @@ final class NewsDetailsViewController: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = UIColor.MainColors.primaryBackground
         scrollView.insetsLayoutMarginsFromSafeArea = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
@@ -25,7 +25,7 @@ final class NewsDetailsViewController: UIViewController {
     
     private lazy var contentView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -42,7 +42,7 @@ final class NewsDetailsViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black.withAlphaComponent(0.8)
+        label.textColor = UIColor.MainColors.primaryText
         label.font = .boldSystemFont(ofSize: 26)
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -175,7 +175,7 @@ final class NewsDetailsViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = UIColor.MainColors.primaryText
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: internetButton)
     }
     

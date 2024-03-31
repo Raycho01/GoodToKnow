@@ -22,7 +22,7 @@ extension UIColor {
         
         // MARK: - Text
         static let primaryText = UIColor(named: "primaryText")
-        static let secondaryText = UIColor.darkGray
+        static let secondaryText = UIColor(named: "secondaryText")
         
         // MARK: - Other
         static let accentColor = UIColor(red: 0.07, green: 0.42, blue: 0.87, alpha: 1.0)
