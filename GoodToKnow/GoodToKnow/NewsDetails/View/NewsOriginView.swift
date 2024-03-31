@@ -36,7 +36,7 @@ final class NewsOriginView: UIView {
     }
     
     private func setupUI() {
-        backgroundColor = .white
+        backgroundColor = UIColor.veryLightBackground
         layer.cornerRadius = self.frame.height / 8
         setShadow()
         addSubview(vStackView)
@@ -54,12 +54,13 @@ final class NewsOriginView: UIView {
         
         let iconImageView = UIImageView(image: UIImage(systemName: icon))
         iconImageView.contentMode = .scaleAspectFit
-        iconImageView.tintColor = .black
+        iconImageView.tintColor = UIColor.MainColors.primaryText
         iconImageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         rowView.addArrangedSubview(iconImageView)
         
         let firstLabel = UILabel()
         firstLabel.text = firstText
+        firstLabel.textColor = UIColor.MainColors.primaryText
         firstLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         rowView.addArrangedSubview(firstLabel)
         

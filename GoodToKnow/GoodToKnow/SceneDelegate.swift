@@ -23,6 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = viewController
         self.window = window
         window.makeKeyAndVisible()
+        
+        window.overrideUserInterfaceStyle = UserDefaultsManager.shared.retrieveInterfaceStyle()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

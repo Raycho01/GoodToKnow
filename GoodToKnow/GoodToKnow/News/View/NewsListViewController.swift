@@ -63,7 +63,7 @@ class NewsListViewController: UIViewController {
         tableView.dataSource = self
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.register(NewsListTableViewCell.self, forCellReuseIdentifier: NewsListTableViewCell.identifier)
-        tableView.backgroundColor = UIColor.MainColors.primaryBackground
+        tableView.backgroundColor = .clear
         tableView.contentInset = UIEdgeInsets(top: insetValue, left: 0, bottom: insetValue, right: 0)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60
