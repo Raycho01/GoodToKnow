@@ -15,4 +15,12 @@ extension UIStackView {
             $0.isHidden = true
         })
     }
+    
+    func addSeparatorView() {
+        let separator = UIView()
+        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        separator.backgroundColor = .black.withAlphaComponent(0.1)
+        self.addArrangedSubview(separator)
+        separator.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.98).isActive = true
+    }
 }

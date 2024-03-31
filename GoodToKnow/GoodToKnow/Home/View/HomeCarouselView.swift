@@ -32,7 +32,7 @@ final class HomeCarouselView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black.withAlphaComponent(0.5)
+        label.textColor = UIColor.MainColors.secondaryText
         label.font = .systemFont(ofSize: 16)
         label.textAlignment = .left
         label.text = "Countries"

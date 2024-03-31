@@ -31,7 +31,7 @@ final class HomeViewController: UIViewController {
     
     private lazy var contentView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -61,7 +61,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.MainColors.primaryBackground
         view.addSubview(headerView)
         headerView.anchor(top: view.topAnchor,
                           leading: view.leadingAnchor,

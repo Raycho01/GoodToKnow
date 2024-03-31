@@ -56,7 +56,7 @@ final class NewsListHeaderView: UIView {
     
     private lazy var searchButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage.searchIcon, for: .normal)
+        button.setImage(UIImage.searchIcon.withRenderingMode(.alwaysTemplate), for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(didTapSearch), for: .touchUpInside)
         button.tintColor = UIColor.MainColors.primaryText
@@ -98,7 +98,7 @@ final class NewsListHeaderView: UIView {
     }
 
     private func setupUI() {
-        backgroundColor = UIColor.MainColors.tabBarBackground
+        backgroundColor = UIColor.MainColors.headerBackground
         translatesAutoresizingMaskIntoConstraints = false
         self.roundCorners()
     }
