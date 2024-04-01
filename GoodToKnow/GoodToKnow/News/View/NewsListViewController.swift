@@ -98,6 +98,7 @@ class NewsListViewController: UIViewController {
         super.viewDidLoad()
         bindViewModel()
         setupUI()
+        viewModel.fetchNewsInitially()
     }
     
     override func viewWillAppear(_ animated: Bool) {

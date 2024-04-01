@@ -38,7 +38,6 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         self.apiService = apiService
         self.searchFilters = searchFilters
         self.tabBarIndex = tabBarIndex
-        fetchNewsInitially()
     }
     
     func changeFilters(_ filters: NewsSearchFilters) {
