@@ -244,9 +244,9 @@
 				AE24991E2B8B50F400B87E61 /* News */,
 				AE3A91462B611127002B1EC9 /* Helpers */,
 				AE3A91352B5EB84E002B1EC9 /* Extensions */,
+				AECABEAB2B67C1260087D19B /* TabBar */,
 				AE3A91002B5E9CB6002B1EC9 /* AppDelegate.swift */,
 				AE3A91022B5E9CB6002B1EC9 /* SceneDelegate.swift */,
-				AECABEAB2B67C1260087D19B /* TabBar */,
 				AE3A91092B5E9CB7002B1EC9 /* Assets.xcassets */,
 				AE758D042BB0951F005926A6 /* Podfile */,
 				AE758D062BB097D5005926A6 /* Cartfile */,
@@ -354,7 +354,7 @@
 		AE5A30712BB9991500714E23 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				AE5A30722BB9991E00714E23 /* SettingsViewController.swift */,
+				AE7B56A62BBB2DDF00476390 /* View */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -435,6 +435,14 @@
 				AE758CF32BAB351E005926A6 /* mockedCountries.json */,
 			);
 			path = MockedData;
+			sourceTree = "<group>";
+		};
+		AE7B56A62BBB2DDF00476390 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AE5A30722BB9991E00714E23 /* SettingsViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AECABEAB2B67C1260087D19B /* TabBar */ = {
