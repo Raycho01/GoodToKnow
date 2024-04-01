@@ -27,14 +27,14 @@ extension UIViewController {
         }
     }
     
-    func showEmptyState(_ show: Bool, with action: UIAction) {
+    func showEmptyState(_ show: Bool, with action: UIAction?) {
         let config = createEmptyConfiguration(with: action)
         DispatchQueue.main.async {
             self.contentUnavailableConfiguration = show ? config : nil
         }
     }
     
-    private func createEmptyConfiguration(with action: UIAction) -> UIContentUnavailableConfiguration {
+    private func createEmptyConfiguration(with action: UIAction?) -> UIContentUnavailableConfiguration {
         var config = GeneralEmptyConfiguration.shared
         var buttonConfig =  UIButton.Configuration.filled()
         buttonConfig.title = "Retry"

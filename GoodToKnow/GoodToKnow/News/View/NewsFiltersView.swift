@@ -81,19 +81,21 @@ final class NewsFiltersView: UIView {
     private func setupStackView() {
         hStack.removeAllSubviews()
         
-        if filters.country != "us" {
+        if filters.country != "us", !filters.country.isEmpty { // workaround, beacuse of the API
             let countryLabel = createLabel(with: filters.country)
             hStack.addArrangedSubview(countryLabel)
         }
         
-        let keywordLabel = createLabel(with: filters.keyword)
-        hStack.addArrangedSubview(keywordLabel)
+        if filters.keyword != "a", !filters.keyword.isEmpty { // workaround, beacuse of the API
+            let keywordLabel = createLabel(with: filters.keyword)
+            hStack.addArrangedSubview(keywordLabel)
+        }
     }
     
     private func createLabel(with text: String) -> UILabel {
-        let label = UILabel()
+        let label = PaddingLabel()
         label.textColor = UIColor.MainColors.accentColor
-        label.backgroundColor = UIColor.MainColors.accentColor.withAlphaComponent(0.1)
+        label.backgroundColor = UIColor.MainColors.accentColor?.withAlphaComponent(0.2)
         label.textAlignment = .center
         label.layer.cornerRadius = 10
         label.text = text

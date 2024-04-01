@@ -96,6 +96,11 @@ final class NewsListHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func clearSearch() {
+        searchTextField.text = ""
+        search()
+    }
 
     private func setupUI() {
         backgroundColor = UIColor.MainColors.headerBackground
