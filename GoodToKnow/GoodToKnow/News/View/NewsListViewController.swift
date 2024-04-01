@@ -175,12 +175,13 @@ class NewsListViewController: UIViewController {
     
     private func showEmptyViewIfNeeded() {
         showEmptyState(newsArticles.count < 1, with: UIAction(handler: { _ in
+            self.showEmptyState(false, with: nil)
             self.viewModel.fetchNewsInitially()
         }))
     }
     
     private func updateFilterViewAppearance(with filters: NewsSearchFilters) {
-        if filters.country == "us" && filters.keyword == "a" { // workaround, because of the API
+        if filters.country == "us" && (filters.keyword == "a" || filters.keyword.isEmpty) { // workaround, because of the API
             filterView.isHidden = true
             filterViewHeightConstraint.constant = 0
         } else {
@@ -239,6 +240,7 @@ extension NewsListViewController: NewsListHeaderDelegate {
 extension NewsListViewController: NewsFiltersViewDelegate {
     func didTapClearAll() {
         viewModel.changeFilters(NewsSearchFilters(keyword: "a")) // workaround, because of the API
+        headerView.clearSearch()
     }
 }
 
