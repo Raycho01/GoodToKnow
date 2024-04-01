@@ -51,7 +51,6 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
          tabBarIndex: Int) {
         self.apiService = apiService
         self.tabBarIndex = tabBarIndex
-        fetchNewsInitially()
     }
     
     func changeFilters(_ filters: NewsSearchFilters) {
