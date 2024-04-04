@@ -52,9 +52,22 @@ final class TabBarController: UITabBarController {
     }
     
     private func setupUI() {
-        tabBar.tintColor = UIColor.MainColors.accentColor
-        tabBar.backgroundColor = UIColor.MainColors.tabBarBackground
-        tabBar.unselectedItemTintColor = UIColor.MainColors.primaryText
+        let appearance = UITabBarAppearance()
+        appearance.backgroundColor = UIColor.MainColors.tabBarBackground
+        setTabBarItemColors(appearance.stackedLayoutAppearance)
+        setTabBarItemColors(appearance.inlineLayoutAppearance)
+        setTabBarItemColors(appearance.compactInlineLayoutAppearance)
+        
+        tabBar.scrollEdgeAppearance = appearance
+        tabBar.standardAppearance = appearance
+    }
+    
+    private func setTabBarItemColors(_ itemAppearance: UITabBarItemAppearance) {
+        itemAppearance.normal.iconColor = UIColor.MainColors.primaryText
+        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.MainColors.primaryText as Any]
+         
+        itemAppearance.selected.iconColor = UIColor.MainColors.accentColor
+        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.MainColors.accentColor as Any]
     }
     
     private func setup(vc: UIViewController, title: String, systemImage: String? = nil) {
