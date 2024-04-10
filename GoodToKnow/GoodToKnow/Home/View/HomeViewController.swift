@@ -17,6 +17,8 @@ final class HomeViewController: UIViewController {
     private let headerViewModel: NewsListHeaderViewModel
     private let carouselViewModel: HomeCarouselViewModelProtocol
     
+    private var filters = NewsSearchFilters()
+    
     private lazy var headerView: NewsListHeaderView = {
         let headerView = NewsListHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8),
                            viewModel: headerViewModel)
@@ -42,6 +44,11 @@ final class HomeViewController: UIViewController {
                                                                                      height: 100))
         carouselView.delegate = self
         return carouselView
+    }()
+    
+    private lazy var wideRectListView: WideRectListView = {
+        let view = WideRectListView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50), items: [WideRectListViewModel(icon: "eraser", value: "School")])
+        return view
     }()
     
     init(carouselViewModel: HomeCarouselViewModelProtocol = HomeCarouselViewModel(), headerViewModel: NewsListHeaderViewModel) {
@@ -84,10 +91,21 @@ final class HomeViewController: UIViewController {
                                        leading: contentView.leadingAnchor,
                                        trailing: contentView.trailingAnchor)
         countryCarouselView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        
+        contentView.addSubview(wideRectListView)
+        wideRectListView.anchor(top: countryCarouselView.bottomAnchor, topConstant: 20, leading: contentView.leadingAnchor,
+                                trailing: contentView.trailingAnchor)
+        
     }
     
     private func setupNavigationBar() {
         navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    private func navigateToHotNews(with filters: NewsSearchFilters) {
+        guard let tabController = tabBarController as? TabBarController else { return }
+        tabController.hotNewsViewModel.searchFilters = filters
+        tabController.selectedIndex = tabController.hotNewsViewModel.tabBarIndex
     }
 }
 
@@ -96,15 +114,8 @@ extension HomeViewController: NewsListHeaderDelegate {
 }
 
 extension HomeViewController: HomeCarouselViewDelegate {
-    func didTapOnCell(with value: String) {
-        var filters = NewsSearchFilters()
+    func didTapOnCarouselCell(with value: String) {
         filters.country = value
         navigateToHotNews(with: filters)
-    }
-
-    private func navigateToHotNews(with filters: NewsSearchFilters) {
-        guard let tabController = tabBarController as? TabBarController else { return }
-        tabController.hotNewsViewModel.searchFilters = filters
-        tabController.selectedIndex = tabController.hotNewsViewModel.tabBarIndex
     }
 }
