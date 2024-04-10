@@ -10,21 +10,20 @@ import UIKit
 class HomeCarouselCell: UICollectionViewCell {
     
     static let identifier = "HomeCarouselCell"
-    private let cornerRadius: CGFloat = 20
     
     private lazy var imageContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = self.frame.height / 8
-        view.layer.borderWidth = 1.5
-        view.layer.borderColor = UIColor.MainColors.lightBackground?.cgColor
+        view.layer.borderWidth = 0.1
+        view.layer.borderColor = UIColor.MainColors.primaryText?.cgColor
         view.clipsToBounds = true
         return view
     }()
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.alpha = 0.8
         return imageView
@@ -57,19 +56,23 @@ class HomeCarouselCell: UICollectionViewCell {
     private func setupUI() {
         self.backgroundColor = .clear
         
+        self.layer.cornerRadius = self.frame.height / 8
+        self.setShadow()
+        
         addSubview(imageContainerView)
-        imageContainerView.anchor(top: topAnchor,
-                                  leading:leadingAnchor,
+        imageContainerView.anchor(top: topAnchor, bottom: bottomAnchor,
+                                  leading: leadingAnchor,
                                   trailing: trailingAnchor)
         
+        imageContainerView.widthAnchor.constraint(equalTo: imageContainerView.heightAnchor, multiplier: 1).isActive = true
         imageContainerView.addSubview(imageView)
         imageView.fillSuperview(padding: UIEdgeInsets(top: -45, left: -10, bottom: -45, right: -10))
         imageView.centerInSuperview()
         
-        addSubview(titleLabel)
-        titleLabel.anchor(top: imageContainerView.bottomAnchor, topConstant: 10,
-                          bottom: bottomAnchor)
-        titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//        addSubview(titleLabel)
+//        titleLabel.anchor(top: imageContainerView.bottomAnchor, topConstant: 10,
+//                          bottom: bottomAnchor)
+//        titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
 }
 
