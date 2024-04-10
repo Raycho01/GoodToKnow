@@ -9,16 +9,10 @@ import UIKit
 import Combine
 
 protocol HomeCarouselViewDelegate: AnyObject {
-    func didTapOnCell(with value: String, type: HomeCarouselView.HomeCarouselType)
+    func didTapOnCell(with value: String)
 }
 
 final class HomeCarouselView: UIView {
-    
-    enum HomeCarouselType {
-        case country
-        case date
-    }
-    private let type: HomeCarouselType
     
     private var carouselModels: [HomeCarouselModel] = [] {
         didSet {
@@ -33,7 +27,7 @@ final class HomeCarouselView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.MainColors.secondaryText
-        label.font = .systemFont(ofSize: 16)
+        label.font = .boldSystemFont(ofSize: 20)
         label.textAlignment = .left
         label.text = "Countries"
         label.numberOfLines = 0
@@ -44,7 +38,7 @@ final class HomeCarouselView: UIView {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 200, height: 150)
+        layout.itemSize = CGSize(width: 100, height: 70)
         layout.minimumLineSpacing = 20
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
@@ -57,9 +51,8 @@ final class HomeCarouselView: UIView {
         return collectionView
     }()
     
-    init(viewModel: HomeCarouselViewModelProtocol, type: HomeCarouselType, frame: CGRect) {
+    init(viewModel: HomeCarouselViewModelProtocol, frame: CGRect) {
         self.viewModel = viewModel
-        self.type = type
         super.init(frame: frame)
         setupUI()
         bindToViewModel()
@@ -105,6 +98,6 @@ extension HomeCarouselView: UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didTapOnCell(with: carouselModels[indexPath.row].value, type: type)
+        delegate?.didTapOnCell(with: carouselModels[indexPath.row].value)
     }
 }

@@ -14,8 +14,8 @@ protocol HomeCarouselViewModelProtocol {
 
 final class HomeViewController: UIViewController {
     
-    private let carouselViewModel: HomeCarouselViewModelProtocol
     private let headerViewModel: NewsListHeaderViewModel
+    private let carouselViewModel: HomeCarouselViewModelProtocol
     
     private lazy var headerView: NewsListHeaderView = {
         let headerView = NewsListHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8),
@@ -37,16 +37,16 @@ final class HomeViewController: UIViewController {
     }()
     
     private lazy var countryCarouselView: HomeCarouselView = {
-        let carouselView = HomeCarouselView(viewModel: carouselViewModel, type: .country, frame: CGRect(x: 0, y: 0,
+        let carouselView = HomeCarouselView(viewModel: carouselViewModel, frame: CGRect(x: 0, y: 0,
                                                                                      width: view.frame.width,
-                                                                                     height: 200))
+                                                                                     height: 100))
         carouselView.delegate = self
         return carouselView
     }()
     
     init(carouselViewModel: HomeCarouselViewModelProtocol = HomeCarouselViewModel(), headerViewModel: NewsListHeaderViewModel) {
-        self.carouselViewModel = carouselViewModel
         self.headerViewModel = headerViewModel
+        self.carouselViewModel = carouselViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -83,7 +83,7 @@ final class HomeViewController: UIViewController {
         countryCarouselView.anchor(top: contentView.topAnchor, topConstant: 40,
                                        leading: contentView.leadingAnchor,
                                        trailing: contentView.trailingAnchor)
-        countryCarouselView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        countryCarouselView.heightAnchor.constraint(equalToConstant: 120).isActive = true
     }
     
     private func setupNavigationBar() {
@@ -96,17 +96,9 @@ extension HomeViewController: NewsListHeaderDelegate {
 }
 
 extension HomeViewController: HomeCarouselViewDelegate {
-    func didTapOnCell(with value: String, type: HomeCarouselView.HomeCarouselType) {
-        
+    func didTapOnCell(with value: String) {
         var filters = NewsSearchFilters()
-        
-        switch type {
-        case .country:
-            filters.country = value
-        default:
-            break
-        }
-        
+        filters.country = value
         navigateToHotNews(with: filters)
     }
 
