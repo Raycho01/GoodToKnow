@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 protocol HomeCarouselViewDelegate: AnyObject {
-    func didTapOnCell(with value: String)
+    func didTapOnCarouselCell(with value: String)
 }
 
 final class HomeCarouselView: UIView {
@@ -98,6 +98,6 @@ extension HomeCarouselView: UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didTapOnCell(with: carouselModels[indexPath.row].value)
+        delegate?.didTapOnCarouselCell(with: carouselModels[indexPath.row].value)
     }
 }
