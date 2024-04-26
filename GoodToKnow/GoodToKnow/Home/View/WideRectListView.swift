@@ -25,9 +25,9 @@ final class WideRectListView: UIView {
         return stack
     }()
     
-    init(frame: CGRect, items: [WideRectListViewModel]) {
+    init(items: [WideRectListViewModel]) {
         self.items = items
-        super.init(frame: frame)
+        super.init(frame: .zero)
         setupUI()
         setupStackView()
     }
@@ -37,6 +37,7 @@ final class WideRectListView: UIView {
     }
     
     private func setupUI() {
+        addSubview(vStack)
         vStack.fillSuperview()
         vStack.centerInSuperview()
     }

@@ -28,6 +28,7 @@ final class HomeViewController: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
     
@@ -47,7 +48,7 @@ final class HomeViewController: UIViewController {
     }()
     
     private lazy var wideRectListView: WideRectListView = {
-        let view = WideRectListView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50), items: [WideRectListViewModel(icon: "eraser", value: "School")])
+        let view = WideRectListView(items: [WideRectListViewModel(icon: "eraser", value: "School")])
         return view
     }()
     
@@ -95,6 +96,7 @@ final class HomeViewController: UIViewController {
         contentView.addSubview(wideRectListView)
         wideRectListView.anchor(top: countryCarouselView.bottomAnchor, topConstant: 20, leading: contentView.leadingAnchor,
                                 trailing: contentView.trailingAnchor)
+        wideRectListView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
     }
     

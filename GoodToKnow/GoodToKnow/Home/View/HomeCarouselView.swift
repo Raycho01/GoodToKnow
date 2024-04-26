@@ -44,6 +44,7 @@ final class HomeCarouselView: UIView {
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(HomeCarouselCell.self, forCellWithReuseIdentifier: HomeCarouselCell.identifier)
