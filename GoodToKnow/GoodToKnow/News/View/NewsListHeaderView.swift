@@ -157,11 +157,13 @@ final class NewsListHeaderView: UIView {
     }
     
     private func setupNormalState() {
+        animate(from: searchTextField, to: headerTitleLabel)
         hideSearchTextField(true)
         hideHeaderTitleLabel(false)
     }
     
     private func setupSearchingState() {
+        animate(from: headerTitleLabel, to: searchTextField)
         hideHeaderTitleLabel(true)
         hideSearchTextField(false)
     }
@@ -191,6 +193,15 @@ final class NewsListHeaderView: UIView {
         redDotImageView.isHidden = lastSearchedKeyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     
+    private func animate(from view1: UIView, to view2: UIView) {
+        UIView.animate(withDuration: 0.3, animations: {
+            view1.alpha = 0
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.3) {
+                view2.alpha = 1.0
+            }
+        })
+    }
 }
 
 // MARK: UITextFieldDelegate
