@@ -40,9 +40,9 @@
 		AE6A25262BA6F1D000156EE5 /* NewsOriginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25252BA6F1D000156EE5 /* NewsOriginView.swift */; };
 		AE6A25282BA6F84900156EE5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25272BA6F84900156EE5 /* DateExtension.swift */; };
 		AE6A252F2BA8D99100156EE5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A252E2BA8D99100156EE5 /* HomeViewController.swift */; };
-		AE6A25312BA8DEED00156EE5 /* HomeCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25302BA8DEED00156EE5 /* HomeCarouselCell.swift */; };
-		AE758CE52BAB12EE005926A6 /* HomeCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CE42BAB12EE005926A6 /* HomeCarouselView.swift */; };
-		AE758CE82BAB176A005926A6 /* HomeCarouselModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CE72BAB176A005926A6 /* HomeCarouselModel.swift */; };
+		AE6A25312BA8DEED00156EE5 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A25302BA8DEED00156EE5 /* CarouselCell.swift */; };
+		AE758CE52BAB12EE005926A6 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CE42BAB12EE005926A6 /* CarouselView.swift */; };
+		AE758CE82BAB176A005926A6 /* CarouselModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CE72BAB176A005926A6 /* CarouselModel.swift */; };
 		AE758CEB2BAB1CCD005926A6 /* HomeCarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CEA2BAB1CCD005926A6 /* HomeCarouselViewModel.swift */; };
 		AE758CEF2BAB1FFE005926A6 /* HomeMockedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758CEE2BAB1FFE005926A6 /* HomeMockedService.swift */; };
 		AE758CF42BAB351E005926A6 /* mockedCountries.json in Resources */ = {isa = PBXBuildFile; fileRef = AE758CF32BAB351E005926A6 /* mockedCountries.json */; };
@@ -119,9 +119,9 @@
 		AE6A25252BA6F1D000156EE5 /* NewsOriginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsOriginView.swift; sourceTree = "<group>"; };
 		AE6A25272BA6F84900156EE5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		AE6A252E2BA8D99100156EE5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		AE6A25302BA8DEED00156EE5 /* HomeCarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCarouselCell.swift; sourceTree = "<group>"; };
-		AE758CE42BAB12EE005926A6 /* HomeCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCarouselView.swift; sourceTree = "<group>"; };
-		AE758CE72BAB176A005926A6 /* HomeCarouselModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCarouselModel.swift; sourceTree = "<group>"; };
+		AE6A25302BA8DEED00156EE5 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
+		AE758CE42BAB12EE005926A6 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		AE758CE72BAB176A005926A6 /* CarouselModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselModel.swift; sourceTree = "<group>"; };
 		AE758CEA2BAB1CCD005926A6 /* HomeCarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCarouselViewModel.swift; sourceTree = "<group>"; };
 		AE758CEE2BAB1FFE005926A6 /* HomeMockedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMockedService.swift; sourceTree = "<group>"; };
 		AE758CF32BAB351E005926A6 /* mockedCountries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockedCountries.json; sourceTree = "<group>"; };
@@ -397,8 +397,8 @@
 			isa = PBXGroup;
 			children = (
 				AE6A252E2BA8D99100156EE5 /* HomeViewController.swift */,
-				AE758CE42BAB12EE005926A6 /* HomeCarouselView.swift */,
-				AE6A25302BA8DEED00156EE5 /* HomeCarouselCell.swift */,
+				AE758CE42BAB12EE005926A6 /* CarouselView.swift */,
+				AE6A25302BA8DEED00156EE5 /* CarouselCell.swift */,
 				AE9883012BC7014B00C404E8 /* WideRectListView.swift */,
 				AE41441F2BE0F1EA00B4C126 /* CategoryCollectionViewCell.swift */,
 			);
@@ -409,7 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				AE4144212BE107F600B4C126 /* CategoryModel.swift */,
-				AE758CE72BAB176A005926A6 /* HomeCarouselModel.swift */,
+				AE758CE72BAB176A005926A6 /* CarouselModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -729,11 +729,11 @@
 				AE3A91372B5EB86A002B1EC9 /* UIViewExtension.swift in Sources */,
 				AECABEAD2B67C18B0087D19B /* TabBarController.swift in Sources */,
 				AE758CEB2BAB1CCD005926A6 /* HomeCarouselViewModel.swift in Sources */,
-				AE758CE52BAB12EE005926A6 /* HomeCarouselView.swift in Sources */,
+				AE758CE52BAB12EE005926A6 /* CarouselView.swift in Sources */,
 				AE758CFA2BAB4223005926A6 /* UIImageViewExtension.swift in Sources */,
 				AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */,
 				AE758D032BADC43C005926A6 /* GeneralEmptyConfiguration.swift in Sources */,
-				AE758CE82BAB176A005926A6 /* HomeCarouselModel.swift in Sources */,
+				AE758CE82BAB176A005926A6 /* CarouselModel.swift in Sources */,
 				AE4144202BE0F1EA00B4C126 /* CategoryCollectionViewCell.swift in Sources */,
 				AED0A8C92BB8857000F36BA6 /* NewsFiltersView.swift in Sources */,
 				AE3A91052B5E9CB6002B1EC9 /* NewsListViewController.swift in Sources */,
@@ -749,7 +749,7 @@
 				AE3A91322B5EB175002B1EC9 /* NewsArticle.swift in Sources */,
 				AE3A913B2B5FE242002B1EC9 /* HotNewsAPIService.swift in Sources */,
 				AE3A91392B5FBCAD002B1EC9 /* NewsListHeaderView.swift in Sources */,
-				AE6A25312BA8DEED00156EE5 /* HomeCarouselCell.swift in Sources */,
+				AE6A25312BA8DEED00156EE5 /* CarouselCell.swift in Sources */,
 				AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */,
 				AE3A91032B5E9CB6002B1EC9 /* SceneDelegate.swift in Sources */,
 				AE6A25202BA6DFB800156EE5 /* AllNewsViewModel.swift in Sources */,

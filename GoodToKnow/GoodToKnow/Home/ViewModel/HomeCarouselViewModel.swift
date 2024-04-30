@@ -9,14 +9,14 @@ import Combine
 import Foundation
 
 protocol HomeServiceProtocol {
-    typealias HomeDataCompletion = ([HomeCarouselModel]) -> Void
+    typealias HomeDataCompletion = ([CarouselModel]) -> Void
     
-    func fetchHomeCarouselData() -> AnyPublisher<[HomeCarouselModel], Error>
+    func fetchHomeCarouselData() -> AnyPublisher<[CarouselModel], Error>
 }
 
-final class HomeCarouselViewModel: HomeCarouselViewModelProtocol, ObservableObject {
+final class HomeCarouselViewModel: CarouselViewModelProtocol, ObservableObject {
         
-    @Published var carouselModels: [HomeCarouselModel] = []
+    @Published var carouselModels: [CarouselModel] = []
     private var cancellables: Set<AnyCancellable> = []
     
     private let service: HomeServiceProtocol
@@ -26,7 +26,7 @@ final class HomeCarouselViewModel: HomeCarouselViewModelProtocol, ObservableObje
         callService()
     }
     
-    func bind() -> AnyPublisher<[HomeCarouselModel], Never> {
+    func bind() -> AnyPublisher<[CarouselModel], Never> {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         return $carouselModels.eraseToAnyPublisher()

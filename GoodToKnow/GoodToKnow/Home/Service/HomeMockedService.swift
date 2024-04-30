@@ -14,8 +14,8 @@ enum FetchError: Error {
 final class HomeMockedService: HomeServiceProtocol {
     private let resourseName = "mockedCountries"
     
-    func fetchHomeCarouselData() -> AnyPublisher<[HomeCarouselModel], Error> {
-        guard let mockedCountries = BundleManager.shared.getResource(resourceName: resourseName, resultType: [HomeCarouselModel].self) else {
+    func fetchHomeCarouselData() -> AnyPublisher<[CarouselModel], Error> {
+        guard let mockedCountries = BundleManager.shared.getResource(resourceName: resourseName, resultType: [CarouselModel].self) else {
             return Fail(error: FetchError.noMockedDataAvailable)
                 .eraseToAnyPublisher()
         }

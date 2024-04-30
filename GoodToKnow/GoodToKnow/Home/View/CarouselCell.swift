@@ -1,5 +1,5 @@
 //
-//  HomeCell.swift
+//  CarouselCell.swift
 //  GoodToKnow
 //
 //  Created by Raycho Kostadinov on 18.03.24.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class HomeCarouselCell: UICollectionViewCell {
+class CarouselCell: UICollectionViewCell {
     
-    static let identifier = "HomeCarouselCell"
+    static let identifier = "CarouselCell"
     
     private lazy var imageContainerView: UIView = {
         let view = UIView()
@@ -48,7 +48,7 @@ class HomeCarouselCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with model: HomeCarouselModel) {
+    func configure(with model: CarouselModel) {
         imageView.setImage(with: model.image)
         titleLabel.text = model.value
     }
