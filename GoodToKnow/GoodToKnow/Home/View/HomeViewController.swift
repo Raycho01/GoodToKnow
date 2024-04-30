@@ -17,6 +17,8 @@ final class HomeViewController: UIViewController {
     private let headerViewModel: NewsListHeaderViewModel
     private let carouselViewModel: HomeCarouselViewModelProtocol
     
+    private let categories: [Category] = [.business, .entertainment, .general, .health, .science, .sports, .technology]
+    
     private var filters = NewsSearchFilters()
     
     private lazy var headerView: NewsListHeaderView = {
@@ -47,9 +49,22 @@ final class HomeViewController: UIViewController {
         return carouselView
     }()
     
-    private lazy var wideRectListView: WideRectListView = {
-        let view = WideRectListView(items: [WideRectListViewModel(icon: "eraser", value: "School")])
-        return view
+    private lazy var categoryCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.isScrollEnabled = false
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+
+        return collectionView
     }()
     
     init(carouselViewModel: HomeCarouselViewModelProtocol = HomeCarouselViewModel(), headerViewModel: NewsListHeaderViewModel) {
@@ -93,10 +108,11 @@ final class HomeViewController: UIViewController {
                                        trailing: contentView.trailingAnchor)
         countryCarouselView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         
-        contentView.addSubview(wideRectListView)
-        wideRectListView.anchor(top: countryCarouselView.bottomAnchor, topConstant: 20, leading: contentView.leadingAnchor,
-                                trailing: contentView.trailingAnchor)
-        wideRectListView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        contentView.addSubview(categoryCollectionView)
+        categoryCollectionView.anchor(top: countryCarouselView.bottomAnchor, topConstant: 40,
+                                      bottom: contentView.bottomAnchor, bottomConstant: 20,
+                                      leading: contentView.leadingAnchor, leadingConstant: 20,
+                                      trailing: contentView.trailingAnchor, trailingConstant: 20)
         
     }
     
@@ -119,5 +135,20 @@ extension HomeViewController: HomeCarouselViewDelegate {
     func didTapOnCarouselCell(with value: String) {
         filters.country = value
         navigateToHotNews(with: filters)
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        categories.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell
+        else { return UICollectionViewCell() }
+        
+        cell.configure(with: categories[indexPath.row])
+        return cell
     }
 }

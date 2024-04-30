@@ -83,21 +83,10 @@ extension UIView {
         layer.mask = maskLayer
     }
     
-    func roundCornersWithBorder(corners: UIRectCorner = .allCorners, radius: CGFloat = 20) {
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = bounds
-        maskLayer.path = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: radius, height: radius)).cgPath
-        
-        layer.mask = maskLayer
-        
-        // Add border
-        let borderLayer = CAShapeLayer()
-        borderLayer.path = maskLayer.path // Reuse the Bezier path
-        borderLayer.fillColor = UIColor.clear.cgColor
-        borderLayer.strokeColor = UIColor(red:3/255, green:33/255, blue:70/255, alpha: 0.15).cgColor
-        borderLayer.lineWidth = 2
-        borderLayer.frame = bounds
-        layer.addSublayer(borderLayer)
+    func roundCornersWithBorder(radius: CGFloat = 20, color: CGColor = UIColor.black.cgColor, width: CGFloat = 2) {
+        self.layer.cornerRadius = radius
+        self.layer.borderWidth = width
+        self.layer.borderColor = color
     }
     
     func setShadow(with radius: CGFloat = 4) {
