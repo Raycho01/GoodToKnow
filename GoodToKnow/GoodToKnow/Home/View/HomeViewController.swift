@@ -17,10 +17,7 @@ final class HomeViewController: UIViewController {
     
     private let headerViewModel: NewsListHeaderViewModel
     private let carouselViewModel: CarouselViewModelProtocol
-    
     private let categories: [Category] = [.business, .entertainment, .general, .health, .science, .sports, .technology]
-    
-    private var filters = NewsSearchFilters()
     
     private lazy var headerView: NewsListHeaderView = {
         let headerView = NewsListHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8),
@@ -138,7 +135,6 @@ final class HomeViewController: UIViewController {
     
     private func navigateToHotNews() {
         guard let tabController = tabBarController as? TabBarController else { return }
-        tabController.hotNewsViewModel.searchFilters = filters
         tabController.selectedIndex = tabController.hotNewsViewModel.tabBarIndex
     }
 }
@@ -149,7 +145,7 @@ extension HomeViewController: NewsListHeaderDelegate {
 
 extension HomeViewController: CarouselViewDelegate {
     func didTapOnCarouselCell(with value: String) {
-        filters.country = value
+        GlobalSearchFilters.shared.searchFilters.country = value
         navigateToHotNews()
     }
 }
@@ -169,7 +165,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        filters.category = categories[indexPath.row].getModel().value
+        GlobalSearchFilters.shared.searchFilters.category = categories[indexPath.row].getModel().value
         navigateToHotNews()
     }
 }

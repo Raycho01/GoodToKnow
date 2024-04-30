@@ -18,7 +18,11 @@ final class HotNewsAPIService: HotNewsAPIServiceProtocol {
     private let baseURL = "https://newsapi.org/v2/top-headlines?"
     
     func fetchTopHeadlines(page: Int, filters: NewsSearchFilters, completion: @escaping NewsCompletion) {
-        guard let url = URL(string: "\(baseURL)q=\(filters.keyword)&apiKey=\(apiKey)&page=\(page)&country=\(filters.country)&category=\(filters.category)") else {
+        // needed workaround, because of the API
+        let keyword = filters.keyword.isEmpty ? "a" : filters.keyword
+        let country = filters.country.isEmpty ? "us" : filters.country
+        
+        guard let url = URL(string: "\(baseURL)q=\(keyword)&apiKey=\(apiKey)&page=\(page)&country=\(country)&category=\(filters.category)") else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
         }

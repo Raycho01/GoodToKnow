@@ -13,16 +13,14 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
             newsResponseDidUpdate(newsResponse)
         }
     }
-    var searchFilters: NewsSearchFilters {
+    var searchFilters = NewsSearchFilters() {
         didSet {
             cursor?.resetCursor()
             fetchNewsInitially()
-            searchFiltersDidUpdate(searchFilters)
         }
     }
     var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "All News", shouldShowSearch: true)
     var newsResponseDidUpdate: ((NewsResponse?) -> Void) = { _ in }
-    var searchFiltersDidUpdate: ((NewsSearchFilters) -> Void) = { _ in }
     var onError: ((Error) -> Void) = { _ in }
     var isCurrenltyLoading: ((Bool) -> Void) = { _ in }
     var tabBarIndex: Int
@@ -31,17 +29,14 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     private let pageSize = 20
     private let firstPage = 1
     private var cursor: PaginationCursor?
+    private var filtersObserver: SearchFiltersObserver?
     
     init(apiService: AllNewsAPIServiceProtocol = AllNewsAPIService(),
          searchFilters: NewsSearchFilters = NewsSearchFilters(),
          tabBarIndex: Int) {
         self.apiService = apiService
-        self.searchFilters = searchFilters
         self.tabBarIndex = tabBarIndex
-    }
-    
-    func changeFilters(_ filters: NewsSearchFilters) {
-        self.searchFilters = filters
+        setupObserver()
     }
     
     func fetchNewsInitially() {
@@ -82,5 +77,11 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     private func setupCursor() {
         let totalPages = MathHelper.ceilingDivision((newsResponse?.totalResults ?? 0), by: pageSize)
         cursor = PaginationCursor(totalPages: totalPages, pageSize: pageSize)
+    }
+    
+    private func setupObserver() {
+        filtersObserver = SearchFiltersObserver(filtersDidUpdate: { [weak self] filters in
+            self?.searchFilters = filters
+        })
     }
 }
