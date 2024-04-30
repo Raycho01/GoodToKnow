@@ -18,7 +18,7 @@ final class HotNewsAPIService: HotNewsAPIServiceProtocol {
     private let baseURL = "https://newsapi.org/v2/top-headlines?"
     
     func fetchTopHeadlines(page: Int, filters: NewsSearchFilters, completion: @escaping NewsCompletion) {
-        guard let url = URL(string: "\(baseURL)q=\(filters.keyword)&apiKey=\(apiKey)&page=\(page)&country=\(filters.country)") else {
+        guard let url = URL(string: "\(baseURL)q=\(filters.keyword)&apiKey=\(apiKey)&page=\(page)&country=\(filters.country)&category=\(filters.category)") else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
         }
@@ -36,7 +36,7 @@ final class HotNewsAPIService: HotNewsAPIServiceProtocol {
             
             // Print the fetched JSON data
             if let json = String(data: data, encoding: .utf8) {
-                print("Fetched JSON data:", json)
+                print("\n\n\n\n\nJSON Response: \(json)\n\n\n\n\n")
             }
 
             do {

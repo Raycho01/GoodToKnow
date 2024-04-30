@@ -50,12 +50,22 @@ final class HomeViewController: UIViewController {
         return carouselView
     }()
     
+    private lazy var categoriesTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.MainColors.secondaryText
+        label.font = .boldSystemFont(ofSize: 20)
+        label.textAlignment = .left
+        label.text = "Categories"
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        layout.minimumLineSpacing = 20
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
@@ -109,11 +119,16 @@ final class HomeViewController: UIViewController {
                                        trailing: contentView.trailingAnchor)
         countryCarouselView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         
+        contentView.addSubview(categoriesTitleLabel)
+        categoriesTitleLabel.anchor(top: countryCarouselView.bottomAnchor, topConstant: 40,
+                                    leading: contentView.leadingAnchor, leadingConstant: 10,
+                                    trailing: contentView.trailingAnchor, trailingConstant: 10)
+        
         contentView.addSubview(categoryCollectionView)
-        categoryCollectionView.anchor(top: countryCarouselView.bottomAnchor, topConstant: 40,
+        categoryCollectionView.anchor(top: categoriesTitleLabel.bottomAnchor, topConstant: 10,
                                       bottom: contentView.bottomAnchor, bottomConstant: 20,
-                                      leading: contentView.leadingAnchor, leadingConstant: 20,
-                                      trailing: contentView.trailingAnchor, trailingConstant: 20)
+                                      leading: contentView.leadingAnchor, leadingConstant: 10,
+                                      trailing: contentView.trailingAnchor, trailingConstant: 10)
         
     }
     
@@ -121,7 +136,7 @@ final class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    private func navigateToHotNews(with filters: NewsSearchFilters) {
+    private func navigateToHotNews() {
         guard let tabController = tabBarController as? TabBarController else { return }
         tabController.hotNewsViewModel.searchFilters = filters
         tabController.selectedIndex = tabController.hotNewsViewModel.tabBarIndex
@@ -135,7 +150,7 @@ extension HomeViewController: NewsListHeaderDelegate {
 extension HomeViewController: CarouselViewDelegate {
     func didTapOnCarouselCell(with value: String) {
         filters.country = value
-        navigateToHotNews(with: filters)
+        navigateToHotNews()
     }
 }
 
@@ -151,5 +166,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.configure(with: categories[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        filters.category = categories[indexPath.row].getModel().value
+        navigateToHotNews()
     }
 }

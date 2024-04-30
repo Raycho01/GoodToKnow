@@ -10,4 +10,5 @@ import Foundation
 struct NewsSearchFilters {
     var keyword: String = ""
     var country: String = "us" // workaround, because of the API
+    var category: String = ""
 }

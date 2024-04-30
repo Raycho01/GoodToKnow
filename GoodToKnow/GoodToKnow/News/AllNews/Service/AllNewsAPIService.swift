@@ -39,7 +39,7 @@ final class AllNewsAPIService: AllNewsAPIServiceProtocol {
             
             // Print the JSON response string for debugging
             if let jsonString = String(data: data, encoding: .utf8) {
-                print("JSON Response: \(jsonString)")
+                print("\n\n\n\n\nJSON Response: \(jsonString)\n\n\n\n\n")
             }
 
             do {
