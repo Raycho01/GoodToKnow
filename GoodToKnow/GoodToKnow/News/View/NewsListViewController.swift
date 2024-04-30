@@ -35,6 +35,8 @@ class NewsListViewController: UIViewController {
         }
     }
     
+    private var filtersObserver: SearchFiltersObserver?
+    
     private var viewModel: NewsListViewModelProtocol
     private let insetValue: CGFloat = 15
     private var filterViewHeightConstraint: NSLayoutConstraint = .init()
@@ -50,8 +52,7 @@ class NewsListViewController: UIViewController {
     }()
     
     private lazy var filterView: NewsFiltersView = {
-        let view = NewsFiltersView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: filterViewHeightConstraint.constant),
-                                                      filters: NewsSearchFilters())
+        let view = NewsFiltersView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: filterViewHeightConstraint.constant))
         view.delegate = self
         view.isHidden = true
         return view
@@ -99,6 +100,7 @@ class NewsListViewController: UIViewController {
         bindViewModel()
         setupUI()
         viewModel.fetchNewsInitially()
+        setupObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,11 +115,6 @@ class NewsListViewController: UIViewController {
         viewModel.newsResponseDidUpdate = { [weak self] newsResponse in
             guard let newsResponse = newsResponse else { return }
             self?.newsArticles = newsResponse.articles
-        }
-        
-        viewModel.searchFiltersDidUpdate = { [weak self] filters in
-            self?.filterView.udpateFilters(filters)
-            self?.updateFilterViewAppearance(with: filters)
         }
         
         viewModel.onError = { [weak self] error in
@@ -190,6 +187,12 @@ class NewsListViewController: UIViewController {
             filterViewHeightConstraint.constant = filterViewHeight
         }
     }
+    
+    private func setupObserver() {
+        filtersObserver = SearchFiltersObserver(filtersDidUpdate: { [weak self] filters in
+            self?.updateFilterViewAppearance(with: filters)
+        })
+    }
 }
 
 // MARK: - UITableView delegate and data source
@@ -234,13 +237,13 @@ extension NewsListViewController {
 
 extension NewsListViewController: NewsListHeaderDelegate {
     func didSearch(for keyword: String) {
-        viewModel.changeFilters(NewsSearchFilters(keyword: keyword))
+        GlobalSearchFilters.shared.searchFilters.keyword = keyword
     }
 }
 
 extension NewsListViewController: NewsFiltersViewDelegate {
     func didTapClearAll() {
-        viewModel.changeFilters(NewsSearchFilters(keyword: "a")) // workaround, because of the API
+        GlobalSearchFilters.shared.searchFilters = NewsSearchFilters()
         headerView.clearSearch()
     }
 }

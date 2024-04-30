@@ -13,14 +13,9 @@ protocol NewsFiltersViewDelegate: AnyObject {
 
 final class NewsFiltersView: UIView {
     
-    private var filters: NewsSearchFilters {
-        didSet {
-            setupStackView()
-        }
-    }
-    
     private let initialFrame: CGRect
     
+    private var filtersObserver: SearchFiltersObserver?
     weak var delegate: NewsFiltersViewDelegate?
     
     private lazy var clearAllButton: UIButton = {
@@ -51,19 +46,21 @@ final class NewsFiltersView: UIView {
         return view
     }()
     
-    init(frame: CGRect, filters: NewsSearchFilters) {
-        self.filters = filters
+    override init(frame: CGRect) {
         self.initialFrame = frame
         super.init(frame: frame)
         setupUI()
+        setupObserver()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func udpateFilters(_ filters: NewsSearchFilters) {
-        self.filters = filters
+    private func setupObserver() {
+        filtersObserver = SearchFiltersObserver(filtersDidUpdate: { [weak self] filters in
+            self?.setupStackView(with: filters)
+        })
     }
     
     private func setupUI() {
@@ -78,7 +75,7 @@ final class NewsFiltersView: UIView {
         spacerView.anchor(top: topAnchor, bottom: bottomAnchor, leading: hStack.trailingAnchor, leadingConstant: 5, trailing: trailingAnchor)
     }
     
-    private func setupStackView() {
+    private func setupStackView(with filters: NewsSearchFilters) {
         hStack.removeAllSubviews()
         
         if filters.country != "us", !filters.country.isEmpty { // workaround, beacuse of the API
