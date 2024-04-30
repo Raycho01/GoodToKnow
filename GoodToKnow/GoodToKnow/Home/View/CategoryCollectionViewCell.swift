@@ -31,7 +31,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.setDimensions(width: UIScreen.main.bounds.width / 2.8, height: UIScreen.main.bounds.width / 6)
+        imageView.setDimensions(width: UIScreen.main.bounds.width / 3.6, height: UIScreen.main.bounds.width / 6)
         imageView.tintColor = UIColor.MainColors.primaryText
         return imageView
     }()
@@ -63,14 +63,13 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        self.setShadow()
         self.backgroundColor = .clear
         addSubview(wrapperView)
         wrapperView.fillSuperview()
         wrapperView.centerInSuperview()
         
         wrapperView.addSubview(vStack)
-        vStack.fillSuperview(padding: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        vStack.fillSuperview()
         vStack.addArrangedSubview(imageView)
         vStack.addArrangedSubview(titleLabel)
     }

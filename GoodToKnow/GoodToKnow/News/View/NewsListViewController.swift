@@ -116,8 +116,8 @@ class NewsListViewController: UIViewController {
         }
         
         viewModel.searchFiltersDidUpdate = { [weak self] filters in
-            self?.updateFilterViewAppearance(with: filters)
             self?.filterView.udpateFilters(filters)
+            self?.updateFilterViewAppearance(with: filters)
         }
         
         viewModel.onError = { [weak self] error in
@@ -182,7 +182,7 @@ class NewsListViewController: UIViewController {
     }
     
     private func updateFilterViewAppearance(with filters: NewsSearchFilters) {
-        if filters.country == "us" && (filters.keyword == "a" || filters.keyword.isEmpty) { // workaround, because of the API
+        if filters.country.isEmpty && filters.keyword.isEmpty && filters.category.isEmpty {
             filterView.isHidden = true
             filterViewHeightConstraint.constant = 0
         } else {

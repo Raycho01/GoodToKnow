@@ -90,6 +90,11 @@ final class NewsFiltersView: UIView {
             let keywordLabel = createLabel(with: filters.keyword)
             hStack.addArrangedSubview(keywordLabel)
         }
+        
+        if !filters.category.isEmpty {
+            let categoryLabel = createLabel(with: filters.category)
+            hStack.addArrangedSubview(categoryLabel)
+        }
     }
     
     private func createLabel(with text: String) -> UILabel {
