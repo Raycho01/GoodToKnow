@@ -29,7 +29,7 @@ final class CarouselView: UIView {
         label.textColor = UIColor.MainColors.secondaryText
         label.font = .boldSystemFont(ofSize: 20)
         label.textAlignment = .left
-        label.text = "Countries"
+        label.text = viewModel.title
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

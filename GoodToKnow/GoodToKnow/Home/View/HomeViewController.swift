@@ -9,6 +9,7 @@ import UIKit
 import Combine
 
 protocol CarouselViewModelProtocol {
+    var title: String { get }
     func bind() -> AnyPublisher<[CarouselModel], Never>
 }
 
