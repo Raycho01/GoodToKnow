@@ -8,14 +8,14 @@
 import UIKit
 import Combine
 
-protocol HomeCarouselViewModelProtocol {
-    func bind() -> AnyPublisher<[HomeCarouselModel], Never>
+protocol CarouselViewModelProtocol {
+    func bind() -> AnyPublisher<[CarouselModel], Never>
 }
 
 final class HomeViewController: UIViewController {
     
     private let headerViewModel: NewsListHeaderViewModel
-    private let carouselViewModel: HomeCarouselViewModelProtocol
+    private let carouselViewModel: CarouselViewModelProtocol
     
     private let categories: [Category] = [.business, .entertainment, .general, .health, .science, .sports, .technology]
     
@@ -41,8 +41,8 @@ final class HomeViewController: UIViewController {
         return view
     }()
     
-    private lazy var countryCarouselView: HomeCarouselView = {
-        let carouselView = HomeCarouselView(viewModel: carouselViewModel, frame: CGRect(x: 0, y: 0,
+    private lazy var countryCarouselView: CarouselView = {
+        let carouselView = CarouselView(viewModel: carouselViewModel, frame: CGRect(x: 0, y: 0,
                                                                                      width: view.frame.width,
                                                                                      height: 100))
         carouselView.delegate = self
@@ -67,7 +67,7 @@ final class HomeViewController: UIViewController {
         return collectionView
     }()
     
-    init(carouselViewModel: HomeCarouselViewModelProtocol = HomeCarouselViewModel(), headerViewModel: NewsListHeaderViewModel) {
+    init(carouselViewModel: CarouselViewModelProtocol = HomeCarouselViewModel(), headerViewModel: NewsListHeaderViewModel) {
         self.headerViewModel = headerViewModel
         self.carouselViewModel = carouselViewModel
         super.init(nibName: nil, bundle: nil)
@@ -131,7 +131,7 @@ extension HomeViewController: NewsListHeaderDelegate {
     func didSearch(for keyword: String) {}
 }
 
-extension HomeViewController: HomeCarouselViewDelegate {
+extension HomeViewController: CarouselViewDelegate {
     func didTapOnCarouselCell(with value: String) {
         filters.country = value
         navigateToHotNews(with: filters)

@@ -1,5 +1,5 @@
 //
-//  HomeCarouselView.swift
+//  CarouselView.swift
 //  GoodToKnow
 //
 //  Created by Raycho Kostadinov on 20.03.24.
@@ -8,21 +8,21 @@
 import UIKit
 import Combine
 
-protocol HomeCarouselViewDelegate: AnyObject {
+protocol CarouselViewDelegate: AnyObject {
     func didTapOnCarouselCell(with value: String)
 }
 
-final class HomeCarouselView: UIView {
+final class CarouselView: UIView {
     
-    private var carouselModels: [HomeCarouselModel] = [] {
+    private var carouselModels: [CarouselModel] = [] {
         didSet {
             collectionView.reloadData()
         }
     }
     private var cancellables: [AnyCancellable] = []
     
-    private let viewModel: HomeCarouselViewModelProtocol
-    weak var delegate: HomeCarouselViewDelegate?
+    private let viewModel: CarouselViewModelProtocol
+    weak var delegate: CarouselViewDelegate?
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -47,12 +47,12 @@ final class HomeCarouselView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(HomeCarouselCell.self, forCellWithReuseIdentifier: HomeCarouselCell.identifier)
+        collectionView.register(CarouselCell.self, forCellWithReuseIdentifier: CarouselCell.identifier)
 
         return collectionView
     }()
     
-    init(viewModel: HomeCarouselViewModelProtocol, frame: CGRect) {
+    init(viewModel: CarouselViewModelProtocol, frame: CGRect) {
         self.viewModel = viewModel
         super.init(frame: frame)
         setupUI()
@@ -84,14 +84,14 @@ final class HomeCarouselView: UIView {
     }
 }
 
-extension HomeCarouselView: UICollectionViewDataSource, UICollectionViewDelegate {
+extension CarouselView: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         carouselModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCarouselCell.identifier, for: indexPath) as? HomeCarouselCell 
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCell.identifier, for: indexPath) as? CarouselCell 
         else { return UICollectionViewCell() }
         
         cell.configure(with: carouselModels[indexPath.row])
