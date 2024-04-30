@@ -29,6 +29,8 @@
 		AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91402B610C99002B1EC9 /* MathHelper.swift */; };
 		AE3A91482B6113BE002B1EC9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */; };
 		AE3A914E2B613EBA002B1EC9 /* CountriesDropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A914D2B613EBA002B1EC9 /* CountriesDropdown.swift */; };
+		AE4144202BE0F1EA00B4C126 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE41441F2BE0F1EA00B4C126 /* CategoryCollectionViewCell.swift */; };
+		AE4144222BE107F600B4C126 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4144212BE107F600B4C126 /* CategoryModel.swift */; };
 		AE5A30732BB9991E00714E23 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A30722BB9991E00714E23 /* SettingsViewController.swift */; };
 		AE5A30752BB9C66100714E23 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A30742BB9C66100714E23 /* UserDefaultsManager.swift */; };
 		AE5A30792BBA94B400714E23 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5A30782BBA94B400714E23 /* PaddingLabel.swift */; };
@@ -106,6 +108,8 @@
 		AE3A91402B610C99002B1EC9 /* MathHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathHelper.swift; sourceTree = "<group>"; };
 		AE3A91472B6113BE002B1EC9 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		AE3A914D2B613EBA002B1EC9 /* CountriesDropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDropdown.swift; sourceTree = "<group>"; };
+		AE41441F2BE0F1EA00B4C126 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		AE4144212BE107F600B4C126 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		AE5A30722BB9991E00714E23 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AE5A30742BB9C66100714E23 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		AE5A30782BBA94B400714E23 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
@@ -396,6 +400,7 @@
 				AE758CE42BAB12EE005926A6 /* HomeCarouselView.swift */,
 				AE6A25302BA8DEED00156EE5 /* HomeCarouselCell.swift */,
 				AE9883012BC7014B00C404E8 /* WideRectListView.swift */,
+				AE41441F2BE0F1EA00B4C126 /* CategoryCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 		AE758CE62BAB1752005926A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AE4144212BE107F600B4C126 /* CategoryModel.swift */,
 				AE758CE72BAB176A005926A6 /* HomeCarouselModel.swift */,
 			);
 			path = Model;
@@ -728,6 +734,7 @@
 				AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */,
 				AE758D032BADC43C005926A6 /* GeneralEmptyConfiguration.swift in Sources */,
 				AE758CE82BAB176A005926A6 /* HomeCarouselModel.swift in Sources */,
+				AE4144202BE0F1EA00B4C126 /* CategoryCollectionViewCell.swift in Sources */,
 				AED0A8C92BB8857000F36BA6 /* NewsFiltersView.swift in Sources */,
 				AE3A91052B5E9CB6002B1EC9 /* NewsListViewController.swift in Sources */,
 				AE6A252F2BA8D99100156EE5 /* HomeViewController.swift in Sources */,
@@ -735,6 +742,7 @@
 				AE3A91342B5EB2B4002B1EC9 /* HotNewsViewModel.swift in Sources */,
 				AE5A30732BB9991E00714E23 /* SettingsViewController.swift in Sources */,
 				AE758CFE2BACC357005926A6 /* AlertPopupAction.swift in Sources */,
+				AE4144222BE107F600B4C126 /* CategoryModel.swift in Sources */,
 				AE3A91012B5E9CB6002B1EC9 /* AppDelegate.swift in Sources */,
 				AE758CF62BAB359C005926A6 /* BundleManager.swift in Sources */,
 				AED0A8CB2BB88C6F00F36BA6 /* URLExtension.swift in Sources */,
