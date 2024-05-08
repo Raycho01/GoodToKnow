@@ -31,10 +31,10 @@ final class TabBarController: UITabBarController {
 
     private func setupViewControllers() {
         
-        let homeHeaderModel = NewsListHeaderViewModel(title: "Home", shouldShowSearch: false)
+        let homeHeaderModel = NewsListHeaderViewModel(title: Strings.ScreenTitles.home, shouldShowSearch: false)
         let homeVC = HomeViewController(headerViewModel: homeHeaderModel)
         let homeNav = UINavigationController(rootViewController: homeVC)
-        setup(vc: homeNav, title: "Home", systemImage: "house")
+        setup(vc: homeNav, title: Strings.ScreenTitles.home, systemImage: "house")
         
         let hotNewsVC = NewsListViewController(viewModel: hotNewsViewModel)
         let hotNewsNav = UINavigationController(rootViewController: hotNewsVC)
@@ -42,7 +42,7 @@ final class TabBarController: UITabBarController {
         
         let settingsVC = SettingsViewController()
         let settingsNav = UINavigationController(rootViewController: settingsVC)
-        setup(vc: settingsNav, title: "Settings", systemImage: "gearshape")
+        setup(vc: settingsNav, title: Strings.ScreenTitles.settings, systemImage: "gearshape")
         
         let allNewsVC = NewsListViewController(viewModel: allNewsViewModel)
         let allNewsNav = UINavigationController(rootViewController: allNewsVC)

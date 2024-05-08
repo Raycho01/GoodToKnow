@@ -52,7 +52,7 @@ final class HomeViewController: UIViewController {
         label.textColor = UIColor.MainColors.secondaryText
         label.font = .boldSystemFont(ofSize: 20)
         label.textAlignment = .left
-        label.text = "Categories"
+        label.text = Strings.SectionTitles.categories
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

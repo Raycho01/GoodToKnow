@@ -1,0 +1,33 @@
+/* 
+ Localizable.strings
+ GoodToKnow
+
+ Created by Raycho Kostadinov on 8.05.24.
+ */
+
+// MARK: Screen titles
+"home_title" = "Начало";
+"hot_news_title" = "Горещи Новини";
+"all_news_title" = "Всички Новини";
+"settings_title" = "Настройки";
+
+// MARK: Section titles
+"countires_title" = "Държави";
+"categories_title" = "Категории";
+
+// MARK: Categories
+"business_category" = "Бизнес";
+"entertainment_category" = "Забавление";
+"general_category" = "Общи";
+"health_category" = "Здраве";
+"science_category" = "Наука";
+"sports_category" = "Спортове";
+"technology_category" = "Технология";
+
+// MARK: NewsDetails
+"origin_author" = "Автор:";
+"origin_source" = "Източник:";
+"origin_published" = "Публикувана на:";
+
+// MARK: Settings
+"dark_mode" = "Тъмен режим";

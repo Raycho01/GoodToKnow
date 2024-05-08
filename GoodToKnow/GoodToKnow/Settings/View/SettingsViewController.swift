@@ -9,7 +9,7 @@ import UIKit
 
 final class SettingsViewController: UIViewController {
     
-    private let headerViewModel = NewsListHeaderViewModel(title: "Settings", shouldShowSearch: false)
+    private let headerViewModel = NewsListHeaderViewModel(title: Strings.ScreenTitles.settings, shouldShowSearch: false)
     private let userDefaultsManager = UserDefaultsManager.shared
     
     private lazy var headerView: NewsListHeaderView = {
@@ -59,7 +59,7 @@ final class SettingsViewController: UIViewController {
     
     private lazy var switchLabel: UILabel = {
         let label = UILabel()
-        label.text = "Dark mode"
+        label.text = Strings.Settings.darkMode
         label.font = .systemFont(ofSize: 18)
         label.textColor = UIColor.MainColors.primaryText
         label.textAlignment = .left

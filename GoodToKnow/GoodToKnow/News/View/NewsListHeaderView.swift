@@ -112,6 +112,7 @@ final class NewsListHeaderView: UIView {
         headerTitleLabel.centerInSuperview()
         headerTitleLabel.anchor(top: containerView.topAnchor,
                                 bottom: containerView.bottomAnchor)
+        headerTitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: containerView.leadingAnchor).isActive = true
         
         containerView.addSubview(searchTextField)
         searchTextField.centerInSuperview()
@@ -127,6 +128,7 @@ final class NewsListHeaderView: UIView {
                                 bottom: containerView.bottomAnchor,
                                 trailing: containerView.trailingAnchor)
             searchButton.setDimensions(width: 30, height: 30)
+            searchButton.leadingAnchor.constraint(greaterThanOrEqualTo: headerTitleLabel.trailingAnchor).isActive = true
             searchButton.isHidden = false
             searchButton.addSubview(redDotImageView)
             redDotImageView.anchor(top: searchButton.topAnchor,

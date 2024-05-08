@@ -58,6 +58,8 @@
 		AE758D032BADC43C005926A6 /* GeneralEmptyConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758D022BADC43C005926A6 /* GeneralEmptyConfiguration.swift */; };
 		AE758D052BB0951F005926A6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = AE758D042BB0951F005926A6 /* Podfile */; };
 		AE758D072BB097D5005926A6 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = AE758D062BB097D5005926A6 /* Cartfile */; };
+		AE9798A82BEB83B20049A5C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE9798A62BEB83B20049A5C9 /* Localizable.strings */; };
+		AE9798AF2BEB94750049A5C9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9798AE2BEB94750049A5C9 /* Strings.swift */; };
 		AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */; };
 		AECABEAD2B67C18B0087D19B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECABEAC2B67C18B0087D19B /* TabBarController.swift */; };
 		AECABEAF2B67E6270087D19B /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECABEAE2B67E6270087D19B /* UIFontExtension.swift */; };
@@ -139,6 +141,10 @@
 		AE758D022BADC43C005926A6 /* GeneralEmptyConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralEmptyConfiguration.swift; sourceTree = "<group>"; };
 		AE758D042BB0951F005926A6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		AE758D062BB097D5005926A6 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
+		AE9798A32BEB82200049A5C9 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		AE9798A72BEB83B20049A5C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AE9798AD2BEB88CE0049A5C9 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AE9798AE2BEB94750049A5C9 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchFilters.swift; sourceTree = "<group>"; };
 		AECABEAC2B67C18B0087D19B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		AECABEAE2B67E6270087D19B /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
@@ -262,6 +268,7 @@
 				AE758D062BB097D5005926A6 /* Cartfile */,
 				AE3A910B2B5E9CB7002B1EC9 /* LaunchScreen.storyboard */,
 				AE3A910E2B5E9CB7002B1EC9 /* Info.plist */,
+				AE9798A62BEB83B20049A5C9 /* Localizable.strings */,
 			);
 			path = GoodToKnow;
 			sourceTree = "<group>";
@@ -360,6 +367,7 @@
 				AE5A30782BBA94B400714E23 /* PaddingLabel.swift */,
 				AE4144252BE139A400B4C126 /* SearchFiltersObserver.swift */,
 				AE4144272BE13E3200B4C126 /* GlobalSearchFilters.swift */,
+				AE9798AE2BEB94750049A5C9 /* Strings.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -569,6 +577,7 @@
 			knownRegions = (
 				en,
 				Base,
+				bg,
 			);
 			mainGroup = AE3A90F42B5E9CB6002B1EC9;
 			productRefGroup = AE3A90FE2B5E9CB6002B1EC9 /* Products */;
@@ -588,6 +597,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE758D072BB097D5005926A6 /* Cartfile in Resources */,
+				AE9798A82BEB83B20049A5C9 /* Localizable.strings in Resources */,
 				AE758CF42BAB351E005926A6 /* mockedCountries.json in Resources */,
 				AE3A910D2B5E9CB7002B1EC9 /* LaunchScreen.storyboard in Resources */,
 				AE758D052BB0951F005926A6 /* Podfile in Resources */,
@@ -738,6 +748,7 @@
 				AE758CEB2BAB1CCD005926A6 /* HomeCarouselViewModel.swift in Sources */,
 				AE758CE52BAB12EE005926A6 /* CarouselView.swift in Sources */,
 				AE758CFA2BAB4223005926A6 /* UIImageViewExtension.swift in Sources */,
+				AE9798AF2BEB94750049A5C9 /* Strings.swift in Sources */,
 				AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */,
 				AE758D032BADC43C005926A6 /* GeneralEmptyConfiguration.swift in Sources */,
 				AE758CE82BAB176A005926A6 /* CarouselModel.swift in Sources */,
@@ -805,8 +816,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				AE3A910C2B5E9CB7002B1EC9 /* Base */,
+				AE9798A32BEB82200049A5C9 /* bg */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AE9798A62BEB83B20049A5C9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE9798A72BEB83B20049A5C9 /* en */,
+				AE9798AD2BEB88CE0049A5C9 /* bg */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -817,6 +838,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -880,6 +902,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
