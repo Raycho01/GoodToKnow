@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  GoodToKnow
+
+  Created by Raycho Kostadinov on 8.05.24.
+  
+*/
+
+// MARK: Screen titles
+"home_title" = "Home";
+"hot_news_title" = "Hot News";
+"all_news_title" = "All News";
+"settings_title" = "Settings";
+
+// MARK: Section titles
+"countires_title" = "Countries";
+"categories_title" = "Categories";
+
+// MARK: Categories
+"business_category" = "Business";
+"entertainment_category" = "Entertainment";
+"general_category" = "General";
+"health_category" = "Health";
+"science_category" = "Science";
+"sports_category" = "Sports";
+"technology_category" = "Technology";
+
+// MARK: NewsDetails
+"origin_author" = "Author:";
+"origin_source" = "Source:";
+"origin_published" = "Published at:";
+
+// MARK: Settings
+"dark_mode" = "Dark mode";

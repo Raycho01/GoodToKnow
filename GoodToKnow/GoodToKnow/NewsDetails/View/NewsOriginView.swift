@@ -42,9 +42,9 @@ final class NewsOriginView: UIView {
         addSubview(vStackView)
         vStackView.fillSuperview(padding: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         
-        addRow(icon: "person.fill", firstText: "Author:", secondText: author, separator: true)
-        addRow(icon: "link.circle", firstText: "Source:", secondText: source, separator: true)
-        addRow(icon: "calendar", firstText: "Published at:", secondText: publishedAt)
+        addRow(icon: "person.fill", firstText: Strings.NewsDetails.originAuthor, secondText: author, separator: true)
+        addRow(icon: "link.circle", firstText: Strings.NewsDetails.originSource, secondText: source, separator: true)
+        addRow(icon: "calendar", firstText: Strings.NewsDetails.originPublished, secondText: publishedAt)
     }
     
     private func addRow(icon: String, firstText: String, secondText: String, separator: Bool = false) {

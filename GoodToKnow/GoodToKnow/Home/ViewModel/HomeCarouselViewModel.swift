@@ -15,7 +15,7 @@ protocol HomeServiceProtocol {
 }
 
 final class HomeCarouselViewModel: CarouselViewModelProtocol, ObservableObject {
-    var title: String = "Countries"
+    var title: String = Strings.SectionTitles.countries
     @Published var carouselModels: [CarouselModel] = []
     private var cancellables: Set<AnyCancellable> = []
     

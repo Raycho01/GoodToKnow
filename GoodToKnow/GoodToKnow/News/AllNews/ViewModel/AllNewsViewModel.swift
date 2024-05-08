@@ -19,7 +19,7 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
             fetchNewsInitially()
         }
     }
-    var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "All News", shouldShowSearch: true)
+    var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: Strings.ScreenTitles.allNews, shouldShowSearch: true)
     var newsResponseDidUpdate: ((NewsResponse?) -> Void) = { _ in }
     var onError: ((Error) -> Void) = { _ in }
     var isCurrenltyLoading: ((Bool) -> Void) = { _ in }
