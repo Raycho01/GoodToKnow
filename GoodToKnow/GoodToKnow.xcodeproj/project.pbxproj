@@ -60,6 +60,9 @@
 		AE758D072BB097D5005926A6 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = AE758D062BB097D5005926A6 /* Cartfile */; };
 		AE9798A82BEB83B20049A5C9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE9798A62BEB83B20049A5C9 /* Localizable.strings */; };
 		AE9798AF2BEB94750049A5C9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9798AE2BEB94750049A5C9 /* Strings.swift */; };
+		AE9798B12BEBB7120049A5C9 /* DarkModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9798B02BEBB7120049A5C9 /* DarkModeView.swift */; };
+		AE9798B32BEBB8C00049A5C9 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9798B22BEBB8C00049A5C9 /* LanguageView.swift */; };
+		AE9798B52BEBD5B50049A5C9 /* AppLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9798B42BEBD5B50049A5C9 /* AppLanguages.swift */; };
 		AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */; };
 		AECABEAD2B67C18B0087D19B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECABEAC2B67C18B0087D19B /* TabBarController.swift */; };
 		AECABEAF2B67E6270087D19B /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECABEAE2B67E6270087D19B /* UIFontExtension.swift */; };
@@ -145,6 +148,9 @@
 		AE9798A72BEB83B20049A5C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AE9798AD2BEB88CE0049A5C9 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AE9798AE2BEB94750049A5C9 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		AE9798B02BEBB7120049A5C9 /* DarkModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeView.swift; sourceTree = "<group>"; };
+		AE9798B22BEBB8C00049A5C9 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
+		AE9798B42BEBD5B50049A5C9 /* AppLanguages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguages.swift; sourceTree = "<group>"; };
 		AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchFilters.swift; sourceTree = "<group>"; };
 		AECABEAC2B67C18B0087D19B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		AECABEAE2B67E6270087D19B /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
@@ -368,6 +374,7 @@
 				AE4144252BE139A400B4C126 /* SearchFiltersObserver.swift */,
 				AE4144272BE13E3200B4C126 /* GlobalSearchFilters.swift */,
 				AE9798AE2BEB94750049A5C9 /* Strings.swift */,
+				AE9798B42BEBD5B50049A5C9 /* AppLanguages.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -464,6 +471,8 @@
 			isa = PBXGroup;
 			children = (
 				AE5A30722BB9991E00714E23 /* SettingsViewController.swift */,
+				AE9798B02BEBB7120049A5C9 /* DarkModeView.swift */,
+				AE9798B22BEBB8C00049A5C9 /* LanguageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -732,6 +741,7 @@
 				AE2499222B8B7F5E00B87E61 /* NewsDetailsViewController.swift in Sources */,
 				AE6A25222BA6E2E000156EE5 /* AllNewsAPIService.swift in Sources */,
 				AE758CF82BAB41D1005926A6 /* ImageCache.swift in Sources */,
+				AE9798B52BEBD5B50049A5C9 /* AppLanguages.swift in Sources */,
 				AE3A913D2B5FE89B002B1EC9 /* NewsListTableViewCell.swift in Sources */,
 				AE758CFC2BACBB02005926A6 /* UIViewControllerExtension.swift in Sources */,
 				AE4144242BE135C700B4C126 /* NSNotificationExtension.swift in Sources */,
@@ -741,6 +751,7 @@
 				AED0A8CD2BB8A90700F36BA6 /* UIStackViewExtension.swift in Sources */,
 				AE6A25262BA6F1D000156EE5 /* NewsOriginView.swift in Sources */,
 				AE4144262BE139A400B4C126 /* SearchFiltersObserver.swift in Sources */,
+				AE9798B32BEBB8C00049A5C9 /* LanguageView.swift in Sources */,
 				AE5A30792BBA94B400714E23 /* PaddingLabel.swift in Sources */,
 				AE6A251C2BA62DE100156EE5 /* WebViewController.swift in Sources */,
 				AE3A91372B5EB86A002B1EC9 /* UIViewExtension.swift in Sources */,
@@ -776,6 +787,7 @@
 				AE3A91482B6113BE002B1EC9 /* UIColorExtension.swift in Sources */,
 				AE3A914E2B613EBA002B1EC9 /* CountriesDropdown.swift in Sources */,
 				AE758CEF2BAB1FFE005926A6 /* HomeMockedService.swift in Sources */,
+				AE9798B12BEBB7120049A5C9 /* DarkModeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

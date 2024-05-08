@@ -10,7 +10,6 @@ import UIKit
 final class SettingsViewController: UIViewController {
     
     private let headerViewModel = NewsListHeaderViewModel(title: Strings.ScreenTitles.settings, shouldShowSearch: false)
-    private let userDefaultsManager = UserDefaultsManager.shared
     
     private lazy var headerView: NewsListHeaderView = {
         let headerView = NewsListHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 8),
@@ -45,42 +44,12 @@ final class SettingsViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var hStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 20
-        stackView.backgroundColor = .clear
-        stackView.layer.cornerRadius = 5
-        stackView.layer.masksToBounds = true
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
+    private lazy var darkModeView: DarkModeView = {
+        DarkModeView()
     }()
     
-    private lazy var switchLabel: UILabel = {
-        let label = UILabel()
-        label.text = Strings.Settings.darkMode
-        label.font = .systemFont(ofSize: 18)
-        label.textColor = UIColor.MainColors.primaryText
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var switchButton: UISwitch = {
-        let button = UISwitch()
-        button.addTarget(self, action: #selector(didTapSwitchButton), for: .touchUpInside)
-        button.isOn = userDefaultsManager.retrieveInterfaceStyle() == .dark ? true : false
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var spacerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
-        return view
+    private lazy var languageView: LanguageView = {
+        return LanguageView(frame: .zero, navigationController: navigationController!)
     }()
     
     override func viewDidLoad() {
@@ -112,21 +81,10 @@ final class SettingsViewController: UIViewController {
                       trailing: contentView.trailingAnchor, trailingConstant: 20)
         
         vStack.addSeparatorView()
-        vStack.addArrangedSubview(hStack)
-        hStack.addArrangedSubview(switchLabel)
-        hStack.addArrangedSubview(spacerView)
-        hStack.addArrangedSubview(switchButton)
+        vStack.addArrangedSubview(darkModeView)
         vStack.addSeparatorView()
-    }
-    
-    @objc private func didTapSwitchButton() {
-        if switchButton.isOn {
-            view.window?.overrideUserInterfaceStyle = .dark
-            userDefaultsManager.saveInterfaceStyle(.dark)
-        } else {
-            view.window?.overrideUserInterfaceStyle = .light
-            userDefaultsManager.saveInterfaceStyle(.light)
-        }
+        vStack.addArrangedSubview(languageView)
+        vStack.addSeparatorView()
     }
 }
 

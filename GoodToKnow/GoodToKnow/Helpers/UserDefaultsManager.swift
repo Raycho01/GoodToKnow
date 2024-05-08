@@ -10,15 +10,16 @@ import UIKit
 
 final class UserDefaultsManager {
     static let shared = UserDefaultsManager()
+    private let userDefaults = UserDefaults.standard
     
     private init() {}
     
     func saveInterfaceStyle(_ style: UIUserInterfaceStyle) {
-        UserDefaults.standard.set(style.rawValue, forKey: "InterfaceStyle")
+        userDefaults.set(style.rawValue, forKey: "InterfaceStyle")
     }
 
     func retrieveInterfaceStyle() -> UIUserInterfaceStyle {
-        if let rawValue = UserDefaults.standard.value(forKey: "InterfaceStyle") as? Int,
+        if let rawValue = userDefaults.value(forKey: "InterfaceStyle") as? Int,
             let style = UIUserInterfaceStyle(rawValue: rawValue) {
             return style
         }
