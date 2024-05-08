@@ -194,13 +194,15 @@ final class NewsListHeaderView: UIView {
     }
     
     private func animate(from view1: UIView, to view2: UIView) {
-        UIView.animate(withDuration: 0.3, animations: {
+        let transitionOptions: UIView.AnimationOptions = [.transitionCrossDissolve, .showHideTransitionViews]
+
+        UIView.transition(with: view1, duration: 0.3, options: transitionOptions, animations: {
             view1.alpha = 0
-        }, completion: { _ in
-            UIView.animate(withDuration: 0.3) {
-                view2.alpha = 1.0
-            }
-        })
+        }) { _ in
+            UIView.transition(with: view2, duration: 0.3, options: transitionOptions, animations: {
+                view2.alpha = 1
+            })
+        }
     }
 }
 

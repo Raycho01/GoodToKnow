@@ -191,6 +191,9 @@ class NewsListViewController: UIViewController {
     private func setupObserver() {
         filtersObserver = SearchFiltersObserver(filtersDidUpdate: { [weak self] filters in
             self?.updateFilterViewAppearance(with: filters)
+            if filters.keyword.isEmpty {
+                self?.headerView.clearSearch()
+            }
         })
     }
 }
