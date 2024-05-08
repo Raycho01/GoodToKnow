@@ -80,7 +80,7 @@ final class NewsDetailsViewController: UIViewController {
     
     private lazy var originView: NewsOriginView = {
         let frame = CGRect(x: 0, y: 0, width: 350, height: 120)
-        let placeholder = "Unknown"
+        let placeholder = Strings.NewsDetails.unknownPlaceholder
         return NewsOriginView(frame: frame,
                               author: newsArticle.author ?? placeholder,
                               source: newsArticle.source.name ?? placeholder,

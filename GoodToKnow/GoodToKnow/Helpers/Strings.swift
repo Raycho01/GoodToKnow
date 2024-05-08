@@ -35,6 +35,7 @@ struct Strings {
         static let originAuthor = NSLocalizedString("origin_author", comment: "Localizable")
         static let originSource = NSLocalizedString("origin_source", comment: "Localizable")
         static let originPublished = NSLocalizedString("origin_published", comment: "Localizable")
+        static let unknownPlaceholder = NSLocalizedString("unknown_placeholder", comment: "Localizable")
     }
     
     struct Settings {
