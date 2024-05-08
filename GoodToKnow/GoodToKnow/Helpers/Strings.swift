@@ -40,5 +40,15 @@ struct Strings {
     
     struct Settings {
         static let darkMode = NSLocalizedString("dark_mode", comment: "Localizable")
+        static let language = NSLocalizedString("language", comment: "Localizable")
+        static let bulgarianLanguage = NSLocalizedString("bulgarian_language", comment: "Localizable")
+        static let englishLanguage = NSLocalizedString("english_language", comment: "Localizable")
+    }
+    
+    struct Alert {
+        static let continueActionTitle = NSLocalizedString("continue", comment: "Localizable")
+        static let cancelActionTitle = NSLocalizedString("cancel", comment: "Localizable")
+        static let restartTitle = NSLocalizedString("restart_title", comment: "Localizable")
+        static let restartSubtitle = NSLocalizedString("restart_subtitle", comment: "Localizable")
     }
 }

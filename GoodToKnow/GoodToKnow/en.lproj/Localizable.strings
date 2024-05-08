@@ -33,3 +33,12 @@
 
 // MARK: Settings
 "dark_mode" = "Dark mode";
+"language" = "Language";
+"bulgarian_language" = "Bulgarian";
+"english_language" = "English";
+
+// MARK: Alert
+"continue" = "Continue";
+"cancel" = "Cancel";
+"restart_title" = "The app will restart to apply the changes.";
+"restart_subtitle" = "Do you want to continue?";

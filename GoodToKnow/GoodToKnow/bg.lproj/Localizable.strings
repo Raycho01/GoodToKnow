@@ -32,3 +32,12 @@
 
 // MARK: Settings
 "dark_mode" = "Тъмен режим";
+"language" = "Език";
+"bulgarian_language" = "Български";
+"english_language" = "Английски";
+
+// MARK: Alert
+"continue" = "Продължи";
+"cancel" = "Откажи";
+"restart_title" = "Приложението ще се рестартира, за да приложи промените.";
+"restart_subtitle" = "Искате ли да продължите?";
