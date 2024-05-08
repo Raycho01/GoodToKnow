@@ -32,7 +32,7 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
             fetchNewsInitially()
         }
     }
-    var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "Hot News", shouldShowSearch: false)
+    var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: "Hot News", shouldShowSearch: true)
     
     var newsResponseDidUpdate: ((NewsResponse?) -> Void) = { _ in }
     var onError: ((Error) -> Void) = { _ in }

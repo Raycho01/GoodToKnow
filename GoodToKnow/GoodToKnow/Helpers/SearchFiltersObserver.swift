@@ -13,9 +13,12 @@ class SearchFiltersObserver {
     
     private var filtersObserver: NSObjectProtocol!
     
-    init(filtersDidUpdate: @escaping (NewsSearchFilters) -> Void) {
+    init(filtersDidUpdate: @escaping (NewsSearchFilters) -> Void, fireInitially: Bool = true) {
         self.filtersDidUpdate = filtersDidUpdate
         setupObserver()
+        if fireInitially {
+            filtersDidUpdate(GlobalSearchFilters.shared.searchFilters)
+        }
     }
     
     deinit {
