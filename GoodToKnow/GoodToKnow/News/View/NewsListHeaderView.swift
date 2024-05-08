@@ -60,7 +60,7 @@ final class NewsListHeaderView: UIView {
         button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(didTapSearch), for: .touchUpInside)
         button.tintColor = UIColor.MainColors.primaryText
-        button.setDimensions(width: 30, height: 30)
+        button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -75,14 +75,10 @@ final class NewsListHeaderView: UIView {
         return redDotImageView
     }()
     
-    private lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.alignment = .bottom
-        stackView.spacing = 15
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     init(frame: CGRect, viewModel: NewsListHeaderViewModel) {
@@ -109,16 +105,33 @@ final class NewsListHeaderView: UIView {
     }
     
     private func setupConstraints() {
-        addSubview(mainStackView)
-        mainStackView.fillSuperview(padding: UIEdgeInsets(top: 50, left: 20, bottom: 10, right: 20))
-        mainStackView.addArrangedSubview(headerTitleLabel)
-        if viewModel.shouldShowSearch {
-            mainStackView.addArrangedSubview(searchButton)
-        }
         
-        searchButton.addSubview(redDotImageView)
-        redDotImageView.anchor(top: searchButton.topAnchor,
-                               trailing: searchButton.trailingAnchor)
+        addSubview(containerView)
+        containerView.fillSuperview(padding: UIEdgeInsets(top: 60, left: 20, bottom: 10, right: 20))
+        containerView.addSubview(headerTitleLabel)
+        headerTitleLabel.centerInSuperview()
+        headerTitleLabel.anchor(top: containerView.topAnchor,
+                                bottom: containerView.bottomAnchor)
+        
+        containerView.addSubview(searchTextField)
+        searchTextField.centerInSuperview()
+        searchTextField.anchor(top: containerView.topAnchor, topConstant: 0,
+                               bottom: containerView.bottomAnchor, bottomConstant: 0)
+        searchTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        searchTextField.isHidden = true
+        searchTextField.alpha = 0
+        
+        if viewModel.shouldShowSearch {
+            containerView.addSubview(searchButton)
+            searchButton.anchor(top: containerView.topAnchor,
+                                bottom: containerView.bottomAnchor,
+                                trailing: containerView.trailingAnchor)
+            searchButton.setDimensions(width: 30, height: 30)
+            searchButton.isHidden = false
+            searchButton.addSubview(redDotImageView)
+            redDotImageView.anchor(top: searchButton.topAnchor,
+                                   trailing: searchButton.trailingAnchor)
+        }
     }
     
     @objc private func didTapSearch() {
@@ -159,33 +172,21 @@ final class NewsListHeaderView: UIView {
     private func setupNormalState() {
         animate(from: searchTextField, to: headerTitleLabel)
         hideSearchTextField(true)
-        hideHeaderTitleLabel(false)
     }
     
     private func setupSearchingState() {
         animate(from: headerTitleLabel, to: searchTextField)
-        hideHeaderTitleLabel(true)
         hideSearchTextField(false)
     }
     
     private func hideSearchTextField(_ isHidden: Bool) {
         searchTextField.isHidden = isHidden
+        headerTitleLabel.isHidden = !isHidden
         if isHidden {
-            mainStackView.removeArrangedSubview(searchTextField)
             searchTextField.resignFirstResponder()
         } else {
-            mainStackView.insertArrangedSubview(searchTextField, at: 0)
             refreshSearchTextField()
             searchTextField.becomeFirstResponder()
-        }
-    }
-    
-    private func hideHeaderTitleLabel(_ isHidden: Bool) {
-        headerTitleLabel.isHidden = isHidden
-        if isHidden {
-            mainStackView.removeArrangedSubview(headerTitleLabel)
-        } else {
-            mainStackView.insertArrangedSubview(headerTitleLabel, at: 0)
         }
     }
     
@@ -194,12 +195,13 @@ final class NewsListHeaderView: UIView {
     }
     
     private func animate(from view1: UIView, to view2: UIView) {
-        let transitionOptions: UIView.AnimationOptions = [.transitionCrossDissolve, .showHideTransitionViews]
+        let bottomFlipTransition: UIView.AnimationOptions = [.transitionFlipFromBottom, .showHideTransitionViews]
+        let topFlipTransition: UIView.AnimationOptions = [.transitionFlipFromTop, .showHideTransitionViews]
 
-        UIView.transition(with: view1, duration: 0.3, options: transitionOptions, animations: {
+        UIView.transition(with: view1, duration: 0.3, options: bottomFlipTransition, animations: {
             view1.alpha = 0
         }) { _ in
-            UIView.transition(with: view2, duration: 0.3, options: transitionOptions, animations: {
+            UIView.transition(with: view2, duration: 0.3, options: topFlipTransition, animations: {
                 view2.alpha = 1
             })
         }
