@@ -13,7 +13,7 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
             newsResponseDidUpdate(newsResponse)
         }
     }
-    var searchFilters = NewsSearchFilters() {
+    lazy var searchFilters = NewsSearchFilters() {
         didSet {
             cursor?.resetCursor()
             fetchNewsInitially()
@@ -82,6 +82,6 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     private func setupObserver() {
         filtersObserver = SearchFiltersObserver(filtersDidUpdate: { [weak self] filters in
             self?.searchFilters = filters
-        })
+        }, fireInitially: false)
     }
 }
