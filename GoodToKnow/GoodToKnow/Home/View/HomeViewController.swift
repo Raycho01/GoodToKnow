@@ -133,8 +133,14 @@ final class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    private func navigateToHotNews() {
+    private func navigateToHotNews(country: String? = nil, category: String? = nil) {
         guard let tabController = tabBarController as? TabBarController else { return }
+        if let country = country {
+            tabController.hotNewsViewModel.searchForCountry(country)
+        }
+        if let category = category {
+            tabController.hotNewsViewModel.searchForCategory(category)
+        }
         tabController.selectedIndex = tabController.hotNewsViewModel.tabBarIndex
     }
 }
@@ -145,8 +151,7 @@ extension HomeViewController: NewsListHeaderDelegate {
 
 extension HomeViewController: CarouselViewDelegate {
     func didTapOnCarouselCell(with value: String) {
-        GlobalSearchFilters.shared.searchFilters.country = value
-        navigateToHotNews()
+        navigateToHotNews(country: value)
     }
 }
 
@@ -165,7 +170,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        GlobalSearchFilters.shared.searchFilters.category = categories[indexPath.row].getModel().value
-        navigateToHotNews()
+        navigateToHotNews(category: categories[indexPath.row].getModel().value)
     }
 }

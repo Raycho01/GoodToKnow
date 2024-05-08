@@ -14,8 +14,6 @@ protocol NewsFiltersViewDelegate: AnyObject {
 final class NewsFiltersView: UIView {
     
     private let initialFrame: CGRect
-    
-    private var filtersObserver: SearchFiltersObserver?
     weak var delegate: NewsFiltersViewDelegate?
     
     private lazy var clearAllButton: UIButton = {
@@ -50,17 +48,10 @@ final class NewsFiltersView: UIView {
         self.initialFrame = frame
         super.init(frame: frame)
         setupUI()
-        setupObserver()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupObserver() {
-        filtersObserver = SearchFiltersObserver(filtersDidUpdate: { [weak self] filters in
-            self?.setupStackView(with: filters)
-        })
     }
     
     private func setupUI() {
@@ -103,6 +94,10 @@ final class NewsFiltersView: UIView {
         label.text = text
         label.layer.masksToBounds = true
         return label
+    }
+    
+    func update(with filters: NewsSearchFilters) {
+        setupStackView(with: filters)
     }
     
     @objc private func didTapClearAll() {
