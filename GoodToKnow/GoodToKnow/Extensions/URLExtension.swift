@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 extension URL {
-    func fetchImage(completion: @escaping (UIImage?) -> Void) {
-        URLSession.shared.dataTask(with: self) { data, response, error in
+    func fetchImage(completion: @escaping (UIImage?) -> Void) -> URLSessionDataTask? {
+        let task = URLSession.shared.dataTask(with: self) { data, response, error in
             guard let data = data, error == nil else {
                 print("Failed to fetch image:", error?.localizedDescription ?? "Unknown error")
                 completion(nil)
@@ -23,6 +23,9 @@ extension URL {
                 print("Failed to convert data to image")
                 completion(nil)
             }
-        }.resume()
+        }
+        
+        task.resume()
+        return task
     }
 }
