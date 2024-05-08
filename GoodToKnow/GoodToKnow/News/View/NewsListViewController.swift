@@ -35,8 +35,6 @@ class NewsListViewController: UIViewController {
         }
     }
     
-    private var filtersObserver: SearchFiltersObserver?
-    
     private var viewModel: NewsListViewModelProtocol
     private let insetValue: CGFloat = 15
     private var filterViewHeightConstraint: NSLayoutConstraint = .init()
@@ -100,7 +98,6 @@ class NewsListViewController: UIViewController {
         bindViewModel()
         setupUI()
         viewModel.fetchNewsInitially()
-        setupObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,6 +121,14 @@ class NewsListViewController: UIViewController {
         
         viewModel.isCurrenltyLoading = { [weak self] isCurrenltyLoading in
             self?.isCurrentlyLoading = isCurrenltyLoading
+        }
+        
+        viewModel.filtersDidUpdate = { [weak self] filters in
+            self?.updateFilterViewAppearance(with: filters)
+            self?.filterView.update(with: filters)
+            if filters.keyword.isEmpty {
+                self?.headerView.clearSearch()
+            }
         }
     }
     
@@ -187,15 +192,6 @@ class NewsListViewController: UIViewController {
             filterViewHeightConstraint.constant = filterViewHeight
         }
     }
-    
-    private func setupObserver() {
-        filtersObserver = SearchFiltersObserver(filtersDidUpdate: { [weak self] filters in
-            self?.updateFilterViewAppearance(with: filters)
-            if filters.keyword.isEmpty {
-                self?.headerView.clearSearch()
-            }
-        })
-    }
 }
 
 // MARK: - UITableView delegate and data source
@@ -240,14 +236,13 @@ extension NewsListViewController {
 
 extension NewsListViewController: NewsListHeaderDelegate {
     func didSearch(for keyword: String) {
-        GlobalSearchFilters.shared.searchFilters.keyword = keyword
+        viewModel.searchForKeyword(keyword)
     }
 }
 
 extension NewsListViewController: NewsFiltersViewDelegate {
     func didTapClearAll() {
-        GlobalSearchFilters.shared.searchFilters = NewsSearchFilters()
-        headerView.clearSearch()
+        viewModel.clearFilters()
     }
 }
 

@@ -17,29 +17,30 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         didSet {
             cursor?.resetCursor()
             fetchNewsInitially()
+            filtersDidUpdate(searchFilters)
         }
     }
     var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: Strings.ScreenTitles.allNews, shouldShowSearch: true)
     var newsResponseDidUpdate: ((NewsResponse?) -> Void) = { _ in }
     var onError: ((Error) -> Void) = { _ in }
     var isCurrenltyLoading: ((Bool) -> Void) = { _ in }
+    var filtersDidUpdate: ((NewsSearchFilters) -> Void) = { _ in }
     var tabBarIndex: Int
     
     private let apiService: AllNewsAPIServiceProtocol
     private let pageSize = 20
     private let firstPage = 1
     private var cursor: PaginationCursor?
-    private var filtersObserver: SearchFiltersObserver?
     
     init(apiService: AllNewsAPIServiceProtocol = AllNewsAPIService(),
          searchFilters: NewsSearchFilters = NewsSearchFilters(),
          tabBarIndex: Int) {
         self.apiService = apiService
         self.tabBarIndex = tabBarIndex
-        setupObserver()
     }
     
     func fetchNewsInitially() {
+        filtersDidUpdate(searchFilters)
         isCurrenltyLoading(true)
         apiService.fetchEverything(page: firstPage, filters: searchFilters) { [weak self] result in
             self?.isCurrenltyLoading(false)
@@ -74,14 +75,16 @@ final class AllNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         }
     }
     
+    func searchForKeyword(_ keyword: String) {
+        searchFilters.keyword = keyword
+    }
+    
+    func clearFilters() {
+        searchFilters = NewsSearchFilters()
+    }
+    
     private func setupCursor() {
         let totalPages = MathHelper.ceilingDivision((newsResponse?.totalResults ?? 0), by: pageSize)
         cursor = PaginationCursor(totalPages: totalPages, pageSize: pageSize)
-    }
-    
-    private func setupObserver() {
-        filtersObserver = SearchFiltersObserver(filtersDidUpdate: { [weak self] filters in
-            self?.searchFilters = filters
-        }, fireInitially: false)
     }
 }

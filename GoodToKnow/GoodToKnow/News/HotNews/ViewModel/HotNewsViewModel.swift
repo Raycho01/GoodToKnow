@@ -12,10 +12,13 @@ protocol NewsListViewModelProtocol {
     var headerModel: NewsListHeaderViewModel { get set }
     var isCurrenltyLoading: ((Bool) -> Void) { get set }
     var newsResponseDidUpdate : ((NewsResponse?) -> Void) { get set }
+    var filtersDidUpdate: ((NewsSearchFilters) -> Void) { get set }
     var onError: ((Error) -> Void) { get set }
     
     func fetchNewsInitially()
     func fetchMoreNews()
+    func searchForKeyword(_ keyword: String)
+    func clearFilters()
 }
 
 final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
@@ -30,6 +33,7 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         didSet {
             cursor?.resetCursor()
             fetchNewsInitially()
+            filtersDidUpdate(searchFilters)
         }
     }
     var headerModel: NewsListHeaderViewModel = NewsListHeaderViewModel(title: Strings.ScreenTitles.hotNews, shouldShowSearch: true)
@@ -38,20 +42,20 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     var onError: ((Error) -> Void) = { _ in }
     var isCurrenltyLoading: ((Bool) -> Void) = { _ in }
     var tabBarIndex: Int
+    var filtersDidUpdate: ((NewsSearchFilters) -> Void) = { _ in }
     
     private let pageSize = 20
     private let firstPage = 1
     private var cursor: PaginationCursor?
-    private var filtersObserver: SearchFiltersObserver?
     
     init(apiService: HotNewsAPIServiceProtocol = HotNewsAPIService(),
          tabBarIndex: Int) {
         self.apiService = apiService
         self.tabBarIndex = tabBarIndex
-        setupObserver()
     }
     
     func fetchNewsInitially() {
+        filtersDidUpdate(searchFilters)
         isCurrenltyLoading(true)
         apiService.fetchTopHeadlines(page: firstPage, filters: searchFilters) { [weak self] result in
             self?.isCurrenltyLoading(false)
@@ -86,15 +90,24 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         }
     }
     
+    func searchForKeyword(_ keyword: String) {
+        searchFilters.keyword = keyword
+    }
+    
+    func clearFilters() {
+        searchFilters = NewsSearchFilters()
+    }
+    
+    func searchForCountry(_ country: String) {
+        searchFilters.country = country
+    }
+    
+    func searchForCategory(_ category: String) {
+        searchFilters.category = category
+    }
+    
     private func setupCursor() {
         let totalPages = MathHelper.ceilingDivision((newsResponse?.totalResults ?? 0), by: pageSize)
         cursor = PaginationCursor(totalPages: totalPages, pageSize: pageSize)
     }
-    
-    private func setupObserver() {
-        filtersObserver = SearchFiltersObserver(filtersDidUpdate: { [weak self] filters in
-            self?.searchFilters = filters
-        }, fireInitially: false)
-    }
-        
 }
