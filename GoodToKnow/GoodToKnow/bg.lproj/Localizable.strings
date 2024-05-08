@@ -28,6 +28,7 @@
 "origin_author" = "Автор:";
 "origin_source" = "Източник:";
 "origin_published" = "Публикувана на:";
+"unknown_placeholder" = "Неизвестен";
 
 // MARK: Settings
 "dark_mode" = "Тъмен режим";

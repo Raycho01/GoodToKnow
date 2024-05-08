@@ -29,6 +29,7 @@
 "origin_author" = "Author:";
 "origin_source" = "Source:";
 "origin_published" = "Published at:";
+"unknown_placeholder" = "Unknown";
 
 // MARK: Settings
 "dark_mode" = "Dark mode";
