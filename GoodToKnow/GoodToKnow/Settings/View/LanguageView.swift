@@ -65,8 +65,7 @@ final class LanguageView: UIView {
         let alertVC = UIAlertController(title: Strings.Alert.restartTitle, message: Strings.Alert.restartSubtitle, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: Strings.Alert.continueActionTitle, style: .destructive, handler: { _ in
             AppLanguages.swapLanguages()
-            self.navigationController.popToRootViewController(animated: true)
-            
+            exit(-1)
         }))
         alertVC.addAction(UIAlertAction(title: Strings.Alert.cancelActionTitle, style: .cancel, handler: { _ in
             self.dropDownButton.menu = self.createDropDownMenu()
