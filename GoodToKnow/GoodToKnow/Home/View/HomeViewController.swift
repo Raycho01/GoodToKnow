@@ -60,14 +60,14 @@ final class HomeViewController: UIViewController {
     
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.minimumLineSpacing = 20
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
-        collectionView.isScrollEnabled = false
-        collectionView.showsVerticalScrollIndicator = false
+        collectionView.isScrollEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
@@ -123,9 +123,9 @@ final class HomeViewController: UIViewController {
         
         contentView.addSubview(categoryCollectionView)
         categoryCollectionView.anchor(top: categoriesTitleLabel.bottomAnchor, topConstant: 10,
-                                      bottom: contentView.bottomAnchor, bottomConstant: 20,
-                                      leading: contentView.leadingAnchor, leadingConstant: 10,
-                                      trailing: contentView.trailingAnchor, trailingConstant: 10)
+                                      leading: contentView.leadingAnchor,
+                                      trailing: contentView.trailingAnchor)
+        categoryCollectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
     }
     
