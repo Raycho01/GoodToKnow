@@ -69,6 +69,8 @@
 		AED0A8C92BB8857000F36BA6 /* NewsFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED0A8C82BB8857000F36BA6 /* NewsFiltersView.swift */; };
 		AED0A8CB2BB88C6F00F36BA6 /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED0A8CA2BB88C6F00F36BA6 /* URLExtension.swift */; };
 		AED0A8CD2BB8A90700F36BA6 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED0A8CC2BB8A90700F36BA6 /* UIStackViewExtension.swift */; };
+		AEF851052BFCD17C007FC00F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF851042BFCD17C007FC00F /* FeedViewController.swift */; };
+		AEF851072BFCD250007FC00F /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF851062BFCD250007FC00F /* FeedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +159,8 @@
 		AED0A8C82BB8857000F36BA6 /* NewsFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFiltersView.swift; sourceTree = "<group>"; };
 		AED0A8CA2BB88C6F00F36BA6 /* URLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		AED0A8CC2BB8A90700F36BA6 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
+		AEF851042BFCD17C007FC00F /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		AEF851062BFCD250007FC00F /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		C2024E38F71F8FF582081D15 /* Pods_GoodToKnowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodToKnowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54D28129DD9A472AE36A56B /* Pods_GoodToKnow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodToKnow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C825128C0F96BF724C31198A /* Pods-GoodToKnow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodToKnow.debug.xcconfig"; path = "Target Support Files/Pods-GoodToKnow/Pods-GoodToKnow.debug.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 		AE3A90FF2B5E9CB6002B1EC9 /* GoodToKnow */ = {
 			isa = PBXGroup;
 			children = (
+				AEF851032BFCD158007FC00F /* Feed */,
 				AE5A30712BB9991500714E23 /* Settings */,
 				AE6A252B2BA8D97600156EE5 /* Home */,
 				AE24991F2B8B7F2600B87E61 /* NewsDetails */,
@@ -483,6 +488,15 @@
 				AECABEAC2B67C18B0087D19B /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		AEF851032BFCD158007FC00F /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				AEF851042BFCD17C007FC00F /* FeedViewController.swift */,
+				AEF851062BFCD250007FC00F /* FeedCell.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		BDF9F2DAB74F2C12FBEC7E4B /* Frameworks */ = {
@@ -739,6 +753,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE2499222B8B7F5E00B87E61 /* NewsDetailsViewController.swift in Sources */,
+				AEF851072BFCD250007FC00F /* FeedCell.swift in Sources */,
 				AE6A25222BA6E2E000156EE5 /* AllNewsAPIService.swift in Sources */,
 				AE758CF82BAB41D1005926A6 /* ImageCache.swift in Sources */,
 				AE9798B52BEBD5B50049A5C9 /* AppLanguages.swift in Sources */,
@@ -781,6 +796,7 @@
 				AE3A91392B5FBCAD002B1EC9 /* NewsListHeaderView.swift in Sources */,
 				AE6A25312BA8DEED00156EE5 /* CarouselCell.swift in Sources */,
 				AE3A91412B610C99002B1EC9 /* MathHelper.swift in Sources */,
+				AEF851052BFCD17C007FC00F /* FeedViewController.swift in Sources */,
 				AE3A91032B5E9CB6002B1EC9 /* SceneDelegate.swift in Sources */,
 				AE6A25202BA6DFB800156EE5 /* AllNewsViewModel.swift in Sources */,
 				AE758D002BACC37C005926A6 /* UIAlertControllerExtension.swift in Sources */,

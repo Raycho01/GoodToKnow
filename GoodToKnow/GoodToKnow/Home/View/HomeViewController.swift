@@ -122,6 +122,9 @@ final class HomeViewController: UIViewController {
         
         view.backgroundColor = UIColor.MainColors.lightBackground
         view.roundCornersWithBorder()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(navigateToFeed))
+        view.addGestureRecognizer(tapGesture)
         return view
     }()
     
@@ -212,6 +215,11 @@ final class HomeViewController: UIViewController {
             tabController.hotNewsViewModel.searchForCategory(category)
         }
         tabController.selectedIndex = tabController.hotNewsViewModel.tabBarIndex
+    }
+    
+    @objc private func navigateToFeed() {
+        let vc = FeedViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
