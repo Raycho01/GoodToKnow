@@ -6,6 +6,7 @@ target 'GoodToKnow' do
   use_frameworks!
 
 	pod 'SkeletonView'
+  pod 'VerticalCardSwiper'
 
   # Pods for GoodToKnow
 
