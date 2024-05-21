@@ -16,9 +16,11 @@ struct Strings {
         static let settings = NSLocalizedString("settings_title", comment: "Localizable")
     }
     
-    struct SectionTitles {
-        static let countries = NSLocalizedString("countires_title", comment: "Localizable")
-        static let categories = NSLocalizedString("categories_title", comment: "Localizable")
+    struct HomeScreen {
+        static let filtersInfo = NSLocalizedString("filters_info", comment: "Localizable")
+        static let feedInfo = NSLocalizedString("feed_info", comment: "Localizable")
+        static let countries = NSLocalizedString("countires_section_title", comment: "Localizable")
+        static let categories = NSLocalizedString("categories_section_title", comment: "Localizable")
     }
     
     struct Categories {

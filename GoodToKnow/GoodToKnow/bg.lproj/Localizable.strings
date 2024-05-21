@@ -11,9 +11,11 @@
 "all_news_title" = "Всички Новини";
 "settings_title" = "Настройки";
 
-// MARK: Section titles
-"countires_title" = "Държави";
-"categories_title" = "Категории";
+// MARK: Home Screen
+"filters_info" = "Добави филтри към търсенето";
+"feed_info" = "... или просто разгледай feed-a";
+"countires_section_title" = "Държави";
+"categories_section_title" = "Категории";
 
 // MARK: Categories
 "business_category" = "Бизнес";
