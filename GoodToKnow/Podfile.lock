@@ -1,16 +1,20 @@
 PODS:
   - SkeletonView (1.30.4)
+  - VerticalCardSwiper (2.3.1)
 
 DEPENDENCIES:
   - SkeletonView
+  - VerticalCardSwiper
 
 SPEC REPOS:
   trunk:
     - SkeletonView
+    - VerticalCardSwiper
 
 SPEC CHECKSUMS:
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
+  VerticalCardSwiper: 68df635b354500f86934ea044ade37a264c044c6
 
-PODFILE CHECKSUM: 0e12e232324270f0ebe890c7aa4b299452c6d719
+PODFILE CHECKSUM: 2d7799d4711f1327f7d8bea1211c64b45eaee1ca
 
 COCOAPODS: 1.14.2

@@ -22,7 +22,7 @@ enum Category {
         case .business:
             return CategoryModel(image: "suitcase", value: "business", title: Strings.Categories.business)
         case .entertainment:
-            return CategoryModel(image: "face.smiling", value: "entertainment", title: Strings.Categories.entertainment)
+            return CategoryModel(image: "party.popper", value: "entertainment", title: Strings.Categories.entertainment)
         case .general:
             return CategoryModel(image: "square", value: "general", title: Strings.Categories.general)
         case .health:
