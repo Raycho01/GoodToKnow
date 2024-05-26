@@ -143,7 +143,14 @@ final class FeedCell: CardCell {
                       trailing: contentView.trailingAnchor, trailingConstant: 20)
     }
     
-    func configure(with article: NewsArticle, isLoading: Bool) {
+    func configure(with article: NewsArticle?) {
+        
+        guard let article = article else {
+            showSkeletonView(show: true)
+            return
+        }
+        showSkeletonView(show: false)
+        
         sourceLabel.text = article.source.name
         imageView.setImage(with: article.urlToImage ?? "")
         titleLabel.text = article.title
@@ -151,11 +158,9 @@ final class FeedCell: CardCell {
         dateLabel.text = article.publishedAt?.formatted()
         descriptionLabel.text = article.description
         contentLabel.text = article.content
-        
-        showSkeletonViewIfNeeded(show: isLoading)
     }
     
-    private func showSkeletonViewIfNeeded(show: Bool) {
+    private func showSkeletonView(show: Bool) {
         if show {
             showGradientSkeleton(usingGradient: .init(baseColor: .silver, secondaryColor: .clouds), animated: true, delay: .zero, transition: .crossDissolve(0.25))
         } else {

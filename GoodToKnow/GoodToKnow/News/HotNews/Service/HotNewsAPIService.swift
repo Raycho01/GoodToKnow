@@ -9,7 +9,7 @@ import Foundation
 
 protocol HotNewsAPIServiceProtocol {
     typealias NewsCompletion = (Result<NewsResponse, Error>) -> Void
-    func fetchTopHeadlines(page: Int, filters: NewsSearchFilters, completion: @escaping NewsCompletion)
+    func fetchTopHeadlines(page: Int, pageSize: Int, filters: NewsSearchFilters, completion: @escaping NewsCompletion)
 }
 
 final class HotNewsAPIService: HotNewsAPIServiceProtocol {
@@ -17,12 +17,12 @@ final class HotNewsAPIService: HotNewsAPIServiceProtocol {
     private let apiKey = "b14913d1d32642cf83d5ddae86ffbf7c"
     private let baseURL = "https://newsapi.org/v2/top-headlines?"
     
-    func fetchTopHeadlines(page: Int, filters: NewsSearchFilters, completion: @escaping NewsCompletion) {
+    func fetchTopHeadlines(page: Int, pageSize: Int, filters: NewsSearchFilters, completion: @escaping NewsCompletion) {
         // needed workaround, because of the API
         let keyword = filters.keyword.isEmpty ? "a" : filters.keyword
         let country = filters.country.isEmpty ? "us" : filters.country
         
-        guard let url = URL(string: "\(baseURL)q=\(keyword)&apiKey=\(apiKey)&page=\(page)&country=\(country)&category=\(filters.category)") else {
+        guard let url = URL(string: "\(baseURL)q=\(keyword)&apiKey=\(apiKey)&page=\(page)&pageSize=\(pageSize)&country=\(country)&category=\(filters.category)") else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
         }
