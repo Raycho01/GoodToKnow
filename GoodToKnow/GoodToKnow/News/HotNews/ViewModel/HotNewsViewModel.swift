@@ -58,7 +58,7 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
     func fetchNewsInitially() {
         filtersDidUpdate(searchFilters)
         isCurrenltyLoading(true)
-        apiService.fetchTopHeadlines(page: firstPage, filters: searchFilters) { [weak self] result in
+        apiService.fetchTopHeadlines(page: firstPage, pageSize: cursor?.pageSize ?? 20, filters: searchFilters) { [weak self] result in
             self?.isCurrenltyLoading(false)
             guard let self = self else { return }
             
@@ -77,7 +77,7 @@ final class HotNewsViewModel: NewsListViewModelProtocol, TabBarIndexProtocol {
         guard let cursor = cursor, !cursor.isEndReached else { return }
         isCurrenltyLoading(true)
         
-        apiService.fetchTopHeadlines(page: cursor.currentPage, filters: searchFilters) { [weak self] result in
+        apiService.fetchTopHeadlines(page: cursor.currentPage, pageSize: cursor.pageSize, filters: searchFilters) { [weak self] result in
             self?.isCurrenltyLoading(false)
             guard let self = self else { return }
             

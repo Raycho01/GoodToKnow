@@ -39,6 +39,16 @@ final class FeedViewController: UIViewController {
         bindViewModel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     private func setupUI() {
         view.backgroundColor = .white
         
@@ -55,7 +65,6 @@ final class FeedViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
         navigationController?.navigationBar.tintColor = UIColor.MainColors.primaryText
-        navigationController?.tabBarController?.tabBar.isHidden = true
     }
     
     private func bindViewModel() {
@@ -65,18 +74,49 @@ final class FeedViewController: UIViewController {
                 self?.cardSwiperView.reloadData()
             }
         }
+        
+        viewModel.onError = { [weak self] error in
+            DispatchQueue.main.async {
+                self?.showAlert(with: error)
+            }
+        }
+    }
+    
+    private func showAlert(with error: Error) {
+        let retryAction = AlertPopupAction(title: "Retry", isPreferred: true, action: { [weak self] in
+            self?.viewModel.fetchNewsInitially()
+        })
+        let cancelAction = AlertPopupAction(title: "Cancel", isPreferred: false, action: { [weak self] in
+            self?.navigationController?.dismiss(animated: true)
+        })
+        let title = NSAttributedString(string: "Oops, something went wrong.")
+        let message = NSAttributedString(string: error.localizedDescription, attributes: [
+            .font: UIFont.systemFont(ofSize: 14, weight: .light)
+        ])
+        
+        showAlertPopup(title: title, message: message, preferredStyle: .alert, actions: [retryAction, cancelAction])
+    }
+    
+    private func loadMoreNewsIfNeeded(index: Int) {
+        if index == viewModel.newsArticles.count - 2 {
+            viewModel.fetchMoreNews()
+        }
     }
     
 }
 
+// MARK: Delegates
 extension FeedViewController: VerticalCardSwiperDatasource {
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         
-        if let cell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: FeedCell.identifier, for: index) as? FeedCell {
-            cell.configure(with: viewModel.newsArticles[index], isLoading: viewModel.isCurrenltyLoading)
-            return cell
+        loadMoreNewsIfNeeded(index: index)
+        
+        guard let cell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: FeedCell.identifier, for: index) as? FeedCell else {
+            return CardCell()
         }
-        return CardCell()
+
+        cell.configure(with: viewModel.newsArticles[index])
+        return cell
     }
     
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
