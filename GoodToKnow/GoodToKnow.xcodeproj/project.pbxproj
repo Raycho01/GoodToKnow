@@ -64,6 +64,7 @@
 		AE9798B32BEBB8C00049A5C9 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9798B22BEBB8C00049A5C9 /* LanguageView.swift */; };
 		AE9798B52BEBD5B50049A5C9 /* AppLanguages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9798B42BEBD5B50049A5C9 /* AppLanguages.swift */; };
 		AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */; };
+		AEB9EF6E2C038C2800C7DE47 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB9EF6D2C038C2800C7DE47 /* FeedViewModel.swift */; };
 		AECABEAD2B67C18B0087D19B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECABEAC2B67C18B0087D19B /* TabBarController.swift */; };
 		AECABEAF2B67E6270087D19B /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECABEAE2B67E6270087D19B /* UIFontExtension.swift */; };
 		AED0A8C92BB8857000F36BA6 /* NewsFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED0A8C82BB8857000F36BA6 /* NewsFiltersView.swift */; };
@@ -154,6 +155,7 @@
 		AE9798B22BEBB8C00049A5C9 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
 		AE9798B42BEBD5B50049A5C9 /* AppLanguages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguages.swift; sourceTree = "<group>"; };
 		AEAA3CDE2B821DB200EB3CE8 /* NewsSearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchFilters.swift; sourceTree = "<group>"; };
+		AEB9EF6D2C038C2800C7DE47 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		AECABEAC2B67C18B0087D19B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		AECABEAE2B67E6270087D19B /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		AED0A8C82BB8857000F36BA6 /* NewsFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFiltersView.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 			children = (
 				AEF851042BFCD17C007FC00F /* FeedViewController.swift */,
 				AEF851062BFCD250007FC00F /* FeedCell.swift */,
+				AEB9EF6D2C038C2800C7DE47 /* FeedViewModel.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				AE6A25282BA6F84900156EE5 /* DateExtension.swift in Sources */,
 				AED0A8CD2BB8A90700F36BA6 /* UIStackViewExtension.swift in Sources */,
 				AE6A25262BA6F1D000156EE5 /* NewsOriginView.swift in Sources */,
+				AEB9EF6E2C038C2800C7DE47 /* FeedViewModel.swift in Sources */,
 				AE4144262BE139A400B4C126 /* SearchFiltersObserver.swift in Sources */,
 				AE9798B32BEBB8C00049A5C9 /* LanguageView.swift in Sources */,
 				AE5A30792BBA94B400714E23 /* PaddingLabel.swift in Sources */,

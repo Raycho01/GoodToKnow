@@ -9,39 +9,81 @@ import Foundation
 import UIKit
 import VerticalCardSwiper
 
-class FeedViewController: UIViewController {
+final class FeedViewController: UIViewController {
     
-    private var cardSwiper: VerticalCardSwiper!
+    private var viewModel: FeedViewModelProtocol
+    
+    private lazy var cardSwiperView: VerticalCardSwiper = {
+        let cardSwiperView = VerticalCardSwiper(frame: self.view.bounds)
+        cardSwiperView.register(FeedCell.self, forCellWithReuseIdentifier: FeedCell.identifier)
+        cardSwiperView.datasource = self
+        cardSwiperView.isStackingEnabled = false
+        cardSwiperView.visibleNextCardHeight = 0
+        return cardSwiperView
+    }()
+    
+    init(viewModel: FeedViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        
-        cardSwiper = VerticalCardSwiper(frame: self.view.bounds)
-        cardSwiper.register(FeedCell.self, forCellWithReuseIdentifier: FeedCell.identifier)
-        cardSwiper.datasource = self
-        cardSwiper.isStackingEnabled = false
-        
-        view.addSubview(cardSwiper)
-        cardSwiper.fillSuperview(padding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
-        cardSwiper.centerInSuperview()
+        setupNavigationBar()
+        setupUI()
+        bindViewModel()
     }
     
-
+    private func setupUI() {
+        view.backgroundColor = .white
+        
+        view.addSubview(cardSwiperView)
+        cardSwiperView.anchor(top: view.topAnchor, topConstant: 20, bottom: view.bottomAnchor, bottomConstant: 20, leading: view.leadingAnchor, leadingConstant: 5, trailing: view.trailingAnchor, trailingConstant: 5)
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationItem.hidesBackButton = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = .clear
+        navigationController?.navigationBar.tintColor = UIColor.MainColors.primaryText
+        navigationController?.tabBarController?.tabBar.isHidden = true
+    }
+    
+    private func bindViewModel() {
+        viewModel.fetchNewsInitially()
+        viewModel.newsArticlesDidUpdate = { [weak self] in
+            DispatchQueue.main.async {
+                self?.cardSwiperView.reloadData()
+            }
+        }
+    }
+    
 }
 
 extension FeedViewController: VerticalCardSwiperDatasource {
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         
         if let cell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: FeedCell.identifier, for: index) as? FeedCell {
-            cell.configure(with: NewsArticle(source: .init(id: "123", name: "ABC news"), author: "ABC news", title: "New Chat GPT 4o is crazy", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", url: "", urlToImage: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vandelaydesign.com%2Fcool-logos%2F&psig=AOvVaw2MVGJpYA6RKNjUgejIJ-6P&ust=1716386435728000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKjM4_HznoYDFQAAAAAdAAAAABAE", publishedAt: .now, content: ""))
+            cell.configure(with: viewModel.newsArticles[index], isLoading: viewModel.isCurrenltyLoading)
             return cell
         }
         return CardCell()
     }
     
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
-        return 4
+        return viewModel.newsArticles.count
     }
+}
+
+extension FeedViewController: NewsListHeaderDelegate {
+    func didSearch(for keyword: String) {}
 }

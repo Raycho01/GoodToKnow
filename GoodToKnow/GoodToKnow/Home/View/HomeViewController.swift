@@ -218,7 +218,7 @@ final class HomeViewController: UIViewController {
     }
     
     @objc private func navigateToFeed() {
-        let vc = FeedViewController()
+        let vc = FeedViewController(viewModel: FeedViewModel())
         navigationController?.pushViewController(vc, animated: true)
     }
 }

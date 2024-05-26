@@ -15,16 +15,26 @@ final class FeedCell: CardCell {
     
     private let backgroundOverlayView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.MainColors.headerBackground
+        view.backgroundColor = UIColor.MainColors.accentColor?.withAlphaComponent(0.2)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    private let sourceLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.getCopperplateFont(size: 20)
+        label.textColor = .MainColors.primaryText
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.setDimensions(width: 80, height: 80)
-        imageView.roundCornersWithBorder(radius: 40, color: UIColor.MainColors.veryLightBackground?.cgColor ?? UIColor.white.cgColor)
+        imageView.contentMode = .scaleAspectFill
+        imageView.setDimensions(width: 200, height: 200)
+        imageView.roundCornersWithBorder(radius: 100, color: UIColor.white.cgColor)
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -98,6 +108,7 @@ final class FeedCell: CardCell {
         backgroundColor = UIColor.MainColors.primaryBackground
         layer.cornerRadius = 20
         clipsToBounds = true
+        isSkeletonable = true
         setupSubviews()
     }
     
@@ -108,6 +119,12 @@ final class FeedCell: CardCell {
                                      leading: contentView.leadingAnchor,
                                      trailing: contentView.trailingAnchor)
         backgroundOverlayView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        
+        backgroundOverlayView.addSubview(sourceLabel)
+        sourceLabel.anchor(top: backgroundOverlayView.topAnchor, topConstant: 5,
+                           leading: backgroundOverlayView.leadingAnchor, leadingConstant: 5,
+                           trailing: backgroundOverlayView.trailingAnchor, trailingConstant: 5)
+        sourceLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         contentView.addSubview(imageView)
         imageView.centerYAnchor.constraint(equalTo: backgroundOverlayView.bottomAnchor).isActive = true
@@ -126,12 +143,23 @@ final class FeedCell: CardCell {
                       trailing: contentView.trailingAnchor, trailingConstant: 20)
     }
     
-    func configure(with article: NewsArticle) {
+    func configure(with article: NewsArticle, isLoading: Bool) {
+        sourceLabel.text = article.source.name
         imageView.setImage(with: article.urlToImage ?? "")
         titleLabel.text = article.title
         authorLabel.text = article.author
         dateLabel.text = article.publishedAt?.formatted()
         descriptionLabel.text = article.description
         contentLabel.text = article.content
+        
+        showSkeletonViewIfNeeded(show: isLoading)
+    }
+    
+    private func showSkeletonViewIfNeeded(show: Bool) {
+        if show {
+            showGradientSkeleton(usingGradient: .init(baseColor: .silver, secondaryColor: .clouds), animated: true, delay: .zero, transition: .crossDissolve(0.25))
+        } else {
+            hideSkeleton()
+        }
     }
 }
