@@ -9,6 +9,7 @@ import Foundation
 
 protocol NewsListViewModelProtocol {
     
+    var newsResponse: NewsResponse? { get }
     var headerModel: NewsListHeaderViewModel { get set }
     var isCurrenltyLoading: ((Bool) -> Void) { get set }
     var newsResponseDidUpdate : ((NewsResponse?) -> Void) { get set }
