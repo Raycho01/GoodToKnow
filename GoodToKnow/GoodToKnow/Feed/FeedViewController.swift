@@ -18,7 +18,8 @@ final class FeedViewController: UIViewController {
         cardSwiperView.register(FeedCell.self, forCellWithReuseIdentifier: FeedCell.identifier)
         cardSwiperView.datasource = self
         cardSwiperView.isStackingEnabled = false
-        cardSwiperView.visibleNextCardHeight = 0
+        cardSwiperView.visibleNextCardHeight = 20
+        cardSwiperView.isSideSwipingEnabled = false
         return cardSwiperView
     }()
     
