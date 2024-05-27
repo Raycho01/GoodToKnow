@@ -51,10 +51,11 @@ final class FeedViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        self.title = "Feed"
+        view.backgroundColor = .veryLightBackground
         
         view.addSubview(cardSwiperView)
-        cardSwiperView.anchor(top: view.topAnchor, topConstant: 20, bottom: view.bottomAnchor, bottomConstant: 20, leading: view.leadingAnchor, leadingConstant: 5, trailing: view.trailingAnchor, trailingConstant: 5)
+        cardSwiperView.anchor(top: view.safeAreaLayoutGuide.topAnchor, topConstant: 0, bottom: view.bottomAnchor, bottomConstant: 0, leading: view.leadingAnchor, leadingConstant: 0, trailing: view.trailingAnchor, trailingConstant: 0)
     }
     
     private func setupNavigationBar() {

@@ -195,19 +195,6 @@ final class NewsListHeaderView: UIView {
     private func showRedDotIfSearching() {
         redDotImageView.isHidden = lastSearchedKeyword.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
-    
-    private func animate(from view1: UIView, to view2: UIView) {
-        let bottomFlipTransition: UIView.AnimationOptions = [.transitionFlipFromBottom, .showHideTransitionViews]
-        let topFlipTransition: UIView.AnimationOptions = [.transitionFlipFromTop, .showHideTransitionViews]
-
-        UIView.transition(with: view1, duration: 0.3, options: bottomFlipTransition, animations: {
-            view1.alpha = 0
-        }) { _ in
-            UIView.transition(with: view2, duration: 0.3, options: topFlipTransition, animations: {
-                view2.alpha = 1
-            })
-        }
-    }
 }
 
 // MARK: UITextFieldDelegate
