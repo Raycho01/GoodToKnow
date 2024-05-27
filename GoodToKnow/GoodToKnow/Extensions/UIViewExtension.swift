@@ -96,4 +96,24 @@ extension UIView {
         self.layer.shadowOpacity = 0.5
         self.layer.shadowRadius = radius
     }
+    
+    func animate(from view1: UIView,
+                 to view2: UIView,
+                 disappearAnimationOptions: UIView.AnimationOptions? = nil,
+                 appearAnimationOptions: UIView.AnimationOptions? = nil,
+                 completion: (() -> Void)? = nil) {
+        
+        let defaultDisappearAnimationOptions: UIView.AnimationOptions = [.transitionFlipFromBottom, .showHideTransitionViews]
+        let defaultAppearAnimationOptions: UIView.AnimationOptions = [.transitionFlipFromTop, .showHideTransitionViews]
+
+        UIView.transition(with: view1, duration: 0.3, options: disappearAnimationOptions ?? defaultDisappearAnimationOptions, animations: {
+            view1.alpha = 0
+        }) { _ in
+            UIView.transition(with: view2, duration: 0.3, options: appearAnimationOptions ?? defaultAppearAnimationOptions, animations: {
+                view2.alpha = 1
+            }) { _ in
+                completion?()
+            }
+        }
+    }
 }

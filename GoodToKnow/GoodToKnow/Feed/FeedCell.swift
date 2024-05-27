@@ -13,84 +13,93 @@ final class FeedCell: CardCell {
     
     static let identifier = "FeedCell"
     
-    private let backgroundOverlayView: UIView = {
+    private lazy var backgroundOverlayView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.MainColors.accentColor?.withAlphaComponent(0.2)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private let sourceLabel: UILabel = {
+    private lazy var sourceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.getCopperplateFont(size: 20)
         label.textColor = .MainColors.primaryText
         label.textAlignment = .center
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isSkeletonable = true
         return label
     }()
 
-    private let imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.setDimensions(width: 200, height: 200)
-        imageView.roundCornersWithBorder(radius: 100, color: UIColor.white.cgColor)
+        imageView.setDimensions(width: 240, height: 240)
+        imageView.roundCornersWithBorder(radius: 120, color: UIColor.white.cgColor, width: 3)
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isSkeletonable = true
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
 
-    private let titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .MainColors.primaryText
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isSkeletonable = true
         return label
     }()
 
-    private let authorLabel: UILabel = {
+    private lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.italicSystemFont(ofSize: 14)
         label.textColor = .MainColors.secondaryText
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isSkeletonable = true
         return label
     }()
 
-    private let dateLabel: UILabel = {
+    private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .MainColors.secondaryText
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isSkeletonable = true
         return label
     }()
     
     
-    private let descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textColor = UIColor.MainColors.secondaryText
         label.textAlignment = .left
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isSkeletonable = true
         return label
     }()
     
-    private let contentLabel: UILabel = {
+    private lazy var contentLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textColor = UIColor.MainColors.secondaryText
         label.textAlignment = .left
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isSkeletonable = true
         return label
     }()
     
-    private let vStack: UIStackView = {
+    private lazy var vStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 10
         stack.alignment = .leading
+        stack.isSkeletonable = true
         return stack
     }()
 
