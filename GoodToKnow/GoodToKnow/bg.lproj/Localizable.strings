@@ -10,10 +10,11 @@
 "hot_news_title" = "Горещи Новини";
 "all_news_title" = "Всички Новини";
 "settings_title" = "Настройки";
+"app_name" = "GoodToKnow";
 
 // MARK: Home Screen
-"filters_info" = "Добави филтри към търсенето";
-"feed_info" = "... или просто разгледай feed-a";
+"filters_info" = "Филтри";
+"feed_info" = "ФИЙД";
 "countires_section_title" = "Държави";
 "categories_section_title" = "Категории";
 
