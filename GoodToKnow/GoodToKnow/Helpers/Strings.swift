@@ -14,6 +14,7 @@ struct Strings {
         static let hotNews = NSLocalizedString("hot_news_title", comment: "Localizable")
         static let allNews = NSLocalizedString("all_news_title", comment: "Localizable")
         static let settings = NSLocalizedString("settings_title", comment: "Localizable")
+        static let appName = NSLocalizedString("app_name", comment: "Localizable")
     }
     
     struct HomeScreen {

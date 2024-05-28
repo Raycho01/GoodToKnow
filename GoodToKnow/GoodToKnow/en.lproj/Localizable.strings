@@ -11,10 +11,11 @@
 "hot_news_title" = "Hot News";
 "all_news_title" = "All News";
 "settings_title" = "Settings";
+"app_name" = "GoodToKnow";
 
 // MARK: Home Screen
-"filters_info" = "Apply filters to your search";
-"feed_info" = "... or just browse the feed";
+"filters_info" = "Filters";
+"feed_info" = "FEED";
 "countires_section_title" = "Countries";
 "categories_section_title" = "Categories";
 

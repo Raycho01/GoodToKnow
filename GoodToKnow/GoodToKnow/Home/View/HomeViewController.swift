@@ -39,24 +39,45 @@ final class HomeViewController: UIViewController {
         return view
     }()
     
-    private lazy var filtersInfoLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = Strings.HomeScreen.filtersInfo
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.font = .getCopperplateFont(size: 20)
-        label.textColor = UIColor.MainColors.primaryText
-        return label
+    private lazy var introductionView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        let imageBackgroundView = UIImageView(image: UIImage(named: "home_introduction_image"))
+        imageBackgroundView.contentMode = .scaleToFill
+        imageBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(imageBackgroundView)
+        imageBackgroundView.fillSuperview()
+        imageBackgroundView.centerInSuperview()
+        
+        let introductionLabel = UILabel()
+        introductionLabel.translatesAutoresizingMaskIntoConstraints = false
+        introductionLabel.text = Strings.ScreenTitles.appName
+        introductionLabel.numberOfLines = 0
+        introductionLabel.textAlignment = .center
+        introductionLabel.font = UIFont.getCopperplateFont(size: 36)
+        introductionLabel.textColor = UIColor.MainColors.primaryText
+        view.addSubview(introductionLabel)
+        introductionLabel.fillSuperview()
+        introductionLabel.centerInSuperview()
+        
+        return view
     }()
     
     private lazy var filtersInfoWrapperView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.MainColors.headerBackground.withAlphaComponent(0.3)
+        
+        let filtersInfoLabel = UILabel()
+        filtersInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        filtersInfoLabel.text = Strings.HomeScreen.filtersInfo
+        filtersInfoLabel.numberOfLines = 0
+        filtersInfoLabel.textAlignment = .center
+        filtersInfoLabel.font = .boldSystemFont(ofSize: 24)
+        filtersInfoLabel.textColor = UIColor.MainColors.secondaryText
         view.addSubview(filtersInfoLabel)
         filtersInfoLabel.fillSuperview(padding: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
-        view.backgroundColor = UIColor.MainColors.lightBackground
-        view.roundCornersWithBorder()
         return view
     }()
     
@@ -83,7 +104,7 @@ final class HomeViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 10
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
@@ -103,7 +124,7 @@ final class HomeViewController: UIViewController {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = .getCopperplateFont(size: 20)
-        label.textColor = UIColor.MainColors.primaryText
+        label.textColor = UIColor.white
         return label
     }()
     
@@ -113,15 +134,16 @@ final class HomeViewController: UIViewController {
         
         let vStack = UIStackView()
         vStack.axis = .horizontal
-        vStack.spacing = 20
+        vStack.spacing = 10
         vStack.addArrangedSubview(feedInfoLabel)
         vStack.addArrangedSubview(feedIcon)
         vStack.alignment = .center
         view.addSubview(vStack)
         vStack.fillSuperview(padding: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         
-        view.backgroundColor = UIColor.MainColors.lightBackground
-        view.roundCornersWithBorder()
+        view.backgroundColor = UIColor.MainColors.accentColor
+        view.layer.cornerRadius = 20
+        view.setShadow()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(navigateToFeed))
         view.addGestureRecognizer(tapGesture)
@@ -132,8 +154,8 @@ final class HomeViewController: UIViewController {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "flame")
-        imageView.tintColor = UIColor.MainColors.accentColor
-        imageView.setDimensions(width: 60, height: 60)
+        imageView.tintColor = UIColor.white
+        imageView.setDimensions(width: 40, height: 40)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -162,8 +184,8 @@ final class HomeViewController: UIViewController {
                           trailing: view.trailingAnchor)
         
         view.addSubview(scrollView)
-        scrollView.anchor(top: headerView.bottomAnchor,
-                          bottom: view.bottomAnchor,
+        scrollView.anchor(top: headerView.bottomAnchor, topConstant: -30,
+                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
                           leading: view.leadingAnchor,
                           trailing: view.trailingAnchor)
         
@@ -173,13 +195,21 @@ final class HomeViewController: UIViewController {
         contentView.setDimensions(width: scrollView.frame.width, height: scrollView.frame.height)
         contentView.centerInSuperview()
         
-        contentView.addSubview(filtersInfoWrapperView)
-        filtersInfoWrapperView.anchor(top: contentView.topAnchor, topConstant: 40,
-                                leading: contentView.leadingAnchor, leadingConstant: 40,
-                                trailing: contentView.trailingAnchor, trailingConstant: 40)
+        contentView.addSubview(introductionView)
+        introductionView.anchor(top: contentView.topAnchor, topConstant: 0,
+                                leading: contentView.leadingAnchor, leadingConstant: 0,
+                                trailing: contentView.trailingAnchor, trailingConstant: 0)
+        introductionView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        
+        contentView.addSubview(feedInfoWrapperView)
+        feedInfoWrapperView.anchor(top: introductionView.bottomAnchor, topConstant: -30)
+        feedInfoWrapperView.widthAnchor.constraint(equalToConstant: 140).isActive = true
+        feedInfoWrapperView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        
+        
         
         contentView.addSubview(countryCarouselView)
-        countryCarouselView.anchor(top: filtersInfoWrapperView.bottomAnchor, topConstant: 40,
+        countryCarouselView.anchor(top: feedInfoWrapperView.bottomAnchor, topConstant: 40,
                                        leading: contentView.leadingAnchor,
                                        trailing: contentView.trailingAnchor)
         countryCarouselView.heightAnchor.constraint(equalToConstant: 120).isActive = true
@@ -195,10 +225,7 @@ final class HomeViewController: UIViewController {
                                       trailing: contentView.trailingAnchor)
         categoryCollectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        contentView.addSubview(feedInfoWrapperView)
-        feedInfoWrapperView.anchor(top: categoryCollectionView.bottomAnchor, topConstant: 40,
-                                   leading: contentView.leadingAnchor, leadingConstant: 40,
-                                   trailing: contentView.trailingAnchor, trailingConstant: 40)
+        view.bringSubviewToFront(headerView)
         
     }
     
