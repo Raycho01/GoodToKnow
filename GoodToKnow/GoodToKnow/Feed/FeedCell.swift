@@ -9,9 +9,15 @@ import Foundation
 import UIKit
 import VerticalCardSwiper
 
+protocol FeedCellDelegate: AnyObject {
+    func didTapReadLater()
+}
+
 final class FeedCell: CardCell {
     
     static let identifier = "FeedCell"
+    
+    weak var delegate: FeedCellDelegate?
     
     private lazy var backgroundOverlayView: UIView = {
         let view = UIView()
@@ -24,11 +30,25 @@ final class FeedCell: CardCell {
         let label = UILabel()
         label.font = UIFont.getCopperplateFont(size: 20)
         label.textColor = .MainColors.primaryText
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Here's the source of the article"
         label.isSkeletonable = true
         return label
+    }()
+    
+    private lazy var readLaterButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("", for: .normal)
+        button.setImage(UIImage(systemName: "clock"), for: .normal)
+        button.addTarget(self, action: #selector(didTapReadLater), for: .touchUpInside)
+        button.setDimensions(width: 30, height: 30)
+        button.contentMode = .scaleToFill
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.tintColor = UIColor.MainColors.primaryText
+        return button
     }()
 
     private lazy var imageView: UIImageView = {
@@ -59,6 +79,7 @@ final class FeedCell: CardCell {
         label.textColor = .MainColors.secondaryText
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isSkeletonable = true
+        label.text = "Author of the article"
         return label
     }()
 
@@ -68,6 +89,7 @@ final class FeedCell: CardCell {
         label.textColor = .MainColors.secondaryText
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isSkeletonable = true
+        label.text = "Date"
         return label
     }()
     
@@ -80,6 +102,7 @@ final class FeedCell: CardCell {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isSkeletonable = true
+        label.text = "That's the place of the description of this article. Usually it's a multiline text with much information it."
         return label
     }()
     
@@ -91,6 +114,7 @@ final class FeedCell: CardCell {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isSkeletonable = true
+        label.text = "That's the content of this article. It's like the description."
         return label
     }()
     
@@ -130,10 +154,13 @@ final class FeedCell: CardCell {
         backgroundOverlayView.heightAnchor.constraint(equalToConstant: 180).isActive = true
         
         backgroundOverlayView.addSubview(sourceLabel)
-        sourceLabel.anchor(top: backgroundOverlayView.topAnchor, topConstant: 5,
-                           leading: backgroundOverlayView.leadingAnchor, leadingConstant: 5,
-                           trailing: backgroundOverlayView.trailingAnchor, trailingConstant: 5)
-        sourceLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        sourceLabel.anchor(top: backgroundOverlayView.topAnchor, topConstant: 20,
+                           leading: backgroundOverlayView.leadingAnchor, leadingConstant: 20)
+        
+        backgroundOverlayView.addSubview(readLaterButton)
+        readLaterButton.anchor(trailing: backgroundOverlayView.trailingAnchor, trailingConstant: 20)
+        readLaterButton.centerYAnchor.constraint(equalTo: sourceLabel.centerYAnchor).isActive = true
+        sourceLabel.trailingAnchor.constraint(lessThanOrEqualTo: readLaterButton.leadingAnchor).isActive = true
         
         contentView.addSubview(imageView)
         imageView.centerYAnchor.constraint(equalTo: backgroundOverlayView.bottomAnchor).isActive = true
@@ -175,5 +202,9 @@ final class FeedCell: CardCell {
         } else {
             hideSkeleton()
         }
+    }
+    
+    @objc func didTapReadLater() {
+        delegate?.didTapReadLater()
     }
 }

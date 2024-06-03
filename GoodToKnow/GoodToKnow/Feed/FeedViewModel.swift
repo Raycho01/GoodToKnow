@@ -10,7 +10,7 @@ import UIKit
 
 protocol FeedViewModelProtocol {
     
-    var newsArticles: [NewsArticle?] { get }
+    var newsArticles: [NewsArticle?] { get set }
     var newsArticlesDidUpdate: (() -> Void) { get set }
     var isCurrenltyLoading: Bool { get }
     var onError: ((Error) -> Void) { get set }
@@ -21,11 +21,7 @@ protocol FeedViewModelProtocol {
 
 final class FeedViewModel: FeedViewModelProtocol {
     
-    var newsArticles: [NewsArticle?] = [] {
-        didSet {
-            newsArticlesDidUpdate()
-        }
-    }
+    var newsArticles: [NewsArticle?] = []
     var newsArticlesDidUpdate: (() -> Void) = {}
     var isCurrenltyLoading: Bool = false {
         didSet {
@@ -56,6 +52,7 @@ final class FeedViewModel: FeedViewModelProtocol {
                 break
             case .success(let newsResponse):
                 self.newsArticles = newsResponse.articles
+                newsArticlesDidUpdate()
                 self.totalResults = newsResponse.totalResults ?? 0
                 setupCursor()
                 cursor?.incrementPage()
@@ -77,6 +74,7 @@ final class FeedViewModel: FeedViewModelProtocol {
                 break
             case .success(let newsResponse):
                 self.newsArticles.append(contentsOf: newsResponse.articles)
+                newsArticlesDidUpdate()
                 self.cursor?.incrementPage()
             }
         }
@@ -88,6 +86,7 @@ final class FeedViewModel: FeedViewModelProtocol {
         } else {
             newsArticles = newsArticles.filter({ $0 != nil })
         }
+        newsArticlesDidUpdate()
     }
     
     private func setupCursor() {
