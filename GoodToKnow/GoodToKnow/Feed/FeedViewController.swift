@@ -17,9 +17,9 @@ final class FeedViewController: UIViewController {
         let cardSwiperView = VerticalCardSwiper(frame: self.view.bounds)
         cardSwiperView.register(FeedCell.self, forCellWithReuseIdentifier: FeedCell.identifier)
         cardSwiperView.datasource = self
+        cardSwiperView.delegate = self
         cardSwiperView.isStackingEnabled = false
-        cardSwiperView.visibleNextCardHeight = 20
-        cardSwiperView.isSideSwipingEnabled = false
+        cardSwiperView.visibleNextCardHeight = 15
         return cardSwiperView
     }()
     
@@ -105,10 +105,13 @@ final class FeedViewController: UIViewController {
         }
     }
     
+    private func removeCardAt(index: Int) {
+        viewModel.newsArticles.remove(at: index)
+    }
 }
 
 // MARK: Delegates
-extension FeedViewController: VerticalCardSwiperDatasource {
+extension FeedViewController: VerticalCardSwiperDatasource, VerticalCardSwiperDelegate {
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         
         loadMoreNewsIfNeeded(index: index)
@@ -118,14 +121,26 @@ extension FeedViewController: VerticalCardSwiperDatasource {
         }
 
         cell.configure(with: viewModel.newsArticles[index])
+        cell.delegate = self
         return cell
     }
     
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
         return viewModel.newsArticles.count
     }
+    
+    func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
+        removeCardAt(index: index)
+    }
 }
 
 extension FeedViewController: NewsListHeaderDelegate {
     func didSearch(for keyword: String) {}
+}
+
+extension FeedViewController: FeedCellDelegate {
+    func didTapReadLater() {
+        guard let currentCardIndex = cardSwiperView.focussedCardIndex else { return }
+        _ = cardSwiperView.swipeCardAwayProgrammatically(at: currentCardIndex, to: .Right)
+    }
 }
