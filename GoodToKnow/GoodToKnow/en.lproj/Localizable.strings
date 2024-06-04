@@ -42,6 +42,8 @@
 
 // MARK: Alert
 "continue" = "Continue";
+"retry" = "Retry";
 "cancel" = "Cancel";
+"error_generic" = "Опс, нещо се обърка.";
 "restart_title" = "The app will restart to apply the changes.";
 "restart_subtitle" = "Do you want to continue?";

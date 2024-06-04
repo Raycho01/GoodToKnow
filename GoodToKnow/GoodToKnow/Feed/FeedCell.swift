@@ -33,7 +33,8 @@ final class FeedCell: CardCell {
         label.textAlignment = .left
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Here's the source of the article"
+        let placeholderText = "Here's the source of the article"
+        label.text = placeholderText
         label.isSkeletonable = true
         return label
     }()
@@ -79,7 +80,8 @@ final class FeedCell: CardCell {
         label.textColor = .MainColors.secondaryText
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isSkeletonable = true
-        label.text = "Author of the article"
+        let placeholderText = "Author of the article"
+        label.text = placeholderText
         return label
     }()
 
@@ -89,7 +91,8 @@ final class FeedCell: CardCell {
         label.textColor = .MainColors.secondaryText
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isSkeletonable = true
-        label.text = "Date"
+        let placeholderText = "00.00.0000"
+        label.text = placeholderText
         return label
     }()
     
@@ -102,7 +105,8 @@ final class FeedCell: CardCell {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isSkeletonable = true
-        label.text = "That's the place of the description of this article. Usually it's a multiline text with much information it."
+        let placeholderText = "That's the place of the description of this article. Usually it's a multiline text with some information about the article."
+        label.text = placeholderText
         return label
     }()
     
@@ -114,7 +118,8 @@ final class FeedCell: CardCell {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isSkeletonable = true
-        label.text = "That's the content of this article. It's like the description."
+        let placeholderText = "That's the content of this article. It's like the description."
+        label.text = placeholderText
         return label
     }()
     

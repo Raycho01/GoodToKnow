@@ -23,13 +23,16 @@ final class HomeCarouselViewModel: CarouselViewModelProtocol, ObservableObject {
     
     init(service: HomeServiceProtocol = HomeMockedService()) {
         self.service = service
-        callService()
     }
     
     func bind() -> AnyPublisher<[CarouselModel], Never> {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
         return $carouselModels.eraseToAnyPublisher()
+    }
+    
+    func fetch() {
+        callService()
     }
     
     private func callService() {

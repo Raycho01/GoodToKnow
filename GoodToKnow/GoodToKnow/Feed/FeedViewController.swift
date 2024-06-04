@@ -85,13 +85,13 @@ final class FeedViewController: UIViewController {
     }
     
     private func showAlert(with error: Error) {
-        let retryAction = AlertPopupAction(title: "Retry", isPreferred: true, action: { [weak self] in
+        let retryAction = AlertPopupAction(title: Strings.Alert.retryActionTitle, isPreferred: true, action: { [weak self] in
             self?.viewModel.fetchNewsInitially()
         })
-        let cancelAction = AlertPopupAction(title: "Cancel", isPreferred: false, action: { [weak self] in
+        let cancelAction = AlertPopupAction(title: Strings.Alert.cancelActionTitle, isPreferred: false, action: { [weak self] in
             self?.navigationController?.dismiss(animated: true)
         })
-        let title = NSAttributedString(string: "Oops, something went wrong.")
+        let title = NSAttributedString(string: Strings.Alert.errorGenericTitle)
         let message = NSAttributedString(string: error.localizedDescription, attributes: [
             .font: UIFont.systemFont(ofSize: 14, weight: .light)
         ])

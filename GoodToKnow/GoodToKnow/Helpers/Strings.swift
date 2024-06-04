@@ -50,7 +50,9 @@ struct Strings {
     
     struct Alert {
         static let continueActionTitle = NSLocalizedString("continue", comment: "Localizable")
+        static let retryActionTitle = NSLocalizedString("retry", comment: "Localizable")
         static let cancelActionTitle = NSLocalizedString("cancel", comment: "Localizable")
+        static let errorGenericTitle = NSLocalizedString("error_generic", comment: "Localizable")
         static let restartTitle = NSLocalizedString("restart_title", comment: "Localizable")
         static let restartSubtitle = NSLocalizedString("restart_subtitle", comment: "Localizable")
     }
