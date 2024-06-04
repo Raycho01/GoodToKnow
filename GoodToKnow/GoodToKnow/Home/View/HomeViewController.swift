@@ -10,7 +10,9 @@ import Combine
 
 protocol CarouselViewModelProtocol {
     var title: String { get }
+    
     func bind() -> AnyPublisher<[CarouselModel], Never>
+    func fetch()
 }
 
 final class HomeViewController: UIViewController {
@@ -29,6 +31,8 @@ final class HomeViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.refreshControl = refreshControl
+        scrollView.clipsToBounds = false
         return scrollView
     }()
     
@@ -160,6 +164,12 @@ final class HomeViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(userDidRefresh), for: .valueChanged)
+        return refreshControl
+    }()
+    
     init(carouselViewModel: CarouselViewModelProtocol = HomeCarouselViewModel(), headerViewModel: NewsListHeaderViewModel) {
         self.headerViewModel = headerViewModel
         self.carouselViewModel = carouselViewModel
@@ -174,6 +184,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupNavigationBar()
+        carouselViewModel.fetch()
     }
     
     private func setupUI() {
@@ -184,7 +195,7 @@ final class HomeViewController: UIViewController {
                           trailing: view.trailingAnchor)
         
         view.addSubview(scrollView)
-        scrollView.anchor(top: headerView.bottomAnchor, topConstant: -30,
+        scrollView.anchor(top: headerView.bottomAnchor, topConstant: 0,
                           bottom: view.safeAreaLayoutGuide.bottomAnchor,
                           leading: view.leadingAnchor,
                           trailing: view.trailingAnchor)
@@ -196,10 +207,10 @@ final class HomeViewController: UIViewController {
         contentView.centerInSuperview()
         
         contentView.addSubview(introductionView)
-        introductionView.anchor(top: contentView.topAnchor, topConstant: 0,
+        introductionView.anchor(top: contentView.topAnchor, topConstant: -20,
                                 leading: contentView.leadingAnchor, leadingConstant: 0,
                                 trailing: contentView.trailingAnchor, trailingConstant: 0)
-        introductionView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        introductionView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
         contentView.addSubview(feedInfoWrapperView)
         feedInfoWrapperView.anchor(top: introductionView.bottomAnchor, topConstant: -30)
@@ -226,7 +237,6 @@ final class HomeViewController: UIViewController {
         categoryCollectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         view.bringSubviewToFront(headerView)
-        
     }
     
     private func setupNavigationBar() {
@@ -258,6 +268,10 @@ extension HomeViewController: CarouselViewDelegate {
     func didTapOnCarouselCell(with value: String) {
         navigateToHotNews(country: value)
     }
+    
+    func didUpdate() {
+        refreshControl.endRefreshing()
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -276,5 +290,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         navigateToHotNews(category: categories[indexPath.row].getModel().value)
+    }
+}
+
+// MARK: - UIRefreshControl
+
+extension HomeViewController {
+    @objc func userDidRefresh(refreshControl: UIRefreshControl) {
+        carouselViewModel.fetch()
     }
 }

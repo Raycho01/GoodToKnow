@@ -10,6 +10,7 @@ import Combine
 
 protocol CarouselViewDelegate: AnyObject {
     func didTapOnCarouselCell(with value: String)
+    func didUpdate()
 }
 
 final class CarouselView: UIView {
@@ -80,6 +81,7 @@ final class CarouselView: UIView {
     private func bindToViewModel() {
         viewModel.bind().receive(on: RunLoop.main).sink { [weak self] carouselModels in
             self?.carouselModels = carouselModels
+            self?.delegate?.didUpdate()
         }.store(in: &cancellables)
     }
 }

@@ -41,6 +41,8 @@
 
 // MARK: Alert
 "continue" = "Продължи";
+"retry" = "Опитай пак";
 "cancel" = "Откажи";
+"error_generic" = "Oops, something went wrong.";
 "restart_title" = "Приложението ще се рестартира, за да приложи промените.";
 "restart_subtitle" = "Искате ли да продължите?";
