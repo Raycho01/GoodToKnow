@@ -10,6 +10,11 @@
 		03EF4A19C3668EC9EBD4D835 /* Pods_GoodToKnow_GoodToKnowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80435499F444737455A7EC17 /* Pods_GoodToKnow_GoodToKnowUITests.framework */; };
 		6DC698D59431015E7F066D87 /* Pods_GoodToKnow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54D28129DD9A472AE36A56B /* Pods_GoodToKnow.framework */; };
 		ACD4F8B281BA05355CB2FA66 /* Pods_GoodToKnowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2024E38F71F8FF582081D15 /* Pods_GoodToKnowTests.framework */; };
+		AE179BE12C11DF21004A66CA /* NewsArticlesCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE179BDF2C11DF21004A66CA /* NewsArticlesCoreData.xcdatamodeld */; };
+		AE179BE82C11E065004A66CA /* NewsArticleCoreDataModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE179BE62C11E065004A66CA /* NewsArticleCoreDataModel+CoreDataClass.swift */; };
+		AE179BE92C11E065004A66CA /* NewsArticleCoreDataModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE179BE72C11E065004A66CA /* NewsArticleCoreDataModel+CoreDataProperties.swift */; };
+		AE179BEB2C11E0C1004A66CA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE179BEA2C11E0C1004A66CA /* CoreDataManager.swift */; };
+		AE179BED2C11FFA1004A66CA /* ReadLaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE179BEC2C11FFA1004A66CA /* ReadLaterViewModel.swift */; };
 		AE2499222B8B7F5E00B87E61 /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2499212B8B7F5E00B87E61 /* NewsDetailsViewController.swift */; };
 		AE3A91012B5E9CB6002B1EC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91002B5E9CB6002B1EC9 /* AppDelegate.swift */; };
 		AE3A91032B5E9CB6002B1EC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3A91022B5E9CB6002B1EC9 /* SceneDelegate.swift */; };
@@ -95,6 +100,11 @@
 		80435499F444737455A7EC17 /* Pods_GoodToKnow_GoodToKnowUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoodToKnow_GoodToKnowUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE0BD36BAC80CE8B6469007 /* Pods-GoodToKnowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodToKnowTests.debug.xcconfig"; path = "Target Support Files/Pods-GoodToKnowTests/Pods-GoodToKnowTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A9A341685C0188F526BDA5D6 /* Pods-GoodToKnow-GoodToKnowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodToKnow-GoodToKnowUITests.debug.xcconfig"; path = "Target Support Files/Pods-GoodToKnow-GoodToKnowUITests/Pods-GoodToKnow-GoodToKnowUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AE179BE02C11DF21004A66CA /* NewsArticlesCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsArticlesCoreData.xcdatamodel; sourceTree = "<group>"; };
+		AE179BE62C11E065004A66CA /* NewsArticleCoreDataModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsArticleCoreDataModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AE179BE72C11E065004A66CA /* NewsArticleCoreDataModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsArticleCoreDataModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AE179BEA2C11E0C1004A66CA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		AE179BEC2C11FFA1004A66CA /* ReadLaterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadLaterViewModel.swift; sourceTree = "<group>"; };
 		AE2499212B8B7F5E00B87E61 /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
 		AE3A90FD2B5E9CB6002B1EC9 /* GoodToKnow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodToKnow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE3A91002B5E9CB6002B1EC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +222,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AE179BDE2C11DEE8004A66CA /* ReadLater */ = {
+			isa = PBXGroup;
+			children = (
+				AE179BE62C11E065004A66CA /* NewsArticleCoreDataModel+CoreDataClass.swift */,
+				AE179BE72C11E065004A66CA /* NewsArticleCoreDataModel+CoreDataProperties.swift */,
+				AE179BDF2C11DF21004A66CA /* NewsArticlesCoreData.xcdatamodeld */,
+				AE179BEC2C11FFA1004A66CA /* ReadLaterViewModel.swift */,
+			);
+			path = ReadLater;
+			sourceTree = "<group>";
+		};
 		AE24991E2B8B50F400B87E61 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +286,7 @@
 		AE3A90FF2B5E9CB6002B1EC9 /* GoodToKnow */ = {
 			isa = PBXGroup;
 			children = (
+				AE179BDE2C11DEE8004A66CA /* ReadLater */,
 				AEF851032BFCD158007FC00F /* Feed */,
 				AE5A30712BB9991500714E23 /* Settings */,
 				AE6A252B2BA8D97600156EE5 /* Home */,
@@ -382,6 +404,7 @@
 				AE4144272BE13E3200B4C126 /* GlobalSearchFilters.swift */,
 				AE9798AE2BEB94750049A5C9 /* Strings.swift */,
 				AE9798B42BEBD5B50049A5C9 /* AppLanguages.swift */,
+				AE179BEA2C11E0C1004A66CA /* CoreDataManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -758,6 +781,7 @@
 				AE2499222B8B7F5E00B87E61 /* NewsDetailsViewController.swift in Sources */,
 				AEF851072BFCD250007FC00F /* FeedCell.swift in Sources */,
 				AE6A25222BA6E2E000156EE5 /* AllNewsAPIService.swift in Sources */,
+				AE179BEB2C11E0C1004A66CA /* CoreDataManager.swift in Sources */,
 				AE758CF82BAB41D1005926A6 /* ImageCache.swift in Sources */,
 				AE9798B52BEBD5B50049A5C9 /* AppLanguages.swift in Sources */,
 				AE3A913D2B5FE89B002B1EC9 /* NewsListTableViewCell.swift in Sources */,
@@ -768,6 +792,8 @@
 				AE6A25282BA6F84900156EE5 /* DateExtension.swift in Sources */,
 				AED0A8CD2BB8A90700F36BA6 /* UIStackViewExtension.swift in Sources */,
 				AE6A25262BA6F1D000156EE5 /* NewsOriginView.swift in Sources */,
+				AE179BE82C11E065004A66CA /* NewsArticleCoreDataModel+CoreDataClass.swift in Sources */,
+				AE179BE92C11E065004A66CA /* NewsArticleCoreDataModel+CoreDataProperties.swift in Sources */,
 				AEB9EF6E2C038C2800C7DE47 /* FeedViewModel.swift in Sources */,
 				AE4144262BE139A400B4C126 /* SearchFiltersObserver.swift in Sources */,
 				AE9798B32BEBB8C00049A5C9 /* LanguageView.swift in Sources */,
@@ -781,6 +807,7 @@
 				AE9798AF2BEB94750049A5C9 /* Strings.swift in Sources */,
 				AEAA3CDF2B821DB200EB3CE8 /* NewsSearchFilters.swift in Sources */,
 				AE758D032BADC43C005926A6 /* GeneralEmptyConfiguration.swift in Sources */,
+				AE179BE12C11DF21004A66CA /* NewsArticlesCoreData.xcdatamodeld in Sources */,
 				AE758CE82BAB176A005926A6 /* CarouselModel.swift in Sources */,
 				AE4144202BE0F1EA00B4C126 /* CategoryCollectionViewCell.swift in Sources */,
 				AED0A8C92BB8857000F36BA6 /* NewsFiltersView.swift in Sources */,
@@ -790,6 +817,7 @@
 				AE3A91342B5EB2B4002B1EC9 /* HotNewsViewModel.swift in Sources */,
 				AE5A30732BB9991E00714E23 /* SettingsViewController.swift in Sources */,
 				AE758CFE2BACC357005926A6 /* AlertPopupAction.swift in Sources */,
+				AE179BED2C11FFA1004A66CA /* ReadLaterViewModel.swift in Sources */,
 				AE4144222BE107F600B4C126 /* CategoryModel.swift in Sources */,
 				AE3A91012B5E9CB6002B1EC9 /* AppDelegate.swift in Sources */,
 				AE758CF62BAB359C005926A6 /* BundleManager.swift in Sources */,
@@ -1158,6 +1186,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AE179BDF2C11DF21004A66CA /* NewsArticlesCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AE179BE02C11DF21004A66CA /* NewsArticlesCoreData.xcdatamodel */,
+			);
+			currentVersion = AE179BE02C11DF21004A66CA /* NewsArticlesCoreData.xcdatamodel */;
+			name = NewsArticlesCoreData.xcdatamodeld;
+			path = /Users/raychokostadinov/ios_projects/Projects/GoodToKnowProject/GoodToKnow/GoodToKnow/ReadLater/NewsArticlesCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AE3A90F52B5E9CB6002B1EC9 /* Project object */;
 }

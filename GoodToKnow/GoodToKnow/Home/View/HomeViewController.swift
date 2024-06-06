@@ -33,6 +33,7 @@ final class HomeViewController: UIViewController {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.refreshControl = refreshControl
         scrollView.clipsToBounds = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
     
@@ -164,6 +165,25 @@ final class HomeViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var readLaterButon: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor.black
+        button.setTitle("Saved articles", for: .normal)
+        button.titleLabel?.font = UIFont.getCopperplateFont()
+        button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(didTapSavedArticles), for: .touchUpInside)
+        button.setDimensions(width: 180, height: 50)
+        return button
+    }()
+    
+    private lazy var lineView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 3).isActive = true
+        view.backgroundColor = .black
+        return view
+    }()
+    
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(userDidRefresh), for: .valueChanged)
@@ -199,12 +219,12 @@ final class HomeViewController: UIViewController {
                           bottom: view.safeAreaLayoutGuide.bottomAnchor,
                           leading: view.leadingAnchor,
                           trailing: view.trailingAnchor)
+        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
         
         scrollView.addSubview(contentView)
         contentView.fillSuperview()
-        contentView.setDimensions(width: scrollView.frame.width, height: scrollView.frame.height)
-        contentView.centerInSuperview()
+        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         
         contentView.addSubview(introductionView)
         introductionView.anchor(top: contentView.topAnchor, topConstant: -20,
@@ -236,6 +256,15 @@ final class HomeViewController: UIViewController {
                                       trailing: contentView.trailingAnchor)
         categoryCollectionView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
+        contentView.addSubview(readLaterButon)
+        readLaterButon.anchor(top: categoryCollectionView.bottomAnchor, topConstant: 40, bottom: contentView.bottomAnchor, bottomConstant: 40)
+        readLaterButon.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        
+        contentView.addSubview(lineView)
+        lineView.centerYAnchor.constraint(equalTo: readLaterButon.centerYAnchor).isActive = true
+        lineView.anchor(leading: contentView.leadingAnchor, trailing: contentView.trailingAnchor)
+        
+        contentView.bringSubviewToFront(readLaterButon)
         view.bringSubviewToFront(headerView)
     }
     
@@ -256,6 +285,11 @@ final class HomeViewController: UIViewController {
     
     @objc private func navigateToFeed() {
         let vc = FeedViewController(viewModel: FeedViewModel())
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func didTapSavedArticles() {
+        let vc = NewsListViewController(viewModel: ReadLaterViewModel())
         navigationController?.pushViewController(vc, animated: true)
     }
 }
