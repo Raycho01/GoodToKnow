@@ -106,7 +106,12 @@ final class FeedViewController: UIViewController {
     }
     
     private func removeCardAt(index: Int) {
-        viewModel.newsArticles.remove(at: index)
+        guard let removedArticle = viewModel.newsArticles.remove(at: index) else { return }
+        saveForReadLater(article: removedArticle)
+    }
+    
+    private func saveForReadLater(article: NewsArticle) {
+        CoreDataManager.shared.saveArticle(article: article)
     }
 }
 
