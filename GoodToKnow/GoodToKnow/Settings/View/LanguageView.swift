@@ -53,18 +53,19 @@ final class LanguageView: UIView {
     
     private func createDropDownMenu() -> UIMenu {
         var dropDownElements: [UIMenuElement] = []
-        for language in AppLanguages.languages {
+        for language in AppLanguages.getCurrentLanguages() {
             dropDownElements.append(UIAction(title: language.display, handler: dropDownTapAction))
         }
         return UIMenu(options: .displayInline, children: dropDownElements)
     }
     
     private lazy var dropDownTapAction = { (action: UIAction) in
-        guard action.title != AppLanguages.languages.first?.display else { return }
+        let selectedLanguageName = action.title
+        guard selectedLanguageName != AppLanguages.getCurrentLanguages().first?.display else { return }
         
         let alertVC = UIAlertController(title: Strings.Alert.restartTitle, message: Strings.Alert.restartSubtitle, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: Strings.Alert.continueActionTitle, style: .destructive, handler: { _ in
-            AppLanguages.swapLanguages()
+            AppLanguages.selectLanguage(languageName: selectedLanguageName)
             exit(-1)
         }))
         alertVC.addAction(UIAlertAction(title: Strings.Alert.cancelActionTitle, style: .cancel, handler: { _ in
