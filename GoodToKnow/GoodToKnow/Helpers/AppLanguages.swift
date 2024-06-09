@@ -13,34 +13,44 @@ struct Language: Hashable {
     
     init(value: String) {
         self.value = value
-        if value == "bg" { // TODO: Refactor if there are more languages in the future
+        
+        switch value {
+        case "bg-BG":
             self.display = Strings.Settings.bulgarianLanguage
-        } else {
+        case "en-BG":
             self.display = Strings.Settings.englishLanguage
+        default:
+            self.display = "Unsupported"
         }
     }
 }
 
 final class AppLanguages {
-    private(set) static var languages: [Language] {
-        get {
-            return getCurrentLanguages()
-        }
-        set {}
-    }
     
-    static func swapLanguages() {
-        var newLanguages = languages
-        newLanguages.swapAt(0, 1)
-        let stringLanguages = newLanguages.map { $0.value }
-        UserDefaults.standard.set(stringLanguages, forKey: "AppleLanguages")
-    }
-    
-    private static func getCurrentLanguages() -> [Language] {
-        guard let currentLangsAsStrings = UserDefaults.standard.value(forKey: "AppleLanguages") as? [String] else { return [] }
-        
+    static func getCurrentLanguages() -> [Language] {
+        let currentLangsAsStrings = Locale.preferredLanguages
         return currentLangsAsStrings.map { languageValue in
             Language(value: languageValue)
         }
+    }
+    
+    static func selectLanguage(language: Language) {
+        guard var currentLangsAsStrings = UserDefaults.standard.value(forKey: "AppleLanguages") as? [String],
+              let selectedLanguageIndex = currentLangsAsStrings.firstIndex(where: { $0 == language.value })
+        else { return }
+        
+        currentLangsAsStrings.swapAt(selectedLanguageIndex, 0)
+    }
+    
+    static func selectLanguage(languageName: String) {
+        
+        guard let language = getCurrentLanguages().first(where: { $0.display == languageName }) else { return }
+        
+        guard var currentLangsAsStrings = UserDefaults.standard.value(forKey: "AppleLanguages") as? [String],
+              let selectedLanguageIndex = currentLangsAsStrings.firstIndex(where: { $0 == language.value })
+        else { return }
+        
+        currentLangsAsStrings.swapAt(selectedLanguageIndex, 0)
+        UserDefaults.standard.set(currentLangsAsStrings, forKey: "AppleLanguages")
     }
 }
