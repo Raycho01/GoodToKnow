@@ -6,11 +6,12 @@
  */
 
 // MARK: Screen titles
+"app_name" = "GoodToKnow";
 "home_title" = "Начало";
 "hot_news_title" = "Горещи Новини";
 "all_news_title" = "Всички Новини";
 "settings_title" = "Настройки";
-"app_name" = "GoodToKnow";
+"read_later_title" = "Прочети по-късно";
 
 // MARK: Home Screen
 "filters_info" = "Филтри";
@@ -43,6 +44,6 @@
 "continue" = "Продължи";
 "retry" = "Опитай пак";
 "cancel" = "Откажи";
-"error_generic" = "Oops, something went wrong.";
+"error_generic" = "Опс, нещо се обърка.";
 "restart_title" = "Приложението ще се рестартира, за да приложи промените.";
 "restart_subtitle" = "Искате ли да продължите?";

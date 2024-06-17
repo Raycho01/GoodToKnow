@@ -168,7 +168,7 @@ final class HomeViewController: UIViewController {
     private lazy var readLaterButon: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.black
-        button.setTitle("Saved articles", for: .normal)
+        button.setTitle(Strings.ScreenTitles.readLater, for: .normal)
         button.titleLabel?.font = UIFont.getCopperplateFont()
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(didTapSavedArticles), for: .touchUpInside)
@@ -289,7 +289,7 @@ final class HomeViewController: UIViewController {
     }
     
     @objc private func didTapSavedArticles() {
-        let vc = NewsListViewController(viewModel: ReadLaterViewModel())
+        let vc = ReadLaterViewController(viewModel: ReadLaterViewModel())
         navigationController?.pushViewController(vc, animated: true)
     }
 }

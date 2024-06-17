@@ -10,11 +10,12 @@ import Foundation
 struct Strings {
     
     struct ScreenTitles {
+        static let appName = NSLocalizedString("app_name", comment: "Localizable")
         static let home = NSLocalizedString("home_title", comment: "Localizable")
         static let hotNews = NSLocalizedString("hot_news_title", comment: "Localizable")
         static let allNews = NSLocalizedString("all_news_title", comment: "Localizable")
         static let settings = NSLocalizedString("settings_title", comment: "Localizable")
-        static let appName = NSLocalizedString("app_name", comment: "Localizable")
+        static let readLater = NSLocalizedString("read_later_title", comment: "Localizable")
     }
     
     struct HomeScreen {

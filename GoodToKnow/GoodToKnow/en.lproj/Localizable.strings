@@ -7,11 +7,12 @@
 */
 
 // MARK: Screen titles
+"app_name" = "GoodToKnow";
 "home_title" = "Home";
 "hot_news_title" = "Hot News";
 "all_news_title" = "All News";
 "settings_title" = "Settings";
-"app_name" = "GoodToKnow";
+"read_later_title" = "Read later";
 
 // MARK: Home Screen
 "filters_info" = "Filters";
@@ -44,6 +45,6 @@
 "continue" = "Continue";
 "retry" = "Retry";
 "cancel" = "Cancel";
-"error_generic" = "Опс, нещо се обърка.";
+"error_generic" = "Oops, something went wrong.";
 "restart_title" = "The app will restart to apply the changes.";
 "restart_subtitle" = "Do you want to continue?";
