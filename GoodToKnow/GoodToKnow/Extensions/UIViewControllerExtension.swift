@@ -37,7 +37,7 @@ extension UIViewController {
     private func createEmptyConfiguration(with action: UIAction?) -> UIContentUnavailableConfiguration {
         var config = GeneralEmptyConfiguration.shared
         var buttonConfig =  UIButton.Configuration.filled()
-        buttonConfig.title = "Retry"
+        buttonConfig.title = Strings.Alert.retryActionTitle
         config.button = buttonConfig
         config.buttonProperties.primaryAction = action
         return config

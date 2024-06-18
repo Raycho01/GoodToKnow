@@ -16,6 +16,7 @@ struct Strings {
         static let allNews = NSLocalizedString("all_news_title", comment: "Localizable")
         static let settings = NSLocalizedString("settings_title", comment: "Localizable")
         static let readLater = NSLocalizedString("read_later_title", comment: "Localizable")
+        static let feed = NSLocalizedString("feed_info", comment: "Localizable")
     }
     
     struct HomeScreen {
@@ -56,5 +57,7 @@ struct Strings {
         static let errorGenericTitle = NSLocalizedString("error_generic", comment: "Localizable")
         static let restartTitle = NSLocalizedString("restart_title", comment: "Localizable")
         static let restartSubtitle = NSLocalizedString("restart_subtitle", comment: "Localizable")
+        static let noArticlesTitle = NSLocalizedString("no_articles_title", comment: "Localizable")
+        static let tryAgainSubtitle = NSLocalizedString("try_again_subtitle", comment: "Localizable")
     }
 }

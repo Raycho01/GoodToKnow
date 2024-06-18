@@ -13,8 +13,8 @@ struct GeneralEmptyConfiguration {
         var config = UIContentUnavailableConfiguration.empty()
         config.image = UIImage(systemName: "doc.questionmark")
         config.imageProperties.tintColor?.withAlphaComponent(0.5)
-        config.text = "No results found"
-        config.secondaryText = "Try searching something else"
+        config.text = Strings.Alert.noArticlesTitle
+        config.secondaryText = Strings.Alert.tryAgainSubtitle
         return config
     }()
 }
