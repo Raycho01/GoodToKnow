@@ -15,7 +15,7 @@
 
 // MARK: Home Screen
 "filters_info" = "Филтри";
-"feed_info" = "ФИЙД";
+"feed_info" = "Фийд";
 "countires_section_title" = "Държави";
 "categories_section_title" = "Категории";
 
@@ -45,5 +45,7 @@
 "retry" = "Опитай пак";
 "cancel" = "Откажи";
 "error_generic" = "Опс, нещо се обърка.";
-"restart_title" = "Приложението ще се рестартира, за да приложи промените.";
+"restart_title" = "Приложението ще се затвори, за да приложи промените.";
 "restart_subtitle" = "Искате ли да продължите?";
+"no_articles_title" = "Не са намерени новини";
+"try_again_subtitle" = "Моля опитайте отново";

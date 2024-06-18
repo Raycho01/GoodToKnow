@@ -172,7 +172,7 @@ final class HomeViewController: UIViewController {
         button.titleLabel?.font = UIFont.getCopperplateFont()
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(didTapSavedArticles), for: .touchUpInside)
-        button.setDimensions(width: 180, height: 50)
+        button.setDimensions(width: 200, height: 50)
         return button
     }()
     

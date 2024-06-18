@@ -16,7 +16,7 @@
 
 // MARK: Home Screen
 "filters_info" = "Filters";
-"feed_info" = "FEED";
+"feed_info" = "Feed";
 "countires_section_title" = "Countries";
 "categories_section_title" = "Categories";
 
@@ -46,5 +46,7 @@
 "retry" = "Retry";
 "cancel" = "Cancel";
 "error_generic" = "Oops, something went wrong.";
-"restart_title" = "The app will restart to apply the changes.";
+"restart_title" = "The app will close to apply the changes.";
 "restart_subtitle" = "Do you want to continue?";
+"no_articles_title" = "No articles found";
+"try_again_subtitle" = "Please try again";

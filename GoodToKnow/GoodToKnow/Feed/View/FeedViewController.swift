@@ -45,7 +45,7 @@ final class FeedViewController: UIViewController {
     }
     
     private func setupUI() {
-        self.title = "Feed"
+        self.title = Strings.ScreenTitles.feed
         view.backgroundColor = .veryLightBackground
         
         view.addSubview(cardSwiperView)

@@ -67,6 +67,7 @@ final class ReadLaterViewController: UIViewController {
     private func bindViewModel() {
         viewModel.newsDidUpdate = { [weak self] in
             self?.newsTableView.reloadData()
+            self?.showEmptyViewIfNeeded()
         }
         
         viewModel.isCurrenltyLoading = { [weak self] isCurrenltyLoading in
@@ -101,6 +102,13 @@ final class ReadLaterViewController: UIViewController {
         title = Strings.ScreenTitles.readLater
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+    private func showEmptyViewIfNeeded() {
+        showEmptyState(viewModel.newsArticles.count < 1, with: UIAction(handler: { _ in
+            self.showEmptyState(false, with: nil)
+            self.viewModel.fetchNews()
+        }))
+    }
 }
 
 // MARK: - UITableView delegate and data source
@@ -133,6 +141,7 @@ extension ReadLaterViewController: UITableViewDataSource, UITableViewDelegate {
         if editingStyle == .delete {
             viewModel.removeArticle(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            showEmptyViewIfNeeded()
         }
     }
 }
