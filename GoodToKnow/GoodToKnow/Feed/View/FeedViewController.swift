@@ -57,12 +57,14 @@ final class FeedViewController: UIViewController {
         viewModel.newsArticlesDidUpdate = { [weak self] in
             DispatchQueue.main.async {
                 self?.cardSwiperView.reloadData()
+                self?.showEmptyViewIfNeeded()
             }
         }
         
         viewModel.onError = { [weak self] error in
             DispatchQueue.main.async {
                 self?.showAlert(with: error)
+                self?.showEmptyViewIfNeeded()
             }
         }
     }
@@ -95,6 +97,13 @@ final class FeedViewController: UIViewController {
     
     private func saveForReadLater(article: NewsArticle) {
         CoreDataManager.shared.saveArticle(article: article)
+    }
+    
+    private func showEmptyViewIfNeeded() {
+        showEmptyState(viewModel.newsArticles.count < 1, with: UIAction(handler: { _ in
+            self.showEmptyState(false, with: nil)
+            self.viewModel.fetchNewsInitially()
+        }))
     }
 }
 

@@ -66,12 +66,16 @@ final class ReadLaterViewController: UIViewController {
     
     private func bindViewModel() {
         viewModel.newsDidUpdate = { [weak self] in
-            self?.newsTableView.reloadData()
-            self?.showEmptyViewIfNeeded()
+            DispatchQueue.main.async {
+                self?.newsTableView.reloadData()
+                self?.showEmptyViewIfNeeded()
+            }
         }
         
         viewModel.isCurrenltyLoading = { [weak self] isCurrenltyLoading in
-            self?.handleLoading(isLoading: isCurrenltyLoading)
+            DispatchQueue.main.async {
+                self?.handleLoading(isLoading: isCurrenltyLoading)
+            }
         }
     }
     
