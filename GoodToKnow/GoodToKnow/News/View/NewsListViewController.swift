@@ -101,11 +101,8 @@ class NewsListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
+        super.viewWillAppear(animated)
+        setupNavigation(isHidden: true, isTabBarHidden: false)
     }
     
     private func bindViewModel() {

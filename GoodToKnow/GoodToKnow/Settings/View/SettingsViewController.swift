@@ -57,6 +57,11 @@ final class SettingsViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigation(isHidden: true, isTabBarHidden: false)
+    }
+    
     private func setupUI() {
         view.backgroundColor = UIColor.MainColors.primaryBackground
         view.addSubview(headerView)

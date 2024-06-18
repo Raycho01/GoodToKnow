@@ -43,4 +43,22 @@ extension UIViewController {
         return config
     }
     
+    func setupNavigation(isHidden: Bool, isTabBarHidden: Bool) {
+        if isHidden {
+            navigationController?.isNavigationBarHidden = true
+            navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+            navigationController?.navigationBar.shadowImage = nil
+            navigationController?.navigationBar.prefersLargeTitles = false
+        } else {
+            navigationController?.isNavigationBarHidden = false
+            navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            navigationController?.navigationBar.shadowImage = UIImage()
+            navigationController?.navigationBar.isTranslucent = true
+            navigationController?.view.backgroundColor = .clear
+            navigationController?.navigationBar.tintColor = UIColor.MainColors.primaryText
+        }
+        
+        navigationController?.tabBarController?.tabBar.isHidden = isTabBarHidden
+    }
+    
 }
