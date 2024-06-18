@@ -20,6 +20,7 @@ final class NewsDetailsViewController: UIViewController {
         scrollView.backgroundColor = UIColor.MainColors.primaryBackground
         scrollView.insetsLayoutMarginsFromSafeArea = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
     
@@ -119,14 +120,7 @@ final class NewsDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.isNavigationBarHidden = false
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.isNavigationBarHidden = true
+        setupNavigation(isHidden: false, isTabBarHidden: true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -169,15 +163,10 @@ final class NewsDetailsViewController: UIViewController {
         vStackView.addArrangedSubview(contentLabel)
         vStackView.addArrangedSubview(originView)
     
-        setupNavigationBar()
+        setupNavigationItem()
     }
     
-    private func setupNavigationBar() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.view.backgroundColor = .clear
-        navigationController?.navigationBar.tintColor = UIColor.MainColors.primaryText
+    private func setupNavigationItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: internetButton)
     }
     

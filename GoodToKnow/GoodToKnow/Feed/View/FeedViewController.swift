@@ -35,19 +35,13 @@ final class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationBar()
         setupUI()
         bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
+        setupNavigation(isHidden: false, isTabBarHidden: true)
     }
     
     private func setupUI() {
@@ -56,17 +50,6 @@ final class FeedViewController: UIViewController {
         
         view.addSubview(cardSwiperView)
         cardSwiperView.anchor(top: view.safeAreaLayoutGuide.topAnchor, topConstant: 0, bottom: view.bottomAnchor, bottomConstant: 0, leading: view.leadingAnchor, leadingConstant: 0, trailing: view.trailingAnchor, trailingConstant: 0)
-    }
-    
-    private func setupNavigationBar() {
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationItem.hidesBackButton = false
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.view.backgroundColor = .clear
-        navigationController?.navigationBar.tintColor = UIColor.MainColors.primaryText
     }
     
     private func bindViewModel() {

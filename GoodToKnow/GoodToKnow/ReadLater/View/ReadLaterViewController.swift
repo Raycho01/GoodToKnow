@@ -60,13 +60,8 @@ final class ReadLaterViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = false
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        super.viewWillAppear(animated)
+        setupNavigation(isHidden: false, isTabBarHidden: false)
     }
     
     private func bindViewModel() {
@@ -88,11 +83,9 @@ final class ReadLaterViewController: UIViewController {
     }
     
     private func setupUI() {
-        setupNavigation()
         view.backgroundColor = UIColor.MainColors.headerBackground
         
         view.addSubview(newsTableView)
-        
         newsTableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, topConstant: 20,
                              bottom: view.safeAreaLayoutGuide.bottomAnchor, bottomConstant: 20,
                              leading: view.leadingAnchor, leadingConstant: 10,
@@ -100,16 +93,13 @@ final class ReadLaterViewController: UIViewController {
         
         view.addSubview(activityIndicatorView)
         activityIndicatorView.centerInSuperview()
+        
+        setupNavigationBar()
     }
     
-    private func setupNavigation() {
+    private func setupNavigationBar() {
         title = Strings.ScreenTitles.readLater
-        navigationController?.navigationBar.tintColor = UIColor.primaryText
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.view.backgroundColor = .clear
     }
 }
 

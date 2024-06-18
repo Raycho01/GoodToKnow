@@ -203,8 +203,12 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupNavigationBar()
         carouselViewModel.fetch()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigation(isHidden: true, isTabBarHidden: false)
     }
     
     private func setupUI() {
@@ -266,10 +270,6 @@ final class HomeViewController: UIViewController {
         
         contentView.bringSubviewToFront(readLaterButon)
         view.bringSubviewToFront(headerView)
-    }
-    
-    private func setupNavigationBar() {
-        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     private func navigateToHotNews(country: String? = nil, category: String? = nil) {
