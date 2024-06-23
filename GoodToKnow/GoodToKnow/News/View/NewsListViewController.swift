@@ -145,7 +145,13 @@ class NewsListViewController: UIViewController {
         filterView.anchor(top: headerView.bottomAnchor, topConstant: 5,
                           leading: view.leadingAnchor,
                           trailing: view.trailingAnchor)
-        filterViewHeightConstraint = NSLayoutConstraint(item: filterView, attribute: .height, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 0, constant: 0)
+        filterViewHeightConstraint = NSLayoutConstraint(item: filterView,
+                                                        attribute: .height,
+                                                        relatedBy: .equal,
+                                                        toItem: .none,
+                                                        attribute: .notAnAttribute,
+                                                        multiplier: 0,
+                                                        constant: 0)
         filterViewHeightConstraint.isActive = true
         
         newsTableView.anchor(top: filterView.bottomAnchor, topConstant: 5,
