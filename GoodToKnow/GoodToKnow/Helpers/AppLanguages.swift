@@ -15,9 +15,9 @@ struct Language: Hashable {
         self.value = value
         
         switch value {
-        case "bg-BG":
+        case "bg-BG", "bg":
             self.display = Strings.Settings.bulgarianLanguage
-        case "en-BG":
+        case "en-BG", "en":
             self.display = Strings.Settings.englishLanguage
         default:
             self.display = "Unsupported"
