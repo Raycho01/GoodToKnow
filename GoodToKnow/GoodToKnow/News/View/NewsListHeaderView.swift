@@ -95,7 +95,6 @@ final class NewsListHeaderView: UIView {
     
     func clearSearch() {
         searchTextField.text = ""
-        search()
     }
 
     private func setupUI() {

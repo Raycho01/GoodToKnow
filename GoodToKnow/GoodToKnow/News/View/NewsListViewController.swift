@@ -15,7 +15,7 @@ class NewsListViewController: UIViewController {
     private var newsArticles: [NewsArticle] = [] {
         didSet {
             showEmptyViewIfNeeded()
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.newsTableView.reloadData()
             }
         }
@@ -105,6 +105,12 @@ class NewsListViewController: UIViewController {
         setupNavigation(isHidden: true, isTabBarHidden: false)
     }
     
+    private func scrollToTopIfPossible() {
+        if !self.newsArticles.isEmpty {
+            newsTableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        }
+    }
+    
     private func bindViewModel() {
         viewModel.newsResponseDidUpdate = { [weak self] newsResponse in
             guard let newsResponse = newsResponse else { return }
@@ -123,6 +129,7 @@ class NewsListViewController: UIViewController {
         viewModel.filtersDidUpdate = { [weak self] filters in
             self?.updateFilterViewAppearance(with: filters)
             self?.filterView.update(with: filters)
+            self?.scrollToTopIfPossible()
             if filters.keyword.isEmpty {
                 self?.headerView.clearSearch()
             }
